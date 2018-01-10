@@ -1,0 +1,13 @@
+{
+    "dependencies": {
+        "@types/mongodb": "^2.2.18",
+        "bootstrap": "^3.3.7",
+        "express": "^4.16.2",
+        "mongodb": "^2.2.30",
+        "nodemon": "^1.13.3",
+        "pug": "^2.0.0-rc.4"
+    },
+    "scripts": {
+        "start": "./node_modules/.bin/nodemon ./apartment-sales/server.js"
+    }
+}
