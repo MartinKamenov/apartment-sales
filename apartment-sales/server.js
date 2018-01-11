@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const home = require('./routes/home/home-route');
+const admin = require('./routes/admin/admin-route');
 const Database = require('./database/mongodb');
 const Apartment = require('./models/Apartment');
 const ApartmentRepository = require('./models/ApartmentRepository');
@@ -26,6 +27,7 @@ apartmentRepository.getAllApartments().then((apps) => {
 
 
 home(app, apartmentRepository);
+admin(app, apartmentRepository);
 
 app.listen(3001, () =>
     console.log(`Magic is running at :3001`));

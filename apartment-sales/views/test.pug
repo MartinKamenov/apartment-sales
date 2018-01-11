@@ -1,0 +1,7 @@
+extends shared/_master
+
+block body
+    button.btn-danger danger
+    each apartment in apartments
+        li=apartment.place + ' ' +  apartment.rooms
+    
