@@ -6,6 +6,7 @@ const admin = require('./routes/admin/admin-route');
 const Database = require('./database/mongodb');
 const Apartment = require('./models/Apartment');
 const ApartmentRepository = require('./models/ApartmentRepository');
+const AdminRepository = require('./models/AdminRepository');
 // const connectionstring = 'mongodb://localhost/test2-db';
 const connectionstring = 'mongodb://beastmk10:doobre96@ds247357.mlab.com:47357/apartment-sales';
 
@@ -18,6 +19,7 @@ app.use('/libs', express.static(path.join(__dirname, '../node_modules')));
 
 const database = new Database(connectionstring);
 const apartmentRepository = new ApartmentRepository(database);
+const adminRepository = new AdminRepository(database);
 
 /*const apartment = new Apartment('Plovdiv', 5);
 apartmentRepository.insertApartment(apartment);
@@ -27,7 +29,7 @@ apartmentRepository.getAllApartments().then((apps) => {
 
 
 home(app, apartmentRepository);
-admin(app, apartmentRepository);
+admin(app, adminRepository, apartmentRepository);
 
 app.listen(3001, () =>
     console.log(`Magic is running at :3001`));

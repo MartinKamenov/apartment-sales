@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const controller = require('./admin-controller');
 
-const attach = (app, apartmentRepository) => {
+const attach = (app, adminRepository, apartmentRepository) => {
     // @ts-ignore
     const router = new Router();
     router
