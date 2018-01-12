@@ -7,6 +7,7 @@ const Database = require('./database/mongodb');
 const Apartment = require('./models/Apartment');
 const ApartmentRepository = require('./models/ApartmentRepository');
 const AdminRepository = require('./models/AdminRepository');
+const bodyParser = require('body-parser');
 // const connectionstring = 'mongodb://localhost/test2-db';
 const connectionstring = 'mongodb://beastmk10:doobre96@ds247357.mlab.com:47357/apartment-sales';
 
@@ -16,6 +17,7 @@ app.set('view engine', 'pug');
 app.use(express.static(__dirname + '../'));
 app.use('/static', express.static(path.join(__dirname, './static')));
 app.use('/libs', express.static(path.join(__dirname, '../node_modules')));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const database = new Database(connectionstring);
 const apartmentRepository = new ApartmentRepository(database);

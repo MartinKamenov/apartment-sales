@@ -7,6 +7,8 @@ const attach = (app, adminRepository, apartmentRepository) => {
     router
         .get('/', (req, res) => {
             controller.showAdminPanel(apartmentRepository, req, res);
+        }).post('/', (req, res) => {
+            controller.checkAdmin(adminRepository, apartmentRepository, req, res);
         });
     app.use('/admin', router);
 };
