@@ -23,7 +23,7 @@ const database = new Database(connectionstring);
 const apartmentRepository = new ApartmentRepository(database);
 const adminRepository = new AdminRepository(database);
 
-/*const apartment = new Apartment('Plovdiv', 5);
+/*const apartment = new Apartment('Варна - ахтопол', 55);
 apartmentRepository.insertApartment(apartment);
 apartmentRepository.getAllApartments().then((apps) => {
     console.log(apps);

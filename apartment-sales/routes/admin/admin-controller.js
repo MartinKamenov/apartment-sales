@@ -16,9 +16,21 @@ const controller = {
                 return;
             }
             const admin = admins[0];
-            res.send(admin);
+            res.redirect('/admin/add');
         });
     },
+    addApartment(adminRepository, apartmentRepository, req, res) {
+        res.render('addApartment');
+        /*adminRepository.findAdmin(username, password).then((admins) => {
+
+        });*/
+    },
+    postApartment(adminRepository, apartmentRepository, req, res) {
+        res.send(req.body);
+        /*adminRepository.findAdmin(username, password).then((admins) => {
+
+        });*/
+    }
 
 };
 
