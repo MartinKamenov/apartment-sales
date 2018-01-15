@@ -10,3 +10,7 @@ img.emoji {
     background: none !important;
     padding: 0 !important;
 }
+
+.yellow {
+    color: yellow !important;
+}

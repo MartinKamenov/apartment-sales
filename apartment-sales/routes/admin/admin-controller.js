@@ -1,3 +1,5 @@
+const Apartment = require('../../models/Apartment');
+
 const controller = {
     showAdminPanel(apartmentRepository, req, res) {
         res.render('admin-login');
@@ -26,7 +28,27 @@ const controller = {
         });*/
     },
     postApartment(adminRepository, apartmentRepository, req, res) {
-        res.send(req.body);
+        const type = req.body.type;
+        const title = req.body.title;
+        const text = req.body.text;
+        const price = req.body.price;
+        const place = req.body.place;
+        const size = req.body.size;
+        const rooms = req.body.rooms;
+        var firstLine = req.body.firstLine;
+        var parkingSpot = req.body.parkingSpot;
+        var view = req.body.view;
+        var pool = req.body.pool;
+        var furnished = req.body.furnished;
+        const code = req.body.code;
+        if (!type || !title || !text || !price || !place || !rooms || !code || !size) {
+            res.send('Моля попълнете всички полета.');
+        }
+
+        const apartment = new Apartment(title, text, type, place, rooms, price, size, code,
+            firstLine, parkingSpot, view, pool, furnished);
+        apartmentRepository.insertApartment(apartment);
+        res.redirect('/admin/add');
         /*adminRepository.findAdmin(username, password).then((admins) => {
 
         });*/

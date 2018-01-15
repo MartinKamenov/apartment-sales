@@ -1,16 +1,9 @@
 class Apartment {
     constructor(title, text, type, place, rooms, price, size, code, firstLine, parkingSpot,
         view, pool, furnished) {
-        if (typeof place !== 'string') {
-            throw Error('Place should be string');
-        }
-        if (typeof rooms !== 'number') {
-            throw Error('Rooms should be number');
-        }
-        if (typeof rooms !== 'code') {
-            throw Error('Code should be number');
-        }
 
+        this.title = title;
+        this.text = text;
         this.type = type;
         this.place = place;
         this.rooms = rooms;

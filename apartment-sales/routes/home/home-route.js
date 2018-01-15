@@ -8,6 +8,9 @@ const attach = (app, apartmentRepository) => {
     router
         .get('/', (req, res) => {
             controller.showHome(apartmentRepository, req, res);
+        })
+        .post('/', (req, res) => {
+            res.send(req.body);
         });
     app.use('/', router);
 };
