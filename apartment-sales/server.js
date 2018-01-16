@@ -11,10 +11,9 @@ const bodyParser = require('body-parser');
 // const connectionstring = 'mongodb://localhost/test2-db';
 const connectionstring = 'mongodb://beastmk10:doobre96@ds247357.mlab.com:47357/apartment-sales';
 
+app.use(express.static(__dirname + '../'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
-
-app.use(express.static(__dirname + '../'));
 app.use('/static', express.static(path.join(__dirname, './static')));
 app.use('/libs', express.static(path.join(__dirname, '../node_modules')));
 app.use(bodyParser.urlencoded({ extended: true }));

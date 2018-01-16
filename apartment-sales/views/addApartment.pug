@@ -10,7 +10,7 @@ block body
                 a(href='/admin/remove') Премахване
         .content
             h1 Добавяне на жилище
-            form(method='post', action='/admin/add')
+            form(method='post', action='/admin/add', enctype='multipart/form-data')
                 select(name='type')
                     option(value='къща') къща
                     option(value='апартамент') апартамент
@@ -32,5 +32,6 @@ block body
                 label(for='furnished') обзаведен
                 input(type='checkbox', name='furnished')
                 input.form-control(type='number', name='code', placeholder='код')
+                input#pic.input-xlarge(type='file', name='pic', accept='image/*', value=pic)
                 button.btn-success(type='submit') Добавяне
     

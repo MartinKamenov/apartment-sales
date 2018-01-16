@@ -16,7 +16,6 @@ const controller = {
                 }
             }
 
-            console.log(cityArray);
             res.render('home', { apartments, cityArray });
         });
     },

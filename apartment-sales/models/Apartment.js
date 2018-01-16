@@ -1,6 +1,6 @@
 class Apartment {
     constructor(title, text, type, place, rooms, price, size, code, firstLine, parkingSpot,
-        view, pool, furnished) {
+        view, pool, furnished, pictures) {
 
         this.title = title;
         this.text = text;
@@ -15,6 +15,7 @@ class Apartment {
         this.view = view;
         this.pool = pool;
         this.furnished = furnished;
+        this.pictures = pictures;
     }
 }
 

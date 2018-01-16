@@ -43,10 +43,11 @@ const controller = {
         const code = req.body.code;
         if (!type || !title || !text || !price || !place || !rooms || !code || !size) {
             res.send('Моля попълнете всички полета.');
+            return;
         }
 
         const apartment = new Apartment(title, text, type, place, rooms, price, size, code,
-            firstLine, parkingSpot, view, pool, furnished);
+            firstLine, parkingSpot, view, pool, furnished, req.files[0].filename);
         apartmentRepository.insertApartment(apartment);
         res.redirect('/admin/add');
         /*adminRepository.findAdmin(username, password).then((admins) => {
