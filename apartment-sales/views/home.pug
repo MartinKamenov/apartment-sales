@@ -296,10 +296,10 @@ html(lang='en-US')
 										span
 									// LAYER NR. 2
 									#slide-1-layer-4.tp-caption.tp-resizeme(data-x='center', data-hoffset='', data-y='363', data-width="['auto']", data-height="['auto']", data-type='text', data-responsive_offset='on', data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]', data-textalign="['left','left','left','left']", data-paddingtop='[0,0,0,0]', data-paddingright='[0,0,0,0]', data-paddingbottom='[0,0,0,0]', data-paddingleft='[0,0,0,0]', style='z-index: 6; white-space: nowrap; font-size: 70px; line-height: 22px; font-weight: 800; color: rgba(255,255,255,1);font-family:Open Sans;')
-										p(style='color:yellow;') Най-доброто място да
+										p(style='color:darkblue;') Най-доброто място да
 										br
 										br
-										p(style='color:yellow;') намериш твоя втори дом
+										p(style='color:darkblue;') намериш твоя втори дом
 							.tp-bannertimer.tp-bottom(style='visibility: hidden !important;')
 						script.
 							var htmlDiv = document.getElementById("rs-plugin-settings-inline-css"); var htmlDivCss="";
@@ -396,18 +396,13 @@ html(lang='en-US')
 												.col-md-3.areas
 													.dropdown.form-control
 														#advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| All Areas
+															| Цена
 															span.caret.caret_filter
-														input(type='hidden', name='advanced_area', value='')
-														ul#adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_area')
-															li(role='presentation', data-value='all') All Areas
-															li(role='presentation', data-value='copacabana', data-parentcity='rio-de-janeiro') Copacabana (1)
-															li(role='presentation', data-value='flamengo', data-parentcity='rio-de-janeiro') Flamengo (1)
-															li(role='presentation', data-value='lagoa', data-parentcity='rio-de-janeiro') Lagoa (1)
-															li(role='presentation', data-value='leblon', data-parentcity='rio-de-janeiro') Leblon (4)
-															li(role='presentation', data-value='paciencia', data-parentcity='santa-cruz') Paciência (3)
-															li(role='presentation', data-value='santa-teresa', data-parentcity='rio-de-janeiro') Santa Teresa (2)
-															li(role='presentation', data-value='sepetiba', data-parentcity='santa-cruz') Sepetiba (1)
+														input(type='hidden', name='price', value='')
+														ul#adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='price')
+															li(role='presentation', data-value='all') Всички цени
+															li(role='presentation', data-value='1', data-parentcity='1') До 50 000
+															li(role='presentation', data-value='2', data-parentcity='2') От 50 000 до 100 000
 												.col-md-3.property_bedrooms
 													.dropdown.form-control
 														#bedrooms.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
@@ -695,15 +690,6 @@ html(lang='en-US')
 													.extended_search_checker
 														input#doormanadv(type='checkbox', name='furnished', value='1')
 														label(for='furnished') обзаведен
-							#results
-								.results_header
-									| We found  
-									span#results_no 0
-									|  results.  
-									span#preview_view_all View results
-									// <span id="showinpage">  </span>
-								#results_wrapper
-							div(style='clear:both;')
 					// end search wrapper
 					// END SEARCH CODE
 				#adv-search-header-mobile
@@ -820,10 +806,6 @@ html(lang='en-US')
 								label(for='furnished') обзаведен
 						button#advanced_submit_2_mobile.wpresidence_button ТЪРСИ ЖИЛИЩЕ
 						button#showinpage_mobile.wpresidence_button See first results here 
-						span#results_mobile
-							| we found 
-							span#results_no_mobile 0
-							|  results
 				.container.content_wrapper
 					.row
 						.col-md-12
@@ -937,7 +919,7 @@ html(lang='en-US')
 													.carousel-inner
 														.item.active
 															a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
-																img.lazyload.img-responsive.wp-post-image(width='525', height='328', src='/static/images/added_pictures/' + apartment.pictures, alt='', data-original='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-525x328.jpg')
+																img.lazyload.img-responsive.wp-post-image(width='525', height='328', src='/static/images/added_pictures/' + apartment.pictures, alt='')
 														.item.lazy-load-item
 															a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
 																img.img-responsive(data-lazy-load-src='http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-1-525x328.jpg', alt='Condo In Financial District')
@@ -947,19 +929,15 @@ html(lang='en-US')
 														.item.lazy-load-item
 															a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
 																img.img-responsive(data-lazy-load-src='http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-1-525x328.jpg', alt='Condo In Financial District')
-													a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')  
-													a.left.carousel-control(href='#property_unit_carousel_5a575d66b0c0a', data-slide='prev')
-														i.demo-icon.icon-left-open-big
-													a.right.carousel-control(href='#property_unit_carousel_5a575d66b0c0a', data-slide='next')
-														i.demo-icon.icon-right-open-big
+													a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
 											.tag-wrapper
 												.featured_div Featured
 											h4
-												a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')=apartment.title
+												a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')=apartment.title.substring(0, 100)
 											.listing_unit_price_wrapper
 												span.price_label.price_label_before=apartment.price + ' лв'
 												//span.price_label / month
-											.listing_details.the_grid_view=apartment.text 
+											.listing_details.the_grid_view=apartment.text.substring(0, 100)
 												a.unit_more_x(href='http://rio.wpresidence.net/properties/condo-in-financial-district/') [more]
 											.listing_details.the_list_view=apartment.text
 												a.unit_more_x(href='http://rio.wpresidence.net/properties/condo-in-financial-district/') [more]

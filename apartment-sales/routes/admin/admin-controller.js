@@ -41,13 +41,14 @@ const controller = {
         var pool = req.body.pool;
         var furnished = req.body.furnished;
         const code = req.body.code;
+        const filename = req.files[0].filename;
         if (!type || !title || !text || !price || !place || !rooms || !code || !size) {
             res.send('Моля попълнете всички полета.');
             return;
         }
 
         const apartment = new Apartment(title, text, type, place, rooms, price, size, code,
-            firstLine, parkingSpot, view, pool, furnished, req.files[0].filename);
+            firstLine, parkingSpot, view, pool, furnished, filename);
         apartmentRepository.insertApartment(apartment);
         res.redirect('/admin/add');
         /*adminRepository.findAdmin(username, password).then((admins) => {
