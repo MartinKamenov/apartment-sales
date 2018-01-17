@@ -6,7 +6,7 @@ const controller = {
         page = pageHandler.choosePage(page);
         apartmentRepository.getAllApartments().then(apartments => {
 
-            const result = pageHandler.handle(apartments, page, 2);
+            const result = pageHandler.handle(apartments, page, 6);
             const foundApartments = result.filteredCollection;
             const pagesCount = result.numberOfPages;
             const pages = result.navigationNumbers;
