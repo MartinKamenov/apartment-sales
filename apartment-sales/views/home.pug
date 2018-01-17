@@ -831,74 +831,6 @@ html(lang='en-US')
 												.wpb_text_column.wpb_content_element.vc_column_text
 													.wpb_wrapper
 														p
-							// Filters starts here
-							.listing_filters_head
-								input#page_idx(type='hidden', value='17707')
-								.dropdown.listing_filter_select
-									#a_filter_action.filter_menu_trigger(data-toggle='dropdown', data-value='All Actions')
-										| All Actions 
-										span.caret.caret_filter
-									ul.dropdown-menu.filter_menu(role='menu', aria-labelledby='a_filter_action')
-										li(role='presentation', data-value='all') All Actions
-										li(role='presentation', data-value='rentals') Rentals (6)
-										li(role='presentation', data-value='sales') Sales (7)
-								.dropdown.listing_filter_select
-									#a_filter_categ.filter_menu_trigger(data-toggle='dropdown', data-value='All Types')
-										| All Types 
-										span.caret.caret_filter
-									ul.dropdown-menu.filter_menu(role='menu', aria-labelledby='a_filter_categ')
-										li(role='presentation', data-value='all') All Types
-										li(role='presentation', data-value='apartments') Apartments (2)
-										li(role='presentation', data-value='condos') Condos (1)
-										li(role='presentation', data-value='houses') Houses (2)
-										li(role='presentation', data-value='industrial') Industrial (1)
-										li(role='presentation', data-value='land') Land (2)
-										li(role='presentation', data-value='offices') Offices (1)
-										li(role='presentation', data-value='retail') Retail (2)
-										li(role='presentation', data-value='villas') Villas (2)
-								.dropdown.listing_filter_select
-									#a_filter_cities.filter_menu_trigger(data-toggle='dropdown', data-value='All Cities')
-										| All Cities 
-										span.caret.caret_filter
-									ul#filter_city.dropdown-menu.filter_menu(role='menu', aria-labelledby='a_filter_cities')
-										li(role='presentation', data-value='all', data-value2='all') All Cities
-										li(role='presentation', data-value='rio-de-janeiro', data-value2='rio-de-janeiro') Rio De Janeiro (9)
-										li(role='presentation', data-value='santa-cruz', data-value2='santa-cruz') Santa Cruz (4)
-								.dropdown.listing_filter_select
-									#a_filter_areas.filter_menu_trigger(data-toggle='dropdown', data-value='All Areas')
-										| All Areas
-										span.caret.caret_filter
-									ul#filter_area.dropdown-menu.filter_menu(role='menu', aria-labelledby='a_filter_areas')
-										li(role='presentation', data-value='all') All Areas
-										li(role='presentation', data-value='copacabana', data-parentcity='rio-de-janeiro') Copacabana (1)
-										li(role='presentation', data-value='flamengo', data-parentcity='rio-de-janeiro') Flamengo (1)
-										li(role='presentation', data-value='lagoa', data-parentcity='rio-de-janeiro') Lagoa (1)
-										li(role='presentation', data-value='leblon', data-parentcity='rio-de-janeiro') Leblon (4)
-										li(role='presentation', data-value='paciencia', data-parentcity='santa-cruz') Paciência (3)
-										li(role='presentation', data-value='santa-teresa', data-parentcity='rio-de-janeiro') Santa Teresa (2)
-										li(role='presentation', data-value='sepetiba', data-parentcity='santa-cruz') Sepetiba (1)
-								.dropdown.listing_filter_select.order_filter
-									#a_filter_order.filter_menu_trigger(data-toggle='dropdown', data-value='0')
-										| Default 
-										span.caret.caret_filter
-									ul#filter_order.dropdown-menu.filter_menu(role='menu', aria-labelledby='a_filter_order')
-										li(role='presentation', data-value='1') Price High to Low
-										li(role='presentation', data-value='2') Price Low to High
-										li(role='presentation', data-value='3') Newest first
-										li(role='presentation', data-value='4') Oldest first
-										li(role='presentation', data-value='5') Bedrooms High to Low
-										li(role='presentation', data-value='6') Bedrooms Low to high
-										li(role='presentation', data-value='7') Bathrooms High to Low
-										li(role='presentation', data-value='8') Bathrooms Low to high
-										li(role='presentation', data-value='0') Default
-								.listing_filter_select.listing_filter_views
-									#grid_view.icon_selected
-										i.fa.fa-th
-								.listing_filter_select.listing_filter_views
-									#list_view
-										i.fa.fa-bars
-								#a_filter_county(data-toggle='dropdown', data-value='All Counties/States')
-							// Filters Ends here
 							// Listings starts here
 							#listing_loader.spinner
 								.new_prelader
@@ -950,21 +882,20 @@ html(lang='en-US')
 							// Listings Ends  here
 							ul.pagination.pagination_nojax
 								li.roundleft
-									a(href='http://rio.wpresidence.net/')
-										i.fa.fa-angle-left
-								li.active
-									a(href='http://rio.wpresidence.net/') 1
-								li
-								li
-									a(href='http://rio.wpresidence.net/page/2/') 2
-								li
-								li
-									a(href='http://rio.wpresidence.net/page/3/') 3
-								li
+									a(href='?page=1')
+										span(aria-hidden='true') «
+										span.sr-only Previous
+								each page in pages
+									if page==currentPage
+										li.active
+											a(href='?page=' + page)=page
+									else
+										li
+											a(href='?page=' + page)=page
 								li.roundright
-									a(href='http://rio.wpresidence.net/page/2/')
-										i.fa.fa-angle-right
-								li
+									a(href='?page='+(pagesCount))
+										span(aria-hidden='true') »
+										span.sr-only Next
 			footer#colophon.footer_back_repeat_no.sticky_footer(role='contentinfo')
 				#footer-widget-area.row
 					#first.widget-area.col-md-6
