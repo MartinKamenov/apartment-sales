@@ -255,6 +255,14 @@ html(lang='en-US')
 														input(type='hidden', name='price', value='')
 														ul#adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='price')
 															li(role='presentation', data-value='all') Всички цени
+															//li(role='presentation')
+																span
+																	label(for='from') От
+																	input(name='from')
+																br
+																span
+																	label(for='to') До
+																	input(name='to')
 															li(role='presentation', data-value='1', data-parentcity='1') До 50 000
 															li(role='presentation', data-value='2', data-parentcity='2') От 50 000 до 100 000
 												.col-md-3
@@ -612,39 +620,31 @@ html(lang='en-US')
 												.prop_new_details
 													.property_location_image
 														span.property_marker
-														a(href='http://rio.wpresidence.net/area/paciencia/', rel='tag')=apartment.place
+														a(href='/property/' + apartment.code, rel='tag')=apartment.place
 												#property_unit_carousel_5a575d66b0c0a.carousel.property_unit_carousel.slide(data-ride='carousel', data-interval='false')
 													.carousel-inner
 														.item.active
-															a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
+															a(href='/property/' + apartment.code)
 																img.lazyload.img-responsive.wp-post-image(width='525', height='328', src='/static/images/added_pictures/' + apartment.pictures, alt='')
-														.item.lazy-load-item
-															a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
-																img.img-responsive(data-lazy-load-src='http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-1-525x328.jpg', alt='Condo In Financial District')
-														.item.lazy-load-item
-															a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
-																img.img-responsive(data-lazy-load-src='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-1-525x328.jpg', alt='Condo In Financial District')
-														.item.lazy-load-item
-															a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
-																img.img-responsive(data-lazy-load-src='http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-1-525x328.jpg', alt='Condo In Financial District')
-													a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
+														
+													a(href='/property/' + apartment.code)
 											.tag-wrapper
 												.featured_div Featured
 											h4
-												a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')=apartment.title.substring(0, 100)
+												a(href='/property/' + apartment.code)=apartment.title.substring(0, 100)
 											.listing_unit_price_wrapper
 												span.price_label.price_label_before=apartment.price + ' лв'
 												//span.price_label / month
 											.listing_details.the_grid_view=apartment.text.substring(0, 100)
-												a.unit_more_x(href='http://rio.wpresidence.net/properties/condo-in-financial-district/') [more]
+												a.unit_more_x(href='/property/' + apartment.code) [more]
 											.listing_details.the_list_view=apartment.text
-												a.unit_more_x(href='http://rio.wpresidence.net/properties/condo-in-financial-district/') [more]
+												a.unit_more_x(href='/property/' + apartment.code) [more]
 											.property_listing_details
 												span.inforoom=apartment.rooms
 												span.infobath 2.5
 												span.infosize=apartment.size + ' m'
 													sup 2
-												a.unit_details_x(href='http://rio.wpresidence.net/properties/condo-in-financial-district/') full info
+												a.unit_details_x(href='/property/' + apartment.code) full info
 							// Listings Ends  here
 							ul.pagination.pagination_nojax
 								li.roundleft

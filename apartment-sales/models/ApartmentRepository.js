@@ -10,6 +10,10 @@ class ApartmentRepository {
     insertApartment(apartment) {
         this.database.insert(collectionName, apartment);
     }
+
+    findApartmentByCode(code) {
+        return this.database.find(collectionName, { code: code });
+    }
 }
 
 module.exports = ApartmentRepository;
