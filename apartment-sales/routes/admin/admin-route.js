@@ -19,6 +19,8 @@ const attach = (app, adminRepository, apartmentRepository) => {
             controller.editApartment(adminRepository, apartmentRepository, req, res);
         }).get('/remove', (req, res) => {
             controller.removeApartment(adminRepository, apartmentRepository, req, res);
+        }).post('/remove', (req, res) => {
+            controller.postRemoveApartment(adminRepository, apartmentRepository, req, res);
         });
     app.use('/admin', router);
 };

@@ -14,6 +14,10 @@ class ApartmentRepository {
     findApartmentByCode(code) {
         return this.database.find(collectionName, { code: code });
     }
+
+    removeApartment(code) {
+        this.database.delete(collectionName, { code: code });
+    }
 }
 
 module.exports = ApartmentRepository;

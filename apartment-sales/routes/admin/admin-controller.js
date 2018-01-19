@@ -54,6 +54,18 @@ const controller = {
         /*adminRepository.findAdmin(username, password).then((admins) => {
 
         });*/
+    },
+    removeApartment(adminRepository, apartmentRepository, req, res) {
+        res.render('removeProperty');
+    },
+    postRemoveApartment(adminRepository, apartmentRepository, req, res) {
+        const code = req.body.code;
+        if (!code) {
+            res.send('Code should be added');
+            return;
+        }
+        apartmentRepository.removeApartment(code);
+        res.render('removeProperty');
     }
 
 };
