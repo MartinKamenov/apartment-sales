@@ -1,4 +1,5 @@
 const Apartment = require('../../models/Apartment');
+const notifier = require('node-notifier');
 
 const controller = {
     showAdminPanel(apartmentRepository, req, res) {
@@ -50,6 +51,8 @@ const controller = {
         const apartment = new Apartment(title, text, type, place, rooms, price, size, code,
             firstLine, parkingSpot, view, pool, furnished, filename);
         apartmentRepository.insertApartment(apartment);
+        notifier.notify('Успешно добавено!');
+
         res.redirect('/admin/add');
         /*adminRepository.findAdmin(username, password).then((admins) => {
 

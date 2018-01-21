@@ -15,6 +15,10 @@ class ApartmentRepository {
         return this.database.find(collectionName, { code: code });
     }
 
+    findApartmentByParams(params) {
+        return this.database.find(collectionName, params);
+    }
+
     removeApartment(code) {
         this.database.delete(collectionName, { code: code });
     }

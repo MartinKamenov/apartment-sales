@@ -10,7 +10,7 @@ const attach = (app, apartmentRepository) => {
             controller.showHome(apartmentRepository, req, res);
         })
         .post('/', (req, res) => {
-            res.send(req.body);
+            controller.searchProperties(apartmentRepository, req, res);
         });
     app.use('/', router);
 };
