@@ -32,6 +32,19 @@ block body
                 label(for='furnished') обзаведен
                 input(type='checkbox', name='furnished')
                 input.form-control(type='number', name='code', placeholder='код')
-                input#pic.input-xlarge(type='file', name='pic', accept='image/*', value=pic)
+                input.form-control#number_pictures(name='number_pictures',placeholder='брой снимки', onkeyup='change()')
+                script.
+                    var n=1;
+                    function change(){
+                    n = +document.getElementById("number_pictures").value;
+                    }
+                //input(placeholder=n)
+                //input(value=number_pictures.value)
+                //- var n = #number_pictures.value;
+                //- var i = 0;
+                ul
+                    while i < n
+                    li
+                        input.form-control#pic.input-xlarge(type='file', name='pic', accept='image/*', value=pic)
                 button.btn-success(type='submit') Добавяне
     

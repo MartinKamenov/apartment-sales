@@ -34,5 +34,4 @@ homeRoute(app, apartmentRepository);
 adminRoute(app, adminRepository, apartmentRepository);
 propertyRoute(app, apartmentRepository);
 
-app.listen(3001, () =>
-    console.log(`Magic is running at :3001`));
+app.listen(process.env.PORT || 5000);

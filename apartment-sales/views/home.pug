@@ -87,7 +87,7 @@ html(lang='en-US')
 						li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-17952
 							a(href='/') Начало
 						li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17954
-							a(href='/advaned_search') Разширено търсене
+							a(href='/advaned_search') Търсене
 						li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
 							a(href='/usefull') Полезно
 						li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
@@ -105,12 +105,12 @@ html(lang='en-US')
 						.mobile-trigger
 							i.fa.fa-bars
 						.mobile-logo
-							a(href='http://rio.wpresidence.net')
+							a(href='/')
 								img.img-responsive.retina_ready(src='http://rio.wpresidence.net/wp-content/uploads/2017/11/logo_rio_transparent.png', alt='logo')
 					.header_wrapper.header_type1.header_left.hover_type_6.header_alignment_text_left
 						.header_wrapper_inside(data-logo='http://rio.wpresidence.net/wp-content/uploads/2017/11/logo_rio_transparent.png', data-sticky-logo='http://rio.wpresidence.net/wp-content/uploads/2017/11/logo_rio.png')
 							.logo
-								a(href='http://rio.wpresidence.net')
+								a(href='/')
 									img#logo_image.img-responsive.retina_ready(style='margin-top:0px;', src='http://rio.wpresidence.net/wp-content/uploads/2017/11/logo_rio_transparent.png', alt='logo')
 							nav#access
 								.menu-main-menu-container
@@ -118,7 +118,7 @@ html(lang='en-US')
 										li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.no-megamenu
 											a.menu-item-link(href='/') Начало
 										li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
-											a.menu-item-link(href='/advanced_search') Разширено търсене
+											a.menu-item-link(href='/advanced_search') Търсене
 										li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/usefull') Полезно
 										li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
@@ -130,6 +130,8 @@ html(lang='en-US')
 										li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/contacts') Контакти
 							// #access
+				#bottom_bar(style='background-color: red; position: fixed; z-index: 100; bottom: 0; left: 0; width: 100%; height: 25px; text-align: center; color: white; font-size: medium;')
+					b Без комисионна
 				.header_media.with_search_6
 					link(href='http://fonts.googleapis.com/css?family=Open+Sans:800', rel='stylesheet', property='stylesheet', type='text/css', media='all')
 					#rev_slider_1_1_wrapper.rev_slider_wrapper.fullscreen-container(data-source='gallery', style='background:transparent;padding:0px;')
@@ -219,10 +221,7 @@ html(lang='en-US')
 											a.adv6_tab_head(href='#rentals', aria-controls='rentals', role='tab', data-toggle='tab') Търси
 									.tab-content
 										#rentals.tab-pane.active(role='tabpanel')
-											form(role='search', method='post', action='/')
-												input(type='hidden', name='filter_search_action[]', value='rentals')
-												input(type='hidden', name='adv6_search_tab', value='rentals')
-												input.term_id_class(type='hidden', name='term_id', value='35')
+											form(role='search', method='GET', action='/')
 												.col-md-3.categories
 													.dropdown.form-control
 														#adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
@@ -285,190 +284,11 @@ html(lang='en-US')
 													.extended_search_checker
 														input#doormanadv(type='checkbox', name='furnished', value='1')
 														label(for='furnished') обзаведен
-										#sales.tab-pane(role='tabpanel')
-											form(role='search', method='post', action='/')
-												input(type='hidden', name='filter_search_action[]', value='sales')
-												input(type='hidden', name='adv6_search_tab', value='sales')
-												input.term_id_class(type='hidden', name='term_id', value='38')
-												.col-md-3.categories
-													.dropdown.form-control
-														#adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| All Types
-														input(type='hidden', name='filter_search_type[]', value='')
-														ul#categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='adv_categ')
-															li(role='presentation', data-value='all') All Types
-															li(role='presentation', data-value='apartments') Apartments (2)
-															li(role='presentation', data-value='condos') Condos (1)
-															li(role='presentation', data-value='houses') Houses (2)
-															li(role='presentation', data-value='industrial') Industrial (1)
-															li(role='presentation', data-value='land') Land (2)
-															li(role='presentation', data-value='offices') Offices (1)
-															li(role='presentation', data-value='retail') Retail (2)
-															li(role='presentation', data-value='villas') Villas (2)
-												.col-md-3.cities
-													.dropdown.form-control
-														#advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| All Cities
-															span.caret.caret_filter
-														input(type='hidden', name='advanced_city', value='')
-														ul#adv-search-city.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_city')
-															li(role='presentation', data-value='all', data-value2='all') All Cities
-															li(role='presentation', data-value='rio-de-janeiro', data-value2='rio-de-janeiro') Rio De Janeiro (9)
-															li(role='presentation', data-value='santa-cruz', data-value2='santa-cruz') Santa Cruz (4)
-												.col-md-3.areas
-													.dropdown.form-control
-														#advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| All Areas
-															span.caret.caret_filter
-														input(type='hidden', name='advanced_area', value='')
-														ul#adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_area')
-															li(role='presentation', data-value='all') All Areas
-															li(role='presentation', data-value='copacabana', data-parentcity='rio-de-janeiro') Copacabana (1)
-															li(role='presentation', data-value='flamengo', data-parentcity='rio-de-janeiro') Flamengo (1)
-															li(role='presentation', data-value='lagoa', data-parentcity='rio-de-janeiro') Lagoa (1)
-															li(role='presentation', data-value='leblon', data-parentcity='rio-de-janeiro') Leblon (4)
-															li(role='presentation', data-value='paciencia', data-parentcity='santa-cruz') Paciência (3)
-															li(role='presentation', data-value='santa-teresa', data-parentcity='rio-de-janeiro') Santa Teresa (2)
-															li(role='presentation', data-value='sepetiba', data-parentcity='santa-cruz') Sepetiba (1)
-												.col-md-3
-													input#advanced_submit_4.wpresidence_button(name='submit', type='submit', value='ТЪРСИ')
-												#adv_extended_options_text_adv.adv_extended_options_text Повече опции за търсене
-												.extended_search_check_wrapper
-													span#adv_extended_close_adv.adv_extended_close_button
-														i.fa.fa-times
-													.extended_search_checker
-														input#back_yardadv(type='checkbox', name='first_line', value='1')
-														label(for='first_line') първа линия
-													.extended_search_checker
-														input#front_yardadv(type='checkbox', name='parking_spot', value='1')
-														label(for='parking_spot') паркинг място
-													.extended_search_checker
-														input#fenced_yardadv(type='checkbox', name='view', value='1')
-														label(for='view') гледка
-													.extended_search_checker
-														input#sprinklersadv(type='checkbox', name='pool', value='1')
-														label(for='pool') басейн
-													.extended_search_checker
-														input#doormanadv(type='checkbox', name='furnished', value='1')
-														label(for='furnished') обзаведен
-										#foreclosure.tab-pane(role='tabpanel')
-											form(role='search', method='post', action='/')
-												input(type='hidden', name='filter_search_action[]', value='foreclosure')
-												input(type='hidden', name='adv6_search_tab', value='foreclosure')
-												input.term_id_class(type='hidden', name='term_id', value='46')
-												.col-md-3.categories
-													.dropdown.form-control
-														#adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| All Types
-															span.caret.caret_filter
-														input(type='hidden', name='filter_search_type[]', value='')
-														ul#categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='adv_categ')
-															li(role='presentation', data-value='all') All Types
-															li(role='presentation', data-value='apartments') Apartments (2)
-															li(role='presentation', data-value='condos') Condos (1)
-															li(role='presentation', data-value='houses') Houses (2)
-															li(role='presentation', data-value='industrial') Industrial (1)
-															li(role='presentation', data-value='land') Land (2)
-															li(role='presentation', data-value='offices') Offices (1)
-															li(role='presentation', data-value='retail') Retail (2)
-															li(role='presentation', data-value='villas') Villas (2)
-												.col-md-3.cities
-													.dropdown.form-control
-														#advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| All Cities
-															span.caret.caret_filter
-														input(type='hidden', name='advanced_city', value='')
-														ul#adv-search-city.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_city')
-															li(role='presentation', data-value='all', data-value2='all') All Cities
-															li(role='presentation', data-value='rio-de-janeiro', data-value2='rio-de-janeiro') Rio De Janeiro (9)
-															li(role='presentation', data-value='santa-cruz', data-value2='santa-cruz') Santa Cruz (4)
-												.col-md-3.areas
-													.dropdown.form-control
-														#advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| All Areas
-															span.caret.caret_filter
-														input(type='hidden', name='advanced_area', value='')
-														ul#adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_area')
-															li(role='presentation', data-value='all') All Areas
-															li(role='presentation', data-value='copacabana', data-parentcity='rio-de-janeiro') Copacabana (1)
-															li(role='presentation', data-value='flamengo', data-parentcity='rio-de-janeiro') Flamengo (1)
-															li(role='presentation', data-value='lagoa', data-parentcity='rio-de-janeiro') Lagoa (1)
-															li(role='presentation', data-value='leblon', data-parentcity='rio-de-janeiro') Leblon (4)
-															li(role='presentation', data-value='paciencia', data-parentcity='santa-cruz') Paciência (3)
-															li(role='presentation', data-value='santa-teresa', data-parentcity='rio-de-janeiro') Santa Teresa (2)
-															li(role='presentation', data-value='sepetiba', data-parentcity='santa-cruz') Sepetiba (1)
-												.col-md-3.property_bedrooms
-													.dropdown.form-control
-														#bedrooms.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| Bedrooms
-															span.caret.caret_filter
-														input(type='hidden', name='bedrooms', value='')
-														ul#search-bedrooms.dropdown-menu.filter_menu(role='menu', aria-labelledby='bedrooms')
-															li(role='presentation', data-value='all') Bedrooms
-															li(data-value='1', value='1') 1
-															li(data-value='2', value='2') 2
-															li(data-value='3', value='3') 3
-															li(data-value='4', value='4') 4
-															li(data-value='5', value='5') 5
-															li(data-value='6', value='6') 6
-															li(data-value='7', value='7') 7
-															li(data-value='8', value='8') 8
-															li(data-value='9', value='9') 9
-															li(data-value='10', value='10') 10
-												.col-md-3.property_bathrooms
-													.dropdown.form-control
-														#min-baths.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| Min Baths
-															span.caret.caret_filter
-														input(type='hidden', name='min-baths', value='')
-														ul#search-min-baths.dropdown-menu.filter_menu(role='menu', aria-labelledby='min-baths')
-															li(role='presentation', data-value='all') Min Baths
-															li(data-value='1', value='1') 1
-															li(data-value='2', value='2') 2
-															li(data-value='3', value='3') 3
-															li(data-value='4', value='4') 4
-															li(data-value='5', value='5') 5
-															li(data-value='6', value='6') 6
-															li(data-value='7', value='7') 7
-															li(data-value='8', value='8') 8
-															li(data-value='9', value='9') 9
-															li(data-value='10', value='10') 10
-												.col-md-6.property_price
-													.adv_search_slider
-														p
-															label(for='amount') Price range:
-															span#amount_46(style='border:0; color:#3C90BE; font-weight:bold;') BRL 0 to BRL 750,000
-														#slider_price_46
-														input#price_low_46.adv6_price_low.price_active(type='hidden', name='price_low_46', value='0')
-														input#price_max_46.adv6_price_max.price_active(type='hidden', name='price_max_46', value='750000')
-												.col-md-3
-													input#advanced_submit_4.wpresidence_button(name='submit', type='submit', value='ТЪРСИ')
-												#adv_extended_options_text_adv.adv_extended_options_text Повече опции за търсене
-												.extended_search_check_wrapper
-													span#adv_extended_close_adv.adv_extended_close_button
-														i.fa.fa-times
-													.extended_search_checker
-														input#back_yardadv(type='checkbox', name='first_line', value='1')
-														label(for='first_line') първа линия
-													.extended_search_checker
-														input#front_yardadv(type='checkbox', name='parking_spot', value='1')
-														label(for='parking_spot') паркинг място
-													.extended_search_checker
-														input#fenced_yardadv(type='checkbox', name='view', value='1')
-														label(for='view') гледка
-													.extended_search_checker
-														input#sprinklersadv(type='checkbox', name='pool', value='1')
-														label(for='pool') басейн
-													.extended_search_checker
-														input#doormanadv(type='checkbox', name='furnished', value='1')
-														label(for='furnished') обзаведен
-					// end search wrapper
-					// END SEARCH CODE
 				#adv-search-header-mobile
 					i.fa.fa-search
-					|     Advanced Search
+					|     Търсене
 				#adv-search-mobile.adv-search-mobile
-					form(role='search', method='post', action='/')
+					form(role='search', method='GET', action='/')
 						.dropdown.form-control
 							#mobile-adv_actions.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 								| All Actions
@@ -685,21 +505,6 @@ html(lang='en-US')
 										| yourskypeid
 									p.widget_contact_url
 										a(href='SITE NAME') http://yoururl.com
-			.contactformwrapper.hidden
-				#footer-contact-form
-					h4 Contact Us
-					p Use the form below to contact us!
-					.alert-box.error
-						#footer_alert-agent-contact.alert-message
-					input#foot_contact_name.form-control(type='text', placeholder='Your Name', required='required', name='contact_name', value='', tabindex='373')
-					input#foot_contact_email.form-control(type='email', required='required', placeholder='Your Email', name='contact_email', value='', tabindex='374')
-					input#foot_contact_phone.form-control(type='email', required='required', placeholder='Your Phone', name='contact_phone', value='', tabindex='374')
-					textarea#foot_contact_content.form-control(placeholder='Type your message...', required='required', name='contact_content', tabindex='375')
-					input#contact_footer_ajax_nonce(type='hidden', name='contact_footer_ajax_nonce', value='683bdb8c2b')
-					.btn-cont
-						button#btn-cont-submit.wpresidence_button(type='submit') Send
-						input(type='hidden', value='', name='contact_to')
-						.bottom-arrow
 			script(type='text/javascript').
 				function revslider_showDoubleJqueryError(sliderID) {
 				var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";
