@@ -34,17 +34,26 @@ block body
                 input.form-control(type='number', name='code', placeholder='код')
                 input.form-control#number_pictures(name='number_pictures',placeholder='брой снимки', onkeyup='change()')
                 script.
-                    var n=1;
                     function change(){
-                    n = +document.getElementById("number_pictures").value;
+                    const ul = document.getElementById('changable_ul');
+                    const input = document.getElementById('number_pictures');
+                    while (ul.firstChild) {
+                        ul.removeChild(ul.firstChild);
                     }
-                //input(placeholder=n)
-                //input(value=number_pictures.value)
-                //- var n = #number_pictures.value;
-                //- var i = 0;
-                ul
-                    while i < n
-                    li
-                        input.form-control#pic.input-xlarge(type='file', name='pic', accept='image/*', value=pic)
+                    var n = +input.value;
+                    if (typeof n == 'number') {
+                        for (let i = 0; i < n; i += 1) {
+                            var li = document.createElement("li");
+                            var newInput = document.createElement("input");
+                            newInput.className = 'form-control';
+                            newInput.type = 'file';
+                            newInput.name = 'pic';
+                            newInput.accept = 'image/*';
+                            li.appendChild(newInput);
+                            ul.appendChild(li);
+                        }
+                    }
+                    }
+                ul#changable_ul
                 button.btn-success(type='submit') Добавяне
     

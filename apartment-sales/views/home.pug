@@ -82,7 +82,6 @@ html(lang='en-US')
 				// Left Sidebar
 				.snap-drawer.snap-drawer-left
 					.mobilemenu-close
-						i.fa.fa-times
 					ul#menu-main-menu.mobilex-menu
 						li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-17952
 							a(href='/') Начало
@@ -268,7 +267,6 @@ html(lang='en-US')
 												#adv_extended_options_text_adv.adv_extended_options_text Повече опции за търсене
 												.extended_search_check_wrapper
 													span#adv_extended_close_adv.adv_extended_close_button
-														i.fa.fa-times
 													.extended_search_checker
 														input#back_yardadv(type='checkbox', name='first_line', value='1')
 														label(for='first_line') първа линия
@@ -380,7 +378,6 @@ html(lang='en-US')
 						#adv_extended_options_text_mobile.adv_extended_options_text Повече опции за търсене
 						.extended_search_check_wrapper
 							span#adv_extended_close_mobile.adv_extended_close_button
-								i.fa.fa-times
 							.extended_search_checker
 								input#back_yardadv(type='checkbox', name='first_line', value='1')
 								label(for='first_line') първа линия
@@ -443,7 +440,7 @@ html(lang='en-US')
 													.carousel-inner
 														.item.active
 															a(href='/property/' + apartment.code)
-																img.lazyload.img-responsive.wp-post-image(width='525', height='328', src='/static/images/added_pictures/' + apartment.pictures, alt='')
+																img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=apartment.pictures[0], alt='')
 														
 													a(href='/property/' + apartment.code)
 											.tag-wrapper

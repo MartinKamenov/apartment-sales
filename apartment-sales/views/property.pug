@@ -165,29 +165,27 @@ html(lang='en-US')
 								#carousel-listing.carousel.slide.post-carusel(data-ride='carousel', data-interval='false')
 									// Wrapper for slides
 									.carousel-inner
-										.item.active
-											a.prettygalery(href='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses.jpg', title='', rel='prettyPhoto')
-												img.img-responsive.lightbox_trigger(src='/static/images/added_pictures/'+property.pictures, data-slider-no='1', alt='')
-										.item
-											a.prettygalery(href='http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-1-e1479135714508.jpg', title='', rel='prettyPhoto')
-												img.img-responsive.lightbox_trigger(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-1-835x467.jpg', data-slider-no='2', alt='')
-										.item
-											a.prettygalery(href='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-1.jpg', title='', rel='prettyPhoto')
-												img.img-responsive.lightbox_trigger(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-1-835x467.jpg', data-slider-no='3', alt='')
-										.item
-											a.prettygalery(href='http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-1.jpg', title='', rel='prettyPhoto')
-												img.img-responsive.lightbox_trigger(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-1-835x467.jpg', data-slider-no='4', alt='')
+										- for (var i = 0; i < property.pictures.length; ++i) {
+											if i==0
+												.item.active
+													a.prettygalery(href=property.pictures[0], title='', rel='prettyPhoto')
+														img.img-responsive.lightbox_trigger(src=property.pictures[0], data-slider-no='1', alt='')
+											else
+												.item
+													a.prettygalery(href=property.pictures[i], title='', rel='prettyPhoto')
+														img.img-responsive.lightbox_trigger(src=property.pictures[i], data-slider-no=i+1, alt='')
+										- }
 									// Indicators
 									.carusel-back
 									ol.carousel-indicators
-										li.active(data-target='#carousel-listing', data-slide-to='0')
-											img(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-143x83.jpg', alt='slider')
-										li(data-target='#carousel-listing', data-slide-to='1')
-											img(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-1-143x83.jpg', alt='slider')
-										li(data-target='#carousel-listing', data-slide-to='2')
-											img(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-1-143x83.jpg', alt='slider')
-										li(data-target='#carousel-listing', data-slide-to='3')
-											img(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-1-143x83.jpg', alt='slider')
+										- for (var i = 0; i < property.pictures.length; ++i) {
+											if i==0
+												li.active(data-target='#carousel-listing', data-slide-to='0')
+													img(src=property.pictures[i], alt='slider')
+											else
+												li(data-target='#carousel-listing', data-slide-to='1')
+													img(src=property.pictures[i], alt='slider')
+										- }
 									ol.carousel-round-indicators
 										li.active(data-target='#carousel-listing', data-slide-to='0')
 										li(data-target='#carousel-listing', data-slide-to='1')
@@ -346,132 +344,27 @@ html(lang='en-US')
 				#footer-widget-area.row
 					#first.widget-area.col-md-6
 						ul.xoxo
-							li#text-12.widget-container.widget_text
-								h3.widget-title-footer ABOUT
+							li#text-9.widget-container.widget_text
+								h3.widget-title-footer WP RESIDENCE
 								.textwidget
-									p
-										| WP RESIDENCE is committed to delivering a high level of expertise, customer service, and attention to detail to the marketing and sales of luxury real estate, and rental properties. READ MORE .
-							li#social_widget-1.widget-container.social_sidebar
-								.social_sidebar_internal
-									a(href='#', target='_blank')
-										i.fa.fa-rss.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-facebook.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-twitter.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-dribbble.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-google-plus.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-linkedin.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-tumblr.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-pinterest.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-youtube.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-vimeo-square.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-instagram.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-foursquare.fa-fw
-					// #first .widget-area
+									| WP RESIDENCE is committed to delivering a high level of expertise, customer service, and attention to detail to the marketing and sales of luxury real estate, and rental properties. Best theme for real estate on the market. Most featured theme for real estate.
 					#second.widget-area.col-md-3
 						ul.xoxo
 							li#contact_widget-1.widget-container.contact_sidebar
 								h3.widget-title-footer Contact
 								.contact_sidebar_wrap
 									p.widget_contact_addr
-										i.fa.fa-building-o
 										| 3755 Commercial St SE Salem, Corner with Sunny Boulevard, 3755 Commercial OR 97302
 									p.widget_contact_phone
-										i.fa.fa-phone
 										a(href='tel:%28305%29+555-4446') (305) 555-4446
 									p.widget_contact_fax
-										i.fa.fa-print
 										| (305) 555-4446
 									p.widget_contact_email
-										i.fa.fa-envelope-o
 										a(href='mailto:youremails@gmail.com') youremails@gmail.com
 									p.widget_contact_skype
-										i.fa.fa-skype
 										| yourskypeid
 									p.widget_contact_url
-										i.fa.fa-desktop
 										a(href='SITE NAME') http://yoururl.com
-					// #second .widget-area
-					#third.widget-area.col-md-3
-						ul.xoxo
-							li#footer_latest_widget-5.widget-container.latest_listings
-								h3.widget-title-footer Latest Listing
-								.latest_listings
-									.widget_latest_internal(data-link='http://rio.wpresidence.net/properties/condo-in-financial-district/')
-										.widget_latest_listing_image
-											a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')
-												img.lazyload.img_responsive(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-105x70.jpg', alt='slider-thumb', data-original='http://rio.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-105x70.jpg', height='70', width='105')
-										.listing_name
-											span.widget_latest_title
-												a(href='http://rio.wpresidence.net/properties/condo-in-financial-district/')=property.title
-											span.widget_latest_price
-												span.price_label.price_label_before
-												|  BRL 2,000 
-												span.price_label / month
-									.widget_latest_internal(data-link='http://rio.wpresidence.net/properties/villa-on-washington-ave/')
-										.widget_latest_listing_image
-											a(href='http://rio.wpresidence.net/properties/villa-on-washington-ave/')
-												img.lazyload.img_responsive(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-105x70.jpg', alt='slider-thumb', data-original='http://rio.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-105x70.jpg', height='70', width='105')
-										.listing_name
-											span.widget_latest_title
-												a(href='http://rio.wpresidence.net/properties/villa-on-washington-ave/') Villa On Washington Ave
-											span.widget_latest_price
-												span.price_label.price_label_before
-												|  BRL 550,000 
-												span.price_label
-									.widget_latest_internal(data-link='http://rio.wpresidence.net/properties/luxury-villa-in-rego-park/')
-										.widget_latest_listing_image
-											a(href='http://rio.wpresidence.net/properties/luxury-villa-in-rego-park/')
-												img.lazyload.img_responsive(src='http://rio.wpresidence.net/wp-content/uploads/2014/05/5-105x70.jpg', alt='slider-thumb', data-original='http://rio.wpresidence.net/wp-content/uploads/2014/05/5-105x70.jpg', height='70', width='105')
-										.listing_name
-											span.widget_latest_title
-												a(href='http://rio.wpresidence.net/properties/luxury-villa-in-rego-park/') Luxury Villa In Rego Park
-											span.widget_latest_price
-												span.price_label.price_label_before
-												|  BRL 2,100 
-												span.price_label / month
-					// #third .widget-area
-				.sub_footer
-					.sub_footer_content
-						span.copyright
-							| Buyer's Choice
-						.subfooter_menu
-							.menu-footer-container
-								ul#menu-footer.menu
-									li#menu-item-18045.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-18045
-										a(href='http://rio.wpresidence.net/privacy-policy/') Privacy Policy
-									li#menu-item-18046.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-18046
-										a(href='http://rio.wpresidence.net/terms-of-user/') Terms of Use
-			// #colophon
-			a.backtop(href='#')
-				i.fa.fa-chevron-up
-			a.contact-box(href='#')
-				i.fa.fa-envelope-o
-			.contactformwrapper.hidden
-				#footer-contact-form
-					h4 Contact Us
-					p Use the form below to contact us!
-					.alert-box.error
-						#footer_alert-agent-contact.alert-message
-					input#foot_contact_name.form-control(type='text', placeholder='Your Name', required='required', name='contact_name', value='', tabindex='373')
-					input#foot_contact_email.form-control(type='email', required='required', placeholder='Your Email', name='contact_email', value='', tabindex='374')
-					input#foot_contact_phone.form-control(type='email', required='required', placeholder='Your Phone', name='contact_phone', value='', tabindex='374')
-					textarea#foot_contact_content.form-control(placeholder='Type your message...', required='required', name='contact_content', tabindex='375')
-					input#contact_footer_ajax_nonce(type='hidden', name='contact_footer_ajax_nonce', value='6fb2556714')
-					.btn-cont
-						button#btn-cont-submit.wpresidence_button(type='submit') Send
-						input(type='hidden', value='', name='contact_to')
-						.bottom-arrow
 			script(type='text/javascript', src='http://rio.wpresidence.net/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4')
 			script(type='text/javascript', src='http://rio.wpresidence.net/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4')
 			script(type='text/javascript', src='http://rio.wpresidence.net/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4')

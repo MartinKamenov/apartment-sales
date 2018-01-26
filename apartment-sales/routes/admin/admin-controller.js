@@ -43,13 +43,17 @@ const controller = {
         var furnished = req.body.furnished;
         const code = req.body.code;
         const filename = req.files[0].filename;
+        const picturesNames = [];
+        for (let i = 0; i < req.files.length; i += 1) {
+            picturesNames.push('/static/images/added_pictures/' + req.files[i].filename);
+        }
         if (!type || !title || !text || !price || !place || !rooms || !code || !size) {
             res.send('Моля попълнете всички полета.');
             return;
         }
 
         const apartment = new Apartment(title, text, type, place, rooms, price, size, code,
-            firstLine, parkingSpot, view, pool, furnished, filename);
+            firstLine, parkingSpot, view, pool, furnished, picturesNames);
         apartmentRepository.insertApartment(apartment);
         notifier.notify('Успешно добавено!');
 
