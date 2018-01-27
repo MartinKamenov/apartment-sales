@@ -187,21 +187,25 @@ html(lang='en-US')
 													img(src=property.pictures[i], alt='slider')
 										- }
 									ol.carousel-round-indicators
-										li.active(data-target='#carousel-listing', data-slide-to='0')
-										li(data-target='#carousel-listing', data-slide-to='1')
-										li(data-target='#carousel-listing', data-slide-to='2')
-										li(data-target='#carousel-listing', data-slide-to='3')
+										- for (var i = 0; i < property.pictures.length; ++i) {
+											if i==0
+												li.active(data-target='#carousel-listing', data-slide-to='0')
+											else
+												li(data-target='#carousel-listing', data-slide-to=i)
+										- }
 									.caption-wrapper
-										span.active(data-slide-to='0')
-										span(data-slide-to='1')  
-										span(data-slide-to='2')  
-										span(data-slide-to='3')  
+										- for (var i = 0; i < property.pictures.length; ++i) {
+											if i==0
+												span.active(data-slide-to='0')
+											else
+												span(data-slide-to=i)
+										- }
 										.caption_control
 									// Controls
 									a.left.carousel-control(href='#carousel-listing', data-slide='prev')
-										i.demo-icon.icon-left-open-big
+										i <
 									a.right.carousel-control(href='#carousel-listing', data-slide='next')
-										i.demo-icon.icon-right-open-big
+										i >
 								.wpestate_property_description
 									p=property.text
 								// Energy saving

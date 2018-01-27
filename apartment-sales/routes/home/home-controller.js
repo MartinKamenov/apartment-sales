@@ -19,7 +19,7 @@ const controller = {
         // We have search params
         if (type || place) {
             propertyRepository.findPropertyByParams(params).then(properties => {
-                properties.reverse();
+                properties.sort(function(a, b) { return b.date - a.date });
                 const result = pageHandler.handle(properties, page, 6);
                 const foundProperties = result.filteredCollection;
                 const pagesCount = result.numberOfPages;
@@ -43,7 +43,7 @@ const controller = {
             });
         } else {
             propertyRepository.getAllProperties().then(properties => {
-
+                properties.sort(function(a, b) { return b.date - a.date });
                 const result = pageHandler.handle(properties, page, 6);
                 const foundProperties = result.filteredCollection;
                 const pagesCount = result.numberOfPages;

@@ -45,6 +45,7 @@ const controller = {
         const code = req.body.code;
         const filename = req.files[0].filename;
         const picturesNames = [];
+        const date = new Date();
         for (let i = 0; i < req.files.length; i += 1) {
             picturesNames.push('/static/images/added_pictures/' + req.files[i].filename);
         }
@@ -54,7 +55,7 @@ const controller = {
         }
 
         const property = new Property(title, text, type, place, price, contacts, size, code,
-            firstLine, parkingSpot, view, pool, furnished, picturesNames);
+            firstLine, parkingSpot, view, pool, furnished, picturesNames, date);
         propertyRepository.insertProperty(property);
         notifier.notify('Успешно добавено!');
         res.redirect('/admin/add');
