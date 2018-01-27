@@ -1,4 +1,4 @@
-class Apartment {
+class Property {
     constructor(title, text, type, place, rooms, price, size, code, firstLine, parkingSpot,
         view, pool, furnished, pictures) {
 
@@ -19,4 +19,4 @@ class Apartment {
     }
 }
 
-module.exports = Apartment;
+module.exports = Property;

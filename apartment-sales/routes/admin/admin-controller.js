@@ -1,11 +1,11 @@
-const Apartment = require('../../models/Apartment');
+const Property = require('../../models/Property');
 const notifier = require('node-notifier');
 
 const controller = {
-    showAdminPanel(apartmentRepository, req, res) {
+    showAdminPanel(propertyRepository, req, res) {
         res.render('admin-login');
     },
-    checkAdmin(adminRepository, apartmentRepository, req, res) {
+    checkAdmin(adminRepository, propertyRepository, req, res) {
         const username = req.body.username;
         const password = req.body.password;
 
@@ -19,16 +19,17 @@ const controller = {
                 return;
             }
             const admin = admins[0];
+
             res.redirect('/admin/add');
         });
     },
-    addApartment(adminRepository, apartmentRepository, req, res) {
-        res.render('addApartment');
+    addProperty(adminRepository, propertyRepository, req, res) {
+        res.render('addProperty');
         /*adminRepository.findAdmin(username, password).then((admins) => {
 
         });*/
     },
-    postApartment(adminRepository, apartmentRepository, req, res) {
+    postProperty(adminRepository, propertyRepository, req, res) {
         const type = req.body.type;
         const title = req.body.title;
         const text = req.body.text;
@@ -52,27 +53,29 @@ const controller = {
             return;
         }
 
-        const apartment = new Apartment(title, text, type, place, rooms, price, size, code,
+        const property = new Property(title, text, type, place, rooms, price, size, code,
             firstLine, parkingSpot, view, pool, furnished, picturesNames);
-        apartmentRepository.insertApartment(apartment);
-        notifier.notify('Успешно добавено!');
-
-        res.redirect('/admin/add');
+        propertyRepository.insertProperty(property).then(() => {
+            notifier.notify('Успешно добавено!');
+            res.redirect('/admin/add');
+        });
         /*adminRepository.findAdmin(username, password).then((admins) => {
 
         });*/
     },
-    removeApartment(adminRepository, apartmentRepository, req, res) {
+    removeProperty(adminRepository, propertyRepository, req, res) {
         res.render('removeProperty');
     },
-    postRemoveApartment(adminRepository, apartmentRepository, req, res) {
+    postRemoveProperty(adminRepository, propertyRepository, req, res) {
         const code = req.body.code;
         if (!code) {
             res.send('Code should be added');
             return;
         }
-        apartmentRepository.removeApartment(code);
-        res.render('removeProperty');
+        propertyRepository.removeProperty(code).then(() => {
+            notifier.notify('Успешно премахнат имот с код: ' + code + '!');
+            res.redirect('/admin/remove');
+        });
     }
 
 };

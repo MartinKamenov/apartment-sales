@@ -2,12 +2,12 @@ const { Router } = require('express');
 const controller = require('./property-controller');
 
 
-const attach = (app, apartmentRepository) => {
+const attach = (app, propertyRepository) => {
     // @ts-ignore
     const router = new Router();
     router
         .get('/:code', (req, res) => {
-            controller.showProperty(apartmentRepository, req, res);
+            controller.showProperty(propertyRepository, req, res);
         });
     app.use('/property', router);
 };

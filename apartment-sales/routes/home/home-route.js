@@ -2,12 +2,12 @@ const { Router } = require('express');
 const controller = require('./home-controller');
 
 
-const attach = (app, apartmentRepository) => {
+const attach = (app, propertyRepository) => {
     // @ts-ignore
     const router = new Router();
     router
         .get('/', (req, res) => {
-            controller.showHome(apartmentRepository, req, res);
+            controller.showHome(propertyRepository, req, res);
         });
     app.use('/', router);
 };

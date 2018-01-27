@@ -32,7 +32,7 @@ block body
                 label(for='furnished') обзаведен
                 input(type='checkbox', name='furnished')
                 input.form-control(type='number', name='code', placeholder='код')
-                input.form-control#number_pictures(name='number_pictures',placeholder='брой снимки', onkeyup='change()')
+                input.form-control#number_pictures(name='number_pictures', type='number',placeholder='брой снимки', onkeyup='change()')
                 script.
                     function change(){
                     const ul = document.getElementById('changable_ul');

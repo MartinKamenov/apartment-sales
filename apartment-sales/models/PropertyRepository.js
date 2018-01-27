@@ -1,27 +1,27 @@
-const collectionName = 'apartments';
-class ApartmentRepository {
+const collectionName = 'properties';
+class PropertyRepository {
     constructor(database) {
         this.database = database;
     }
-    getAllApartments() {
+    getAllProperties() {
         return this.database.showAll(collectionName);
     }
 
-    insertApartment(apartment) {
+    insertProperty(apartment) {
         this.database.insert(collectionName, apartment);
     }
 
-    findApartmentByCode(code) {
+    findPropertyByCode(code) {
         return this.database.find(collectionName, { code: code });
     }
 
-    findApartmentByParams(params) {
+    findPropertyByParams(params) {
         return this.database.find(collectionName, params);
     }
 
-    removeApartment(code) {
+    removeProperty(code) {
         this.database.delete(collectionName, { code: code });
     }
 }
 
-module.exports = ApartmentRepository;
+module.exports = PropertyRepository;

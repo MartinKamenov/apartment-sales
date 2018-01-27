@@ -12,15 +12,15 @@ const attach = (app, adminRepository, apartmentRepository) => {
         }).post('/', (req, res) => {
             controller.checkAdmin(adminRepository, apartmentRepository, req, res);
         }).get('/add', (req, res) => {
-            controller.addApartment(adminRepository, apartmentRepository, req, res);
+            controller.addProperty(adminRepository, apartmentRepository, req, res);
         }).post('/add', upload.any(), (req, res) => {
-            controller.postApartment(adminRepository, apartmentRepository, req, res);
+            controller.postProperty(adminRepository, apartmentRepository, req, res);
         }).get('/edit', (req, res) => {
-            controller.editApartment(adminRepository, apartmentRepository, req, res);
+            controller.editProperty(adminRepository, apartmentRepository, req, res);
         }).get('/remove', (req, res) => {
-            controller.removeApartment(adminRepository, apartmentRepository, req, res);
+            controller.removeProperty(adminRepository, apartmentRepository, req, res);
         }).post('/remove', (req, res) => {
-            controller.postRemoveApartment(adminRepository, apartmentRepository, req, res);
+            controller.postRemoveProperty(adminRepository, apartmentRepository, req, res);
         });
     app.use('/admin', router);
 };

@@ -1,7 +1,7 @@
 const controller = {
-    showProperty(apartmentRepository, req, res) {
+    showProperty(propertyRepository, req, res) {
         const code = req.params.code;
-        apartmentRepository.findApartmentByCode(code).then((foundProperties) => {
+        propertyRepository.findPropertyByCode(code).then((foundProperties) => {
             console.log(foundProperties);
             if (foundProperties.length !== 1) {
                 res.send('More than one apartment has been found with code ' + code);

@@ -5,8 +5,8 @@ const homeRoute = require('./routes/home/home-route');
 const propertyRoute = require('./routes/property/property-route');
 const adminRoute = require('./routes/admin/admin-route');
 const Database = require('./database/mongodb');
-const Apartment = require('./models/Apartment');
-const ApartmentRepository = require('./models/ApartmentRepository');
+const Property = require('./models/Property');
+const PropertyRepository = require('./models/PropertyRepository');
 const AdminRepository = require('./models/AdminRepository');
 const bodyParser = require('body-parser');
 // const connectionstring = 'mongodb://localhost/test2-db';
@@ -20,18 +20,18 @@ app.use('/libs', express.static(path.join(__dirname, '../node_modules')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const database = new Database(connectionstring);
-const apartmentRepository = new ApartmentRepository(database);
+const propertyRepository = new PropertyRepository(database);
 const adminRepository = new AdminRepository(database);
 
-/*const apartment = new Apartment('Варна - ахтопол', 55);
-apartmentRepository.insertApartment(apartment);
-apartmentRepository.getAllApartments().then((apps) => {
-    console.log(apps);
+/*const property = new Property('Варна - ахтопол', 55);
+propertyRepository.insertProperty(property);
+propertyRepository.getAllPropertys().then((properties) => {
+    console.log(properties);
 });*/
 
 
-homeRoute(app, apartmentRepository);
-adminRoute(app, adminRepository, apartmentRepository);
-propertyRoute(app, apartmentRepository);
+homeRoute(app, propertyRepository);
+adminRoute(app, adminRepository, propertyRepository);
+propertyRoute(app, propertyRepository);
 
 app.listen(process.env.PORT || 5000);
