@@ -4,7 +4,7 @@ block body
     link(rel='stylesheet', href='../static/css/add-apartment.css')
     .container
         .menu
-            button.btn-success 
+            button.btn-warning 
                 a(href='/admin/edit') Промяна
             button.btn-danger 
                 a(href='/admin/remove') Премахване
@@ -16,11 +16,10 @@ block body
                     option(value='апартамент') апартамент
                     option(value='парцел') парцел
                 input.form-control(type='text', name='title', placeholder='заглавие')
-                input.form-control(type='text', name='text', placeholder='текст')
+                textarea.form-control(name='text', rows='10', cols='30', placeholder='описание')
                 input.form-control(type='text', name='price', placeholder='цена в евро')
                 input.form-control(type='text', name='place', placeholder='място')
                 input.form-control(type='number', name='size', placeholder='размер(кв м.)')
-                input.form-control(type='number', name='rooms', placeholder='брой стаи')
                 label(for='firstLine') първа линия
                 input(type='checkbox', name='firstLine')
                 label(for='parkingSpot') паркинг място
@@ -31,6 +30,7 @@ block body
                 input(type='checkbox', name='pool')
                 label(for='furnished') обзаведен
                 input(type='checkbox', name='furnished')
+                textarea.form-control(name='contacts', rows='5', cols='30', placeholder='контакти')
                 input.form-control(type='number', name='code', placeholder='код')
                 input.form-control#number_pictures(name='number_pictures', type='number',placeholder='брой снимки', onkeyup='change()')
                 script.

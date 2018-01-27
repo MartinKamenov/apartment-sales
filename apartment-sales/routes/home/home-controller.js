@@ -19,6 +19,7 @@ const controller = {
         // We have search params
         if (type || place) {
             propertyRepository.findPropertyByParams(params).then(properties => {
+                properties.reverse();
                 const result = pageHandler.handle(properties, page, 6);
                 const foundProperties = result.filteredCollection;
                 const pagesCount = result.numberOfPages;

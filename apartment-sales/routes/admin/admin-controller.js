@@ -36,7 +36,7 @@ const controller = {
         const price = req.body.price;
         const place = req.body.place;
         const size = req.body.size;
-        const rooms = req.body.rooms;
+        const contacts = req.body.contacts;
         var firstLine = req.body.firstLine;
         var parkingSpot = req.body.parkingSpot;
         var view = req.body.view;
@@ -48,17 +48,16 @@ const controller = {
         for (let i = 0; i < req.files.length; i += 1) {
             picturesNames.push('/static/images/added_pictures/' + req.files[i].filename);
         }
-        if (!type || !title || !text || !price || !place || !rooms || !code || !size) {
+        if (!type || !title || !text || !price || !place || !contacts || !code || !size) {
             res.send('Моля попълнете всички полета.');
             return;
         }
 
-        const property = new Property(title, text, type, place, rooms, price, size, code,
+        const property = new Property(title, text, type, place, price, contacts, size, code,
             firstLine, parkingSpot, view, pool, furnished, picturesNames);
-        propertyRepository.insertProperty(property).then(() => {
-            notifier.notify('Успешно добавено!');
-            res.redirect('/admin/add');
-        });
+        propertyRepository.insertProperty(property);
+        notifier.notify('Успешно добавено!');
+        res.redirect('/admin/add');
         /*adminRepository.findAdmin(username, password).then((admins) => {
 
         });*/
@@ -72,10 +71,9 @@ const controller = {
             res.send('Code should be added');
             return;
         }
-        propertyRepository.removeProperty(code).then(() => {
-            notifier.notify('Успешно премахнат имот с код: ' + code + '!');
-            res.redirect('/admin/remove');
-        });
+        propertyRepository.removeProperty(code);
+        notifier.notify('Успешно премахнат имот с код: ' + code + '!');
+        res.redirect('/admin/remove');
     }
 
 };
