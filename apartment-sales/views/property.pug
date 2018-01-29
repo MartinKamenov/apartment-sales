@@ -382,10 +382,8 @@ html(lang='en-US')
 				.lightbox_property_content.row
 					.lightbox_property_slider.col-md-12.lightbox_no_contact
 						#owl-demo.owl-carousel.owl-theme
-							.item(style='background-image:url(//chicago.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-1110x623.jpg)')
-							.item(style='background-image:url(//chicago.wpresidence.net/wp-content/uploads/2014/05/beach-home-interior-design-on-great-home-design-1-1110x623.jpg)')
-							.item(style='background-image:url(//chicago.wpresidence.net/wp-content/uploads/2014/05/big-house-interior-design-living-area-house-decor-for-small-houses-home-interior-design-ideas-living-room-photo-house-interior-designs-big-modern-houses-1-1110x623.jpg)')
-							.item(style='background-image:url(//chicago.wpresidence.net/wp-content/uploads/2014/05/Brand-of-interior-design-ideas-for-small-studio-apartments-About-Remodel-Apartment-Design-Interior-with-interior-design-ideas-for-small-studio-apartments-Apartment-Design-Easy-1-1110x623.jpg)')
+							each picture in property.pictures
+								.item(style='background-image:url(' + picture + ')')
 				.lighbox-image-close
 					i.fa.fa-times(aria-hidden='true')
 			.lighbox_overlay

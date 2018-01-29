@@ -1,7 +1,19 @@
 const { Router } = require('express');
 const controller = require('./admin-controller');
 const multer = require('multer');
-const upload = multer({ dest: 'apartment-sales/static/images/added_pictures' });
+const mime = require('mime');
+const crypto = require('crypto');
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'apartment-sales/static/images/added_pictures')
+    },
+    filename: function(req, file, cb) {
+        crypto.pseudoRandomBytes(16, function(err, raw) {
+            cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+        });
+    }
+});
+const upload = multer({ storage: storage });
 
 const attach = (app, adminRepository, propertyRepository) => {
     // @ts-ignore
