@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const homeRoute = require('./routes/home/home-route');
 const propertyRoute = require('./routes/property/property-route');
+const searchRoute = require('./routes/advanced_search/search-route');
 const adminRoute = require('./routes/admin/admin-route');
 const Database = require('./database/mongodb');
 const Property = require('./models/Property');
@@ -33,5 +34,6 @@ propertyRepository.getAllPropertys().then((properties) => {
 homeRoute(app, propertyRepository);
 adminRoute(app, adminRepository, propertyRepository);
 propertyRoute(app, propertyRepository);
+searchRoute(app, propertyRepository);
 
 app.listen(process.env.PORT || 5000);

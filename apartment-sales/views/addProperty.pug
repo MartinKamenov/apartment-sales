@@ -12,9 +12,13 @@ block body
             h1 Добавяне на жилище
             form(method='post', action='/admin/add', enctype='multipart/form-data')
                 select(name='type')
-                    option(value='къща') къща
                     option(value='апартамент') апартамент
+                    option(value='мезонет') мезонет
+                    option(value='къща') къща
                     option(value='парцел') парцел
+                    option(value='магазин') магазин
+                    option(value='офис') офис
+                    option(value='хотел') хотел
                 input.form-control(type='text', name='title', placeholder='заглавие')
                 textarea.form-control(name='text', rows='10', cols='30', placeholder='описание')
                 input.form-control(type='text', name='price', placeholder='цена в евро')

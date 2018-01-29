@@ -7,7 +7,7 @@ html(lang='en-US')
 		title
 			| Имоти в Гърция
 		link(rel='pingback', href='//chicago.wpresidence.net/xmlrpc.php')
-		link(rel='shortcut icon', href='//chicago.wpresidence.net/wp-content/themes/wpresidence/img/favicon.gif', type='image/x-icon')
+		link(rel='icon', href='/static/images/logo.png')
 		meta(name='robots', content='noindex,follow')
 		link(rel='dns-prefetch', href='//maps.googleapis.com')
 		link(rel='dns-prefetch', href='//fonts.googleapis.com')
@@ -105,12 +105,9 @@ html(lang='en-US')
 							i.fa.fa-bars
 						.mobile-logo
 							a(href='/')
-								img.img-responsive.retina_ready(src='//chicago.wpresidence.net/wp-content/uploads/2017/11/logo_rio_transparent.png', alt='logo')
+								img.img-responsive.retina_ready(src='/static/images/logo.png', alt='logo')
 					.header_wrapper.header_type1.header_left.hover_type_6.header_alignment_text_left
-						.header_wrapper_inside(data-logo='//chicago.wpresidence.net/wp-content/uploads/2017/11/logo_rio_transparent.png', data-sticky-logo='//chicago.wpresidence.net/wp-content/uploads/2017/11/logo_rio.png')
-							.logo
-								a(href='/')
-									img#logo_image.img-responsive.retina_ready(style='margin-top:0px;', src='//chicago.wpresidence.net/wp-content/uploads/2017/11/logo_rio_transparent.png', alt='logo')
+						.header_wrapper_inside(data-logo='/static/images/logo.png', data-sticky-logo='/static/images/logo.png')
 							nav#access
 								.menu-main-menu-container
 									ul#menu-main-menu-1.menu
@@ -129,8 +126,8 @@ html(lang='en-US')
 										li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/contacts') Контакти
 							// #access
-				#bottom_bar(style='background-color: red; position: fixed; z-index: 100; bottom: 0; left: 0; width: 100%; height: 25px; text-align: center; color: white; font-size: medium;')
-					b Без комисионна
+				#bottom_bar(style='background-color: red; position: fixed; z-index: 100; bottom: 0; left: 0; width: 100%; height: 40px; text-align: center; color: white; font-size: 30px;')
+					b Без комисионна от купувача 0%
 				.header_media.with_search_6
 					link(href='//fonts.googleapis.com/css?family=Open+Sans:800', rel='stylesheet', property='stylesheet', type='text/css', media='all')
 					#rev_slider_1_1_wrapper.rev_slider_wrapper.fullscreen-container(data-source='gallery', style='background:transparent;padding:0px;')
@@ -141,6 +138,19 @@ html(lang='en-US')
 								li(data-index='rs-1', data-transition='fade', data-slotamount='default', data-hideafterloop='0', data-hideslideonmobile='off', data-easein='default', data-easeout='default', data-masterspeed='300', data-rotate='0', data-saveperformance='off', data-title='Slide', data-param1='', data-param2='', data-param3='', data-param4='', data-param5='', data-param6='', data-param7='', data-param8='', data-param9='', data-param10='', data-description='')
 									// MAIN IMAGE
 									img.rev-slidebg(src='/static/images/wallpaper.png', alt='', title='a2', width='1920', height='1200', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-no-retina='')
+									.my_logo
+										a(href='/')
+											img#logo_image(style='margin-top:0px;', src='/static/images/logo.png', alt='logo')
+										style(type='text/css').
+											#logo_image {
+												width: 200px !important;
+												height: 160px !important;
+											}
+											.my_logo {
+												position: absolute;
+												left: 260px;
+												top: 20px;
+											}
 									// LAYERS
 									// LAYER NR. 1
 									#slide-1-layer-2.tp-caption.rev-scroll-btn(data-x='center', data-hoffset='', data-y='bottom', data-voffset='10', data-width="['35']", data-height="['55']", data-type='button', data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":"750","speed":"300","ease":"Linear.easeNone"}]', data-responsive_offset='on', data-responsive='off', data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]', data-textalign="['left','left','left','left']", data-paddingtop='[0,0,0,0]', data-paddingright='[0,0,0,0]', data-paddingbottom='[0,0,0,0]', data-paddingleft='[0,0,0,0]', style='z-index: 5; min-width: 35px; max-width: 35px; max-width: 55px; max-width: 55px; white-space: nowrap; font-size: px; line-height: px; font-weight: 100;border-color:rgba(255,255,255,1);border-style:solid;border-width:3px;border-radius:23px 23px 23px 23px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;')
@@ -350,7 +360,7 @@ html(lang='en-US')
 									.wpb_column.vc_column_container.vc_col-sm-8.vc_column
 							#ultimate-heading-16635a575d66ae212.uvc-heading.ult-adjust-bottom-margin.ultimate-heading-16635a575d66ae212.uvc-9517(data-hspacer='line_only', data-halign='center', style='text-align:center')
 								.uvc-main-heading.ult-responsive(data-ultimate-target='.uvc-heading.ultimate-heading-16635a575d66ae212 h2', data-responsive-json-new='{"font-size":"desktop:30px;","line-height":""}')
-									h2(style='font-weight:bold;color:#303030;margin-top:20px;') Най-скорошно добавени
+									h2(style='font-weight:bold;color:#303030;margin-top:20px;') Най-нови
 								.uvc-heading-spacer.line_only(style='margin-top:20px;margin-bottom:20px;height:3px;')
 									span.uvc-headings-line(style='border-style:solid;border-bottom-width:3px;border-color:#d67b04;width:100px;')
 								.uvc-sub-heading.ult-responsive(data-ultimate-target='.uvc-heading.ultimate-heading-16635a575d66ae212 .uvc-sub-heading ', data-responsive-json-new='{"font-size":"desktop:15px;","line-height":"desktop:23px;"}', style='font-weight:normal;margin-bottom:30px;')
@@ -369,10 +379,6 @@ html(lang='en-US')
 							#listing_loader.spinner
 								.new_prelader
 							#listing_ajax_container
-								input#tax_categ_picked(type='hidden', value='')
-								input#tax_action_picked(type='hidden', value='')
-								input#tax_city_picked(type='hidden', value='')
-								input#taxa_area_picked(type='hidden', value='')
 								each apartment in apartments
 									.col-md-4.has_prop_slider.listing_wrapper(data-org='4', data-listid='145')
 										.property_listing(data-link='')
@@ -445,6 +451,13 @@ html(lang='en-US')
 										| yourskypeid
 									p.widget_contact_url
 										a(href='/') https://имотивгърция.bg
+			//if shouldScroll
+			script(type='text/javascript').
+				//var elmnt = document.getElementById("listing_ajax_container");
+				//elmnt.scrollIntoView();
+				//
+				//window.scrollTo(0,2000);
+				
 			script(type='text/javascript').
 				function revslider_showDoubleJqueryError(sliderID) {
 				var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";
