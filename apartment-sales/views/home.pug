@@ -227,7 +227,9 @@ html(lang='en-US')
 								#tab_prpg_adv6.adv_search_tab(role='tabpanel')
 									.nav.nav-tabs(role='tablist')
 										.adv_search_tab_item.active.rentals(data-term='rentals', data-termid='35', data-tax='property_action_category')
-											a.adv6_tab_head(href='#rentals', aria-controls='rentals', role='tab', data-toggle='tab') Търси
+											a.adv6_tab_head(href='#rentals', aria-controls='rentals', role='tab', data-toggle='tab') Продажба
+										.adv_search_tab_item.sales(data-term='sales', data-termid='38', data-tax='property_action_category')
+											a.adv6_tab_head(href='#sales', aria-controls='sales', role='tab', data-toggle='tab') Наем
 									.tab-content
 										#rentals.tab-pane.active(role='tabpanel')
 											form(role='search', method='GET', action='/')
@@ -293,6 +295,72 @@ html(lang='en-US')
 													.extended_search_checker
 														input#doormanadv(type='checkbox', name='furnished', value='1')
 														label(for='furnished') обзаведен
+										#sales.tab-pane(role='tabpanel')
+											form(role='search', method='get', action='http://rio.wpresidence.net/advanced-search/')
+												form(role='search', method='GET', action='/')
+												.col-md-3.categories
+													.dropdown.form-control
+														#adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
+															| Вид
+														input(type='hidden', name='type', value='')
+														ul#categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='adv_categ')
+															li(role='presentation', data-value='') Всички видове
+															li(role='presentation', data-value='апартамент') Апартамент
+															li(role='presentation', data-value='мезонет') Мезонет
+															li(role='presentation', data-value='къща') Къща
+															li(role='presentation', data-value='парцел') Парцел
+															li(role='presentation', data-value='магазин') Магазин
+															li(role='presentation', data-value='офис') Офис
+															li(role='presentation', data-value='хотел') Хотел
+												.col-md-3.cities
+													.dropdown.form-control
+														#advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
+															| Район
+														input(type='hidden', name='place', value='')
+														ul#adv-search-city.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_city')
+															li(role='presentation', data-value='', data-value2='') Всички райони
+															each place in cityArray
+																li(role='presentation', data-value=city, data-value2=city)=place
+												.col-md-3.areas
+													.dropdown.form-control
+														#advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
+															| Цена
+														input(type='hidden', name='price', value='')
+														ul#adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='price')
+															li(role='presentation', data-value='') Всички цени
+															li(role='presentation', data-value='1') От 0 до 50 000 &#8364;
+															li(role='presentation', data-value='2') От 50 000 до 100 000 &#8364;
+															li(role='presentation', data-value='3') От 100 000 до 500 000 &#8364;
+															li(role='presentation', data-value='4') Над 500 000 &#8364;
+															//li(role='presentation')
+																span
+																	label(for='from') От
+																	input(name='from')
+																br
+																span
+																	label(for='to') До
+																	input(name='to')
+												.col-md-3
+													input#advanced_submit_4.wpresidence_button(name='submit', type='submit', value='ТЪРСИ')
+												#adv_extended_options_text_adv.adv_extended_options_text Повече опции за търсене
+												.extended_search_check_wrapper
+													span#adv_extended_close_adv.adv_extended_close_button
+													.extended_search_checker
+														input#back_yardadv(type='checkbox', name='first_line', value='1')
+														label(for='first_line') първа линия
+													.extended_search_checker
+														input#front_yardadv(type='checkbox', name='parking_spot', value='1')
+														label(for='parking_spot') паркинг място
+													.extended_search_checker
+														input#fenced_yardadv(type='checkbox', name='view', value='1')
+														label(for='view') гледка
+													.extended_search_checker
+														input#sprinklersadv(type='checkbox', name='pool', value='1')
+														label(for='pool') басейн
+													.extended_search_checker
+														input#doormanadv(type='checkbox', name='furnished', value='1')
+														label(for='furnished') обзаведен
+
 				#adv-search-header-mobile
 					i.fa.fa-search
 					|     Търсене
@@ -387,13 +455,24 @@ html(lang='en-US')
 													.property_location_image
 														span.property_marker
 														a(href='/property/' + apartment.code, rel='tag')=apartment.place
-												#property_unit_carousel_5a575d66b0c0a.carousel.property_unit_carousel.slide(data-ride='carousel', data-interval='false')
+												.carousel.property_unit_carousel.slide(id='property_unit_carousel_' + apartment.code, data-ride='carousel', data-interval='false')
 													.carousel-inner
-														.item.active
-															a(href='/property/' + apartment.code)
-																img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=apartment.pictures[0], alt='')
+														- for (var i = 0; i < apartment.pictures.length; ++i) {
+															if i==0
+																.item.active
+																	a(href='/property/' + apartment.code)
+																		img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=apartment.pictures[i], alt='')
+															else
+																.item.lazy-load-item
+																	a(href='/property/' + apartment.code)
+																		img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=apartment.pictures[i], alt='')
+														- }
 														
 													a(href='/property/' + apartment.code)
+													a.left.carousel-control(href='#property_unit_carousel_' + apartment.code, data-slide='prev')
+														i <
+													a.right.carousel-control(href='#property_unit_carousel_' + apartment.code, data-slide='next')
+														i >
 											.tag-wrapper
 												.featured_div=apartment.type
 											h4
