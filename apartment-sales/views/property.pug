@@ -207,7 +207,14 @@ html(lang='en-US')
 									a.right.carousel-control(href='#carousel-listing', data-slide='next')
 										i >
 								.wpestate_property_description
-									p=property.text
+									style(type='text/css').
+										.property_description {
+											font-size: medium !important;
+										}
+								- var descriptionArray = property.text.split('\n');
+									each description in descriptionArray
+										b
+											p.property_description=description
 								// Energy saving
 								// END Energy saving
 								#accordion_prop_details.panel-group.property-panel
@@ -231,9 +238,11 @@ html(lang='en-US')
 										.panel-heading
 											a(data-toggle='collapse', data-parent='#accordion_prop_features', href='#collapseThree')
 												h4#prop_ame.panel-title За контакти
+										- var contactsArray = property.contacts.split('\n');
 										#collapseThree.panel-collapse.collapse.in
 											.panel-body
-												p=property.contacts
+												each contact in contactsArray
+													p=contact
 								// END Features and Ammenties
 						// end 9col container
 				// end content_wrapper started in header
