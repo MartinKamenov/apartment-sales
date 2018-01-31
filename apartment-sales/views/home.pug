@@ -148,7 +148,7 @@ html(lang='en-US')
 											}
 											.my_logo {
 												position: absolute;
-												left: 260px;
+												left: 200px;
 												top: 20px;
 											}
 									// LAYERS
@@ -227,20 +227,20 @@ html(lang='en-US')
 								#tab_prpg_adv6.adv_search_tab(role='tabpanel')
 									.nav.nav-tabs(role='tablist')
 										.adv_search_tab_item.active.rentals(data-term='rentals', data-termid='35', data-tax='property_action_category')
-											a.adv6_tab_head(href='#rentals', aria-controls='rentals', role='tab', data-toggle='tab') Продажба
+											a.adv6_tab_head(href='#rentals', aria-controls='rentals', role='tab', data-toggle='tab') Продажби
 										.adv_search_tab_item.sales(data-term='sales', data-termid='38', data-tax='property_action_category')
-											a.adv6_tab_head(href='#sales', aria-controls='sales', role='tab', data-toggle='tab') Наем
+											a.adv6_tab_head(href='#sales', aria-controls='sales', role='tab', data-toggle='tab') Наеми
 									.tab-content
 										#rentals.tab-pane.active(role='tabpanel')
 											form(role='search', method='GET', action='/')
 												.col-md-3.categories
 													.dropdown.form-control
 														#adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| Вид
+															| Тип
 															span.caret.caret_filter
 														input(type='hidden', name='type', value='')
 														ul#categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='adv_categ')
-															li(role='presentation', data-value='') Всички видове
+															li(role='presentation', data-value='') Всички типове
 															li(role='presentation', data-value='апартамент') Апартамент
 															li(role='presentation', data-value='мезонет') Мезонет
 															li(role='presentation', data-value='къща') Къща
@@ -258,6 +258,39 @@ html(lang='en-US')
 															li(role='presentation', data-value='', data-value2='') Всички райони
 															each place in cityArray
 																li(role='presentation', data-value=city, data-value2=city)=place
+												.col-md-3.cities
+													.dropdown.form-control
+														#advanced_location.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
+															| Под район
+															span.caret.caret_filter
+														input(type='hidden', name='location', value='')
+														ul#adv-search-location.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_location')
+															li(role='presentation', data-value='', data-value2='') Всички подрайони
+												script.
+													changeLocation();
+													function changeLocation() {
+														const placeDropdown = document.getElementById('advanced_city');
+														console.log(placeDropdown.value)
+														const placeValue = placeDropdown.value;
+														const locationDropdown = document.getElementById('adv-search-location');
+														let locationArray = [];
+														while (locationDropdown.firstChild) {
+															locationDropdown.removeChild(locationDropdown.firstChild);
+														}
+														if(placeValue==='Кавала') {
+															locationArray = ['Паралия Орфани', 'Офринио', 'Паралия Офринио', 'Карияни', 'Паралия Карияни',
+															'Неа Перамос', 'Неа Ираклица', 'Палио', 'Кавала(град)', 'Керамоти'];
+														}
+														else if(placeValue==='Тасос') {
+															locationArray = ['Пешо', 'Офринио', 'Паралия Офринио', 'Карияни', 'Паралия Карияни',
+															'Неа Перамос', 'Неа Ираклица', 'Палио', 'Кавала(град)', 'Керамоти'];
+														}
+														for(var i = 0; i < locationArray.length; i += 1) {
+															var li = document.createElement('li');
+															li.innerHTML = locationArray[i];
+															locationDropdown.appendChild(li);
+														}
+													}
 												.col-md-3.areas
 													.dropdown.form-control
 														#advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
@@ -304,11 +337,11 @@ html(lang='en-US')
 												.col-md-3.categories
 													.dropdown.form-control
 														#adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| Вид
+															| Тип
 															span.caret.caret_filter
 														input(type='hidden', name='type', value='')
 														ul#categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='adv_categ')
-															li(role='presentation', data-value='') Всички видове
+															li(role='presentation', data-value='') Всички типове
 															li(role='presentation', data-value='апартамент') Апартамент
 															li(role='presentation', data-value='мезонет') Мезонет
 															li(role='presentation', data-value='къща') Къща
@@ -374,11 +407,11 @@ html(lang='en-US')
 					form(role='search', method='GET', action='/')
 						.dropdown.form-control
 							#mobile-adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-								| Вид
+								| Тип
 								span.caret.caret_filter
 							input(type='hidden', name='type', value='')
 							ul#mobile-categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-adv_categ')
-								li(role='presentation', data-value='') Всички видове
+								li(role='presentation', data-value='') Всички типове
 								li(role='presentation', data-value='апартамент') Апартамент
 								li(role='presentation', data-value='мезонет') Мезонет
 								li(role='presentation', data-value='къща') Къща

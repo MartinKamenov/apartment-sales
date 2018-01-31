@@ -8,6 +8,9 @@ const attach = (app, propertyRepository) => {
     router
         .get('/', (req, res) => {
             controller.showHome(propertyRepository, req, res);
+        })
+        .get('/usefull', (req, res) => {
+            controller.showUsefull(req, res);
         });
     app.use('/', router);
 };

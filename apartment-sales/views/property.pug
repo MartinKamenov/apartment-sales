@@ -106,6 +106,7 @@ html(lang='en-US')
 			br
 			br
 			.container.main_wrapper.wide.has_header_type1.header_transparent.contentheader_left.cheader_left
+				br
 				.master_header.wide.header_transparent
 					.mobile_header
 						.mobile-trigger
@@ -154,13 +155,8 @@ html(lang='en-US')
 								.rect5
 							#listing_ajax_container
 							h1.entry-title.entry-prop=property.title
-							span.price_area
-								span.price_label.price_label_before=property.price
-								span.price_label &#8364;
 							.single-content.listing-content
-								.notice_area
-									.property_categs
-										h3=property.place
+								br
 										
 								#carousel-listing.carousel.slide.post-carusel(data-ride='carousel', data-interval='false')
 									// Wrapper for slides
@@ -210,41 +206,52 @@ html(lang='en-US')
 									style(type='text/css').
 										.property_description {
 											font-size: medium !important;
+											color:#2b2b2b;
+										}
+										.my-sidebar-header {
+											font-size: medium !important;
+											color:#2b2b2b;
+										}
+										.my-sidebar-body {
+											font-size: medium !important;
+											color:#2b2b2b;
+										}
+										#hover-link:hover {
+											color:yellow;
 										}
 								- var descriptionArray = property.text.split('\n');
 									each description in descriptionArray
 										b
 											p.property_description=description
+									br
+									br
 								// Energy saving
-								// END Energy saving
-								#accordion_prop_details.panel-group.property-panel
-									.panel.panel-default
-										.panel-heading
-											a(data-toggle='collapse', data-parent='#accordion_prop_details', href='#collapseOne')
-												h4#prop_det.panel-title Детайли  
-										#collapseOne.panel-collapse.collapse.in
-											.panel-body
-												#propertyid_display.listing_detail.col-md-4
-													strong= 'Код: ' + property.code
-												.listing_detail.col-md-4
-													strong Цена: 
-													span.price_label.price_label_before=' ' + property.price
-												.listing_detail.col-md-4
-													strong='Размер: ' + property.size + ' м'
-													sup 2
-								// Features and Ammenties
-								#accordion_prop_features.panel-group.property-panel
-									.panel.panel-default
-										.panel-heading
-											a(data-toggle='collapse', data-parent='#accordion_prop_features', href='#collapseThree')
-												h4#prop_ame.panel-title За контакти
-										- var contactsArray = property.contacts.split('\n');
-										#collapseThree.panel-collapse.collapse.in
-											.panel-body
-												each contact in contactsArray
-													p=contact
-								// END Features and Ammenties
 						// end 9col container
+						// begin sidebar
+						.clearfix.visible-xs
+						#primary.col-xs-12.col-md-3.widget-area-sidebar
+							ul.xoxo
+								li#advanced_search_widget-1.widget-container.advanced_search_sidebar.boxed_widget
+									img(src='/static/images/pechat.png', width='300px', height='300px')
+							ul.xoxo
+								li#advanced_search_widget-2.widget-container.advanced_search_sidebar.boxed_widget
+									h3.my-sidebar-header.widget-title-sidebar Детайли
+									ul
+										li.my-sidebar-body='Площ: ' + property.size + ' м'
+											sup 2
+										li.my-sidebar-body='Цена: ' + property.price + ' евро'
+										li.my-sidebar-body='Код: ' + property.code
+							ul.xoxo
+								li#advanced_search_widget-3.widget-container.advanced_search_sidebar.boxed_widget
+									h3.my-sidebar-header.widget-title-sidebar Контакти
+									ul
+										- var contactsArray = property.contacts.split('\n');
+										each contact in contactsArray
+											li.my-sidebar-body=contact
+							ul.xoxo
+								li#advanced_search_widget-4.widget-container.advanced_search_sidebar.boxed_widget
+									a(href='/usefull')
+										h3#hover-link.my-sidebar-header.widget-title-sidebar Как се купува имот в гърция
 				// end content_wrapper started in header
 			// end class container
 			footer#colophon.footer_back_repeat_no.sticky_footer(role='contentinfo')
@@ -364,7 +371,59 @@ html(lang='en-US')
 				ga('send', 'pageview');
 				//]]>
 		// end website wrapper
-				
+		.prop-compare
+			#compare_close
+				i.fa.fa-times(aria-hidden='true')
+			form#form_compare(method='post', action='http://rio.wpresidence.net/compare-listings/')
+				h4.title_compare Compare Listings
+				button#submit_compare.wpresidence_button  Compare 
+		// Compare Ends here
+		#modal_login_wrapper
+			.modal_login_back
+			.modal_login_container
+				#login-modal_close
+					i.fa.fa-times(aria-hidden='true')
+				h3#login-div-title-topbar Sign into your account
+				#login-div_topbar.login_form
+					#login_message_area_topbar.loginalert  
+					input#login_user_topbar.form-control(type='text', name='log', placeholder='Username')
+					input#login_pwd_topbar.form-control(type='password', name='pwd', placeholder='Password')
+					input#loginpop_wd_topbar(type='hidden', name='loginpop', value='0')
+					input#security-login-topbar(type='hidden', name='security-login-topbar', value='c4d0d42124-1516113292')
+					button#wp-login-but-topbar.wpresidence_button Login
+					.login-links
+						.or_social or
+						#facebookloginsidebar_topbar(data-social='facebook') Login with Facebook
+						#googleloginsidebar_topbar(data-social='google') Login with Google
+						#yahoologinsidebar_topbar(data-social='yahoo') Login with Yahoo
+				h3#register-div-title-topbar Create an account
+				#register-div-topbar.login_form
+					#register_message_area_topbar.loginalert
+					input#user_login_register_topbar.form-control(type='text', name='user_login_register', placeholder='Username')
+					input#user_email_register_topbar.form-control(type='text', name='user_email_register', placeholder='Email')
+					input#user_password_topbar.form-control(type='password', name='user_password', placeholder='Password')
+					input#user_password_topbar_retype.form-control(type='password', name='user_password_retype', placeholder='Retype Password')
+					input#user_terms_register_topbar(type='checkbox', name='terms')
+					label#user_terms_register_topbar_label(for='user_terms_register_topbar')
+						| I agree with 
+						a#user_terms_register_topbar_link(href='http://rio.wpresidence.net/terms-of-user/ ', target='_blank') terms & conditions
+					input#security-register-topbar(type='hidden', name='security-register-topbar', value='e45f4a4a92-1516113292')
+					button#wp-submit-register_topbar.wpresidence_button Register
+				h3#forgot-div-title-topbar Reset Password
+				#forgot-pass-div.login_form
+					#forgot_pass_area_topbar.loginalert
+					.loginrow
+						input#forgot_email_topbar.form-control(type='text', name='forgot_email', placeholder='Enter Your Email Address', size='20')
+					input#security-forgot-topbar(type='hidden', name='security-forgot-topbar', value='5da8830613')
+					input(type='hidden', name='_wp_http_referer', value='/properties/condo-in-financial-district/')
+					input#postid(type='hidden', value="'.$post_id.'")
+					button#wp-forgot-but-topbar.wpresidence_button(name='forgot') Reset Password
+				.login_modal_control
+					a#widget_register_topbar(href='#') Register here!
+					a#forgot_pass_topbar(href='#') Forgot Password?
+					a#widget_login_topbar(href='#') Back to Login
+					a#return_login_topbar(href='#') Return to Login
+					input#loginpop(type='hidden', name='loginpop', value='0')
 		.lightbox_property_wrapper
 			.lightbox_property_wrapper_level2.lightbox_wrapped_no_contact
 				.lightbox_property_content.row

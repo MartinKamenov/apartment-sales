@@ -48,24 +48,16 @@ const controller = {
                 const foundProperties = result.filteredCollection;
                 const pagesCount = result.numberOfPages;
                 const pages = result.navigationNumbers;
-                const cityArray = [];
                 var found = false;
-                for (var i = 0; i < properties.length; i += 1) {
-                    for (var j = 0; j < cityArray.length; j += 1) {
-                        if (properties[i].place == cityArray[j]) {
-                            found = true;
-                            break;
-                        }
-                    }
 
-                    if (!found) {
-                        cityArray.push(properties[i].place);
-                    }
-                }
+                const cityArray = ['Кавала', 'Тасос', 'Халкидики', 'Солун(Тесалоники)', 'Серес', 'Тракия', 'Лимнос', 'Драма'];
 
                 res.render('home', { apartments: foundProperties, cityArray, pagesCount, pages, currentPage: page });
             });
         }
+    },
+    showUsefull(req, res) {
+        res.render('usefull');
     },
 };
 
