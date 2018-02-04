@@ -5,31 +5,12 @@ const controller = {
     showAdminPanel(propertyRepository, req, res) {
         res.render('admin-login');
     },
-    checkAdmin(adminRepository, propertyRepository, req, res) {
-        const username = req.body.username;
-        const password = req.body.password;
-
-        if (!username || !password) {
-            res.redirect('/');
-            return;
-        }
-        adminRepository.findAdmin(username, password).then((admins) => {
-            if (admins.length !== 1) {
-                res.redirect('/');
-                return;
-            }
-            const admin = admins[0];
-
-            res.redirect('/admin/add');
-        });
-    },
     addProperty(adminRepository, propertyRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
         res.render('addProperty');
-        /*adminRepository.findAdmin(username, password).then((admins) => {
-
-        });*/
     },
     postProperty(adminRepository, propertyRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
         const type = req.body.type;
         const title = req.body.title;
         const text = req.body.text;
@@ -64,9 +45,11 @@ const controller = {
         });*/
     },
     removeProperty(adminRepository, propertyRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
         res.render('removeProperty');
     },
     postRemoveProperty(adminRepository, propertyRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
         const code = req.body.code;
         if (!code) {
             res.send('Code should be added');
@@ -75,8 +58,22 @@ const controller = {
         propertyRepository.removeProperty(code);
         notifier.notify('Успешно премахнат имот с код: ' + code + '!');
         res.redirect('/admin/remove');
+    },
+
+    logout(req, res) {
+        checkIfAdminIsAuthenticated(req, res);
+        req.logout();
+        res.redirect('/admin');
     }
 
+};
+
+function checkIfAdminIsAuthenticated(req, res) {
+    const user = req.user;
+    if (!user) {
+        res.redirect('/');
+        return;
+    }
 };
 
 // @ts-ignore

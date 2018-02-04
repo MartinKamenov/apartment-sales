@@ -5,7 +5,7 @@ const mime = require('mime');
 const crypto = require('crypto');
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'apartment-sales/static/images/added_pictures')
+        cb(null, 'apartment-sales/static/images/added_pictures');
     },
     filename: function(req, file, cb) {
         crypto.pseudoRandomBytes(16, function(err, raw) {
@@ -13,6 +13,7 @@ var storage = multer.diskStorage({
         });
     }
 });
+const passport = require('passport');
 const upload = multer({ storage: storage });
 
 const attach = (app, adminRepository, propertyRepository) => {
@@ -21,9 +22,10 @@ const attach = (app, adminRepository, propertyRepository) => {
     router
         .get('/', (req, res) => {
             controller.showAdminPanel(propertyRepository, req, res);
-        }).post('/', (req, res) => {
-            controller.checkAdmin(adminRepository, propertyRepository, req, res);
-        }).get('/add', (req, res) => {
+        }).post('/', passport.authenticate('local', {
+            successRedirect: '/admin/add',
+            failureRedirect: '/',
+        })).get('/add', (req, res) => {
             controller.addProperty(adminRepository, propertyRepository, req, res);
         }).post('/add', upload.any(), (req, res) => {
             controller.postProperty(adminRepository, propertyRepository, req, res);
@@ -33,6 +35,8 @@ const attach = (app, adminRepository, propertyRepository) => {
             controller.removeProperty(adminRepository, propertyRepository, req, res);
         }).post('/remove', (req, res) => {
             controller.postRemoveProperty(adminRepository, propertyRepository, req, res);
+        }).get('/logout', (req, res) => {
+            controller.logout(req, res);
         });
     app.use('/admin', router);
 };

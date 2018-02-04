@@ -233,7 +233,7 @@ html(lang='en-US')
 									.tab-content
 										#rentals.tab-pane.active(role='tabpanel')
 											form(role='search', method='GET', action='/')
-												.col-md-3.categories
+												.col-md-2.col-md-offset-1.categories
 													.dropdown.form-control
 														#adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 															| Тип
@@ -248,17 +248,17 @@ html(lang='en-US')
 															li(role='presentation', data-value='магазин') Магазин
 															li(role='presentation', data-value='офис') Офис
 															li(role='presentation', data-value='хотел') Хотел
-												.col-md-3.cities
+												.col-md-2.cities
 													.dropdown.form-control
 														#advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 															| Район
 															span.caret.caret_filter
-														input(type='hidden', name='place', value='')
+														input#place_input(type='hidden', name='place', value='', onchange='changeLocation()')
 														ul#adv-search-city.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_city')
 															li(role='presentation', data-value='', data-value2='') Всички райони
 															each place in cityArray
-																li(role='presentation', data-value=city, data-value2=city)=place
-												.col-md-3.cities
+																li(role='presentation', data-value=place, data-value2=place)=place
+												.col-md-2.cities
 													.dropdown.form-control
 														#advanced_location.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 															| Под район
@@ -266,32 +266,7 @@ html(lang='en-US')
 														input(type='hidden', name='location', value='')
 														ul#adv-search-location.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_location')
 															li(role='presentation', data-value='', data-value2='') Всички подрайони
-												script.
-													changeLocation();
-													function changeLocation() {
-														const placeDropdown = document.getElementById('advanced_city');
-														console.log(placeDropdown.value)
-														const placeValue = placeDropdown.value;
-														const locationDropdown = document.getElementById('adv-search-location');
-														let locationArray = [];
-														while (locationDropdown.firstChild) {
-															locationDropdown.removeChild(locationDropdown.firstChild);
-														}
-														if(placeValue==='Кавала') {
-															locationArray = ['Паралия Орфани', 'Офринио', 'Паралия Офринио', 'Карияни', 'Паралия Карияни',
-															'Неа Перамос', 'Неа Ираклица', 'Палио', 'Кавала(град)', 'Керамоти'];
-														}
-														else if(placeValue==='Тасос') {
-															locationArray = ['Пешо', 'Офринио', 'Паралия Офринио', 'Карияни', 'Паралия Карияни',
-															'Неа Перамос', 'Неа Ираклица', 'Палио', 'Кавала(град)', 'Керамоти'];
-														}
-														for(var i = 0; i < locationArray.length; i += 1) {
-															var li = document.createElement('li');
-															li.innerHTML = locationArray[i];
-															locationDropdown.appendChild(li);
-														}
-													}
-												.col-md-3.areas
+												.col-md-2.areas
 													.dropdown.form-control
 														#advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 															| Цена
@@ -311,8 +286,9 @@ html(lang='en-US')
 																span
 																	label(for='to') До
 																	input(name='to')
-												.col-md-3
+												.col-md-2
 													input#advanced_submit_4.wpresidence_button(name='submit', type='submit', value='ТЪРСИ')
+												
 												#adv_extended_options_text_adv.adv_extended_options_text Повече опции за търсене
 												.extended_search_check_wrapper
 													span#adv_extended_close_adv.adv_extended_close_button
@@ -423,11 +399,11 @@ html(lang='en-US')
 							#mobile-advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 								| Район
 								span.caret.caret_filter
-							input(type='hidden', name='place', value='')
+							input#place-input(type='hidden', name='place', value='place', onchange='changeLocation()')
 							ul#mobile-adv-search-city.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_city')
 								li(role='presentation', data-value='', data-value2='') Всички райони
-									each place in cityArray
-										li(role='presentation', data-value=city, data-value2=city)=place
+								each place in cityArray
+									li(role='presentation', data-value=place, data-value2=place)=place
 						.dropdown.form-control
 							#mobile-advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 								| Цена
@@ -604,6 +580,34 @@ html(lang='en-US')
 										i.fa.fa-desktop
 										a(href='/') имотивгърция.bg
 			//if shouldScroll
+			script.
+				const placeDropdown = document.getElementById('advanced_city');
+				console.log(placeDropdown);
+				changeLocation();
+				placeDropdown.addEventListener("change", changeLocation());
+				function changeLocation() {
+					const placeValue = placeDropdown.innerText;
+					console.log(placeValue);
+					const locationDropdown = document.getElementById('adv-search-location');
+					while (locationDropdown.firstChild) {
+						locationDropdown.removeChild(locationDropdown.firstChild);
+					}
+					if(placeValue==='Кавала') {
+						const locationArray = ['Паралия Орфани', 'Офринио', 'Паралия Офринио', 'Карияни', 'Паралия Карияни',
+						'Неа Перамос', 'Неа Ираклица', 'Палио', 'Кавала(град)', 'Керамоти'];
+						for(var i = 0; i < locationArray.length; i += 1) {
+							var option = document.createElement('option');
+							option.innerHTML = locationArray[i];
+							locationDropdown.appendChild(option);
+						}
+					}
+					else if(placeValue==='Тасос') {
+						//Орфани
+						var potos = document.createElement('option');
+						potos.innerHTML = 'Потос';
+						locationDropdown.appendChild(potos);
+					}
+				}
 			script(type='text/javascript').
 				//var elmnt = document.getElementById("listing_ajax_container");
 				//elmnt.scrollIntoView();

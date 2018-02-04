@@ -10,6 +10,10 @@ class ApartmentRepository {
     createAdmin(username, password) {
         this.database.insert(collectionName, { username, password });
     }
+
+    findAdminById(id) {
+        return this.database.findById(collectionName, id);
+    }
 }
 
 module.exports = ApartmentRepository;

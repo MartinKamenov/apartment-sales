@@ -1,17 +1,24 @@
 {
     "dependencies": {
         "@types/body-parser": "1.16.8",
+        "@types/cookie-parser": "^1.4.1",
         "@types/mongodb": "2.2.18",
         "@types/multer": "1.3.6",
         "@types/node-notifier": "0.0.28",
+        "@types/passport": "^0.4.2",
+        "@types/passport-local": "^1.0.32",
         "body-parser": "1.18.2",
         "bootstrap": "3.3.7",
+        "cookie-parser": "^1.4.3",
         "crypto": "^1.0.1",
         "express": "^4.16.2",
+        "express-session": "^1.15.6",
         "mongodb": "2.2.30",
         "multer": "1.3.0",
         "node-notifier": "^5.2.1",
         "nodemon": "1.13.3",
+        "passport": "^0.4.0",
+        "passport-local": "^1.0.0",
         "pug": "2.0.0-rc.4"
     },
     "scripts": {
