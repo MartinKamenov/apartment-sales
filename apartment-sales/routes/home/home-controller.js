@@ -59,6 +59,9 @@ const controller = {
     showUsefull(req, res) {
         res.render('usefull');
     },
+    showServices(req, res) {
+        res.render('services');
+    },
 };
 
 // @ts-ignore

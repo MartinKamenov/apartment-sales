@@ -11,6 +11,9 @@ const attach = (app, propertyRepository) => {
         })
         .get('/usefull', (req, res) => {
             controller.showUsefull(req, res);
+        })
+        .get('/services', (req, res) => {
+            controller.showServices(req, res);
         });
     app.use('/', router);
 };
