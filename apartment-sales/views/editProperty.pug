@@ -1,0 +1,100 @@
+extends shared/_master
+
+block body
+    link(rel='stylesheet', href='../static/css/add-apartment.css')
+    .container
+        .menu
+            button.btn-warning 
+                a(href='/admin/edit') Промяна
+            button.btn-danger 
+                a(href='/admin/remove') Премахване
+            button.btn-info 
+                a(href='/admin/logout') Излизане от админ профила
+        .content
+            h1 Добавяне на жилище
+            form(method='post', action='/admin/add', enctype='multipart/form-data')
+                select.form-control(name='type')
+                    option(value='апартамент') апартамент
+                    option(value='мезонет') мезонет
+                    option(value='къща') къща
+                    option(value='парцел') парцел
+                    option(value='магазин') магазин
+                    option(value='офис') офис
+                    option(value='хотел') хотел
+                input.form-control(type='text', name='title', placeholder='заглавие')
+                textarea.form-control(name='text', rows='10', cols='30', placeholder='описание')
+                input.form-control(type='text', name='price', placeholder='цена в евро')
+                select#place.form-control(name='place', onchange='changeLocation()')
+                    option(value='Кавала') Кавала
+                    option(value='Тасос') Тасос
+                    option(value='Халкидики') Халкидики
+                    option(value='Солун (Тесалоники)') Солун (Тесалоники)
+                    option(value='Серес') Серес
+                    option(value='Тракия') Тракия
+                    option(value='Лимнос') Лимнос
+                    option(value='Драма') Драма
+                select#location.form-control(name='location')
+                input.form-control(type='number', name='size', placeholder='размер(кв м.)')
+                .form-control
+                    label(for='firstLine') първа линия
+                    input(type='checkbox', name='firstLine')
+                    label(for='parkingSpot') паркинг място
+                    input(type='checkbox', name='parkingSpot')
+                    label(for='view') гледка
+                    input(type='checkbox', name='view')
+                    label(for='pool') басейн
+                    input(type='checkbox', name='pool')
+                    label(for='furnished') обзаведен
+                    input(type='checkbox', name='furnished')
+                textarea.form-control(name='contacts', rows='5', cols='30', placeholder='контакти')
+                input.form-control(type='number', name='code', placeholder='код')
+                input.form-control#number_pictures(name='number_pictures', type='number',placeholder='брой снимки', onkeyup='change()')
+                script.
+                    function change(){
+                    const ul = document.getElementById('changable_ul');
+                    const input = document.getElementById('number_pictures');
+                    while (ul.firstChild) {
+                        ul.removeChild(ul.firstChild);
+                    }
+                    var n = +input.value;
+                    if (typeof n == 'number') {
+                        for (let i = 0; i < n; i += 1) {
+                            var li = document.createElement("li");
+                            var newInput = document.createElement("input");
+                            newInput.className = 'form-control';
+                            newInput.type = 'file';
+                            newInput.name = 'pic';
+                            newInput.accept = '.png, .jpg, .jpeg';
+                            li.appendChild(newInput);
+                            ul.appendChild(li);
+                        }
+                    }
+                    }
+                ul#changable_ul
+                button.form-control.btn-success(type='submit') Добавяне
+                script.
+                    changeLocation();
+                    function changeLocation() {
+                        const placeDropdown = document.getElementById('place');
+                        const placeValue = placeDropdown.value;
+                        const locationDropdown = document.getElementById('location');
+                        while (locationDropdown.firstChild) {
+                            locationDropdown.removeChild(locationDropdown.firstChild);
+                        }
+                        if(placeValue==='Кавала') {
+                            const locationArray = ['Паралия Орфани', 'Офринио', 'Паралия Офринио', 'Карияни', 'Паралия Карияни',
+                             'Неа Перамос', 'Неа Ираклица', 'Палио', 'Кавала(град)', 'Керамоти'];
+                            for(var i = 0; i < locationArray.length; i += 1) {
+                                var option = document.createElement('option');
+                                option.innerHTML = locationArray[i];
+                                locationDropdown.appendChild(option);
+                            }
+                        }
+                        else if(placeValue==='Тасос') {
+                            //Орфани
+                            var potos = document.createElement('option');
+                            potos.innerHTML = 'Потос';
+                            locationDropdown.appendChild(potos);
+                        }
+                    }
+    

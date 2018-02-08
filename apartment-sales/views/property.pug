@@ -179,7 +179,7 @@ html(lang='en-US')
 												li.active(data-target='#carousel-listing', data-slide-to='0')
 													img(src=property.pictures[i], alt='slider')
 											else
-												li(data-target='#carousel-listing', data-slide-to='1')
+												li(data-target='#carousel-listing', data-slide-to=i)
 													img(src=property.pictures[i], alt='slider')
 										- }
 									ol.carousel-round-indicators

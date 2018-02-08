@@ -5,9 +5,10 @@ html(lang='en-US')
 		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1,user-scalable=no')
 		title
-			| Имоти в Гърция
+			| Полезно
 		link(rel='pingback', href='//chicago.wpresidence.net/xmlrpc.php')
 		link(rel='icon', href='/static/images/logo.png')
+		link(rel='shortcut icon', href='//chicago.wpresidence.net/wp-content/themes/wpresidence/img/favicon.gif', type='image/x-icon')
 		meta(name='robots', content='noindex,follow')
 		link(rel='dns-prefetch', href='//maps.googleapis.com')
 		link(rel='dns-prefetch', href='//fonts.googleapis.com')
@@ -77,24 +78,83 @@ html(lang='en-US')
 			style(type='text/css').
 				.wpb_animate_when_almost_visible { opacity: 1; }
 	body.home.page-template.page-template-property_list.page-template-property_list-php.page.page-id-17707.wpb-js-composer.vc_responsive(class='js-comp-ver-5.3')
-		#all_wrapper.website-wrapper
+		.mobilewrapper
+			.snap-drawers
+				// Left Sidebar
+				.snap-drawer.snap-drawer-left
+					.mobilemenu-close
+						i.fa.fa-times
+					ul#menu-main-menu.mobilex-menu
+						li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-17952
+							a(href='/') Начало
+						li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17954
+							a(href='/advaned_search') Търсене
+						li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
+							a(href='/usefull') Полезно
+						li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
+							a(href='/services') Услуги
+						li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17955
+							a(href='/news') Новини
+						li#menu-item-17956.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17956
+							a(href='/for_us') За нас
+						li#menu-item-17957.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17956
+							a(href='/contacts') Контакти
+		#all_wrapper.website-wrapper(style='background-color:#323B40;')
+			br
+			br
+			br
+			br
+			br
+			br
 			.container.main_wrapper.wide.has_header_type1.header_transparent.contentheader_left.cheader_left
 				br
+				.master_header.wide.header_transparent
+					.mobile_header
+						.mobile-trigger
+							i.fa.fa-bars
+						.mobile-logo
+							a(href='/')
+								img.img-responsive.retina_ready(src='/static/images/logo.png', alt='logo')
+					.header_wrapper.header_type1.header_left.hover_type_6.header_alignment_text_left
+						.header_wrapper_inside(data-logo='/static/images/logo.png', data-sticky-logo='/static/images/logo.png')
+							.logo
+								a(href='/')
+									img#logo_image.img-responsive.retina_ready(style='margin-top:0px;', src='/static/images/logo.png', alt='logo')
+							nav#access
+								.menu-main-menu-container
+									ul#menu-main-menu-1.menu
+										li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.no-megamenu
+											a.menu-item-link(href='/') Начало
+										li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/advanced_search') Търсене
+										li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/usefull') Полезно
+										li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/services') Услуги
+										li#menu-item-17956.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/news') Новини
+										li#menu-item-17957.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/for_us') За нас
+										li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/contacts') Контакти
 				.container.content_wrapper
 					.row
 						.col-md-9.rightmargin.full_width_prop
 							#listing_ajax_container
-							h2.my-title Условия за закупуване на недвижимо имущество в Гърция
+							h2.my-title(style='color: #10E698; text-align: center;')
+								|Условия за закупуване на недвижимо имущество в Гърция
 							.single-content.listing-content
 					.row
-						img.icon-arrow(src='/static/images/two-arrows.PNG')
-						h4.here Чужденците членове на ЕС могат лесно да закупят имот в Р.Гърция. За целта е необходимо издаването на данъчен номер в Гърция. С това се заема нашата агенция. Неоходимите документи са:
+						div.icon-arrow
+							img(src='/static/images/two-arrows.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 Чужденците членове на ЕС могат лесно да закупят имот в Р.Гърция. За целта е необходимо издаването на данъчен номер в Гърция. С това се заема нашата агенция. Неоходимите документи са:
 					style.
-						.pesho {
-							display: inline-block;
+						.icon-arrow {
+							display:inline;
 						}
-						.here {
-							display: inline-block;
+						.my-text {
+							display:inline;
 						}
 						.icon-arrow {
 							float: left;
@@ -103,23 +163,52 @@ html(lang='en-US')
 							width: 30px;
 						}
 					.row
-						h4 Лична карта
+						h4 
 					.row
-						h4 Акт за раждане преведен на гръцки
+						div.icon-arrow
+							img(src='/static/images/plus-icon.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 Лична карта
 					.row
-						h4 Удостоверение за постоянно жителство от общината в която живее- преведено и легализирано
+						div.icon-arrow
+							img(src='/static/images/plus-icon.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 Акт за раждане преведен на гръцки
 					.row
-						h4 Удостоверение за граждански брак преведен на гръцки
+						div.icon-arrow
+							img(src='/static/images/plus-icon.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 Удостоверение за постоянно жителство от общината в която живее - преведено и легализирано
 					.row
-						h4 Пълномощно от купувача към счетоводителя за издаването на данъчния номер и подаване на годишната данъчна декларация (издава се на място)
+						div.icon-arrow
+							img(src='/static/images/plus-icon.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 Удостоверение за граждански брак преведен на гръцки
 					.row
-						h4 С тези документи се издава данъчен номер на купувача. Той струва 100€, от които 50€ са за нотариуската, при която правите пълномощно на счетоводителката, за да издаде данъчният номер и всяка година да подава данъчната ви декларация и 50€ са за счетоводителката, която издава този данъчен номер.
+						div.icon-arrow
+							img(src='/static/images/plus-icon.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 Пълномощно от купувача към счетоводителя за издаването на данъчния номер и подаване на годишната данъчна декларация (издава се на място)
 					.row
-						h4 В случай че купувачът желае да издаде и банкова сметка в гръцка банка ще е необходимо да представи данъчна декларация от НАП за получени доходи от предходната година или служебна бележка от местоработата за заплатата, която получава.
+						div.icon-arrow
+							img(src='/static/images/two-arrows.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 С тези документи се издава данъчен номер на купувача. Той струва 100€, от които 50€ са за нотариуската, при която правите пълномощно на счетоводителката, за да издаде данъчният номер и всяка година да подава данъчната ви декларация и 50€ са за счетоводителката, която издава този данъчен номер.
 					.row
-						h4 Законността на имотите в Р.Гърция е напълно гарантирана, тъй като по новите закони се изисква документ от строителен инженер, че няма надвишена квадратура, промяна в разрешителното за строеж и каквито и да било други промени в структурата и вида на имота. Ако има такива те трябва да бъдат узаконени преди покупко-продажбата за сметка на продавача и да бъде предоставен съответният документ на нотариуса. Ако бъде издаден фалшив документ от строителният инженер, той губи правото си на дейност завинаги. Същото се случва и с нотариусите които изповядат сделка без такъв документ и с непълна папка от задължителните документи при изповядването на сделки.
+						div.icon-arrow
+							img(src='/static/images/two-arrows.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 В случай че купувачът желае да издаде и банкова сметка в гръцка банка ще е необходимо да представи данъчна декларация от НАП за получени доходи от предходната година или служебна бележка от местоработата за заплатата, която получава.
 					.row
-						h4 Агенцията ни работи с имоти, при които е подписан ексклузивен договор с продавачите и за които имаме предварителна информация. Екипите ни от адвокати, инженери, както и нотариусите с които работим, проверяват подробно всички имоти при подписването на ексклузивният договор за продажба с агенцията. Така цялата информация е достъпна и до потенциалният купувач преди покупката. Също така е важно да се отбележи, че капарото остава в агенцията до изповядването на сделката, за да бъде гарантирано гладкото протичане на процедурата или че в случай на отказ от страна на продавача ще бъде върнато капарото на купувача.
+						div.icon-arrow
+							img(src='/static/images/two-arrows.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 Законността на имотите в Р.Гърция е напълно гарантирана, тъй като по новите закони се изисква документ от строителен инженер, че няма надвишена квадратура, промяна в разрешителното за строеж и каквито и да било други промени в структурата и вида на имота. Ако има такива те трябва да бъдат узаконени преди покупко-продажбата за сметка на продавача и да бъде предоставен съответният документ на нотариуса. Ако бъде издаден фалшив документ от строителният инженер, той губи правото си на дейност завинаги. Същото се случва и с нотариусите които изповядат сделка без такъв документ и с непълна папка от задължителните документи при изповядването на сделки.
+					.row
+						div.icon-arrow
+							img(src='/static/images/two-arrows.PNG',  width='30px', height='25px')
+						div.my-text
+							h4 Агенцията ни работи с имоти, при които е подписан ексклузивен договор с продавачите и за които имаме предварителна информация. Екипите ни от адвокати, инженери, както и нотариусите с които работим, проверяват подробно всички имоти при подписването на ексклузивният договор за продажба с агенцията. Така цялата информация е достъпна и до потенциалният купувач преди покупката. Също така е важно да се отбележи, че капарото остава в агенцията до изповядването на сделката, за да бъде гарантирано гладкото протичане на процедурата или че в случай на отказ от страна на продавача ще бъде върнато капарото на купувача.
 					br
 					br
 						     

@@ -43,6 +43,36 @@ propertyRepository.getAllPropertys().then((properties) => {
     console.log(properties);
 });*/
 
+var fs = require('fs');
+
+/*fs.readFile('../apartment-sales/firstProperty.txt', 'utf8', function(err, data) {
+    if (err) throw err; // we'll not consider error handling for now
+    var obj = JSON.parse(data);
+    const jsonProp = obj;
+    console.log(obj);
+    const title = jsonProp.property;
+    const text = jsonProp.description;
+    const type = jsonProp.home_types[0].type;
+    const location = jsonProp.area.area;
+    const place = jsonProp.area.region.region;
+    const price = jsonProp.selling_price;
+    const contacts = 'Христо Георгиев\nТел. номер: 0988228857\nИмейл: estatesingreece@gmail.com\nSkype: live:estatesingreece\nНамерете ме във Viber и WhatsApp';
+    const size = jsonProp.square_metres;
+    const code = jsonProp.alias_id;
+    const pictures = [];
+    const mainPicture = jsonProp.photo;
+    pictures.push('https://remax-choice.gr/images/properties/' + code + '/' + mainPicture);
+    const photos = jsonProp.photos;
+    if (photos) {
+        for (let j = 0; j < photos.length; j += 1) {
+            pictures.push('https://remax-choice.gr/images/properties/' + code + '/' + photos[j].photo);
+        }
+    }
+    const date = new Date();
+    const property = new Property(title, text, type, place, location, price, contacts, size, code, null, null, null, null, null, pictures, date);
+    propertyRepository.insertProperty(property);
+});*/
+
 authConfig(app, adminRepository);
 homeRoute(app, propertyRepository);
 adminRoute(app, adminRepository, propertyRepository);

@@ -1,11 +1,12 @@
 class Property {
-    constructor(title, text, type, place, price, contacts, size, code, firstLine, parkingSpot,
+    constructor(title, text, type, place, location, price, contacts, size, code, firstLine, parkingSpot,
         view, pool, furnished, pictures, date) {
 
         this.title = title;
         this.text = text;
         this.type = type;
         this.place = place;
+        this.location = location;
         this.contacts = contacts;
         this.price = price;
         this.size = size;

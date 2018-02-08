@@ -22,6 +22,6 @@
         "pug": "2.0.0-rc.4"
     },
     "scripts": {
-        "start": "./node_modules/.bin/nodemon ./apartment-sales/server.js"
+        "start": "node ./apartment-sales/server.js"
     }
 }

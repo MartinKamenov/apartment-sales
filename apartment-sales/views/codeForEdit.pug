@@ -1,0 +1,22 @@
+extends shared/_master
+
+block body
+    link(rel='stylesheet', href='../static/css/add-apartment.css')
+    .container
+        .menu
+            button.btn-success 
+                a(href='/admin/add') Добавяне
+            button.btn-danger 
+                a(href='/admin/remove') Премахване
+            button.btn-info 
+                a(href='/admin/logout') Излизане от админ профила
+        .content
+            h1 Промяна на жилище
+            input#code.form-control(type='number', name='code', placeholder='Код на жилище')
+            button.btn-warning.form-control(onclick='changeAction()') Промени
+        script.
+            function changeAction() {
+                const input = document.getElementById('code');
+                console.log(input.value);
+                document.location='/admin/edit/' + input.value;
+            }

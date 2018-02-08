@@ -5,9 +5,10 @@ html(lang='en-US')
 		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1,user-scalable=no')
 		title
-			| Имоти в Гърция
+			| Услуги
 		link(rel='pingback', href='//chicago.wpresidence.net/xmlrpc.php')
 		link(rel='icon', href='/static/images/logo.png')
+		link(rel='shortcut icon', href='//chicago.wpresidence.net/wp-content/themes/wpresidence/img/favicon.gif', type='image/x-icon')
 		meta(name='robots', content='noindex,follow')
 		link(rel='dns-prefetch', href='//maps.googleapis.com')
 		link(rel='dns-prefetch', href='//fonts.googleapis.com')
@@ -77,9 +78,65 @@ html(lang='en-US')
 			style(type='text/css').
 				.wpb_animate_when_almost_visible { opacity: 1; }
 	body.home.page-template.page-template-property_list.page-template-property_list-php.page.page-id-17707.wpb-js-composer.vc_responsive(class='js-comp-ver-5.3')
-		#all_wrapper.website-wrapper
+		.mobilewrapper
+			.snap-drawers
+				// Left Sidebar
+				.snap-drawer.snap-drawer-left
+					.mobilemenu-close
+						i.fa.fa-times
+					ul#menu-main-menu.mobilex-menu
+						li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-17952
+							a(href='/') Начало
+						li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17954
+							a(href='/advaned_search') Търсене
+						li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
+							a(href='/usefull') Полезно
+						li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
+							a(href='/services') Услуги
+						li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17955
+							a(href='/news') Новини
+						li#menu-item-17956.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17956
+							a(href='/for_us') За нас
+						li#menu-item-17957.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17956
+							a(href='/contacts') Контакти
+		#all_wrapper.website-wrapper(style='background-color:#323B40;')
+			br
+			br
+			br
+			br
+			br
+			br
 			.container.main_wrapper.wide.has_header_type1.header_transparent.contentheader_left.cheader_left
 				br
+				.master_header.wide.header_transparent
+					.mobile_header
+						.mobile-trigger
+							i.fa.fa-bars
+						.mobile-logo
+							a(href='/')
+								img.img-responsive.retina_ready(src='/static/images/logo.png', alt='logo')
+					.header_wrapper.header_type1.header_left.hover_type_6.header_alignment_text_left
+						.header_wrapper_inside(data-logo='/static/images/logo.png', data-sticky-logo='/static/images/logo.png')
+							.logo
+								a(href='/')
+									img#logo_image.img-responsive.retina_ready(style='margin-top:0px;', src='/static/images/logo.png', alt='logo')
+							nav#access
+								.menu-main-menu-container
+									ul#menu-main-menu-1.menu
+										li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.no-megamenu
+											a.menu-item-link(href='/') Начало
+										li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/advanced_search') Търсене
+										li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/usefull') Полезно
+										li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/services') Услуги
+										li#menu-item-17956.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/news') Новини
+										li#menu-item-17957.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/for_us') За нас
+										li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
+											a.menu-item-link(href='/contacts') Контакти
 				.container.content_wrapper
 					h2.my-title
 						.row Строителство / Ремонти

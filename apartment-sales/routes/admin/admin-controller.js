@@ -18,6 +18,7 @@ const controller = {
         const place = req.body.place;
         const size = req.body.size;
         const contacts = req.body.contacts;
+        const location = req.body.location;
         var firstLine = req.body.firstLine;
         var parkingSpot = req.body.parkingSpot;
         var view = req.body.view;
@@ -58,6 +59,23 @@ const controller = {
         propertyRepository.removeProperty(code);
         notifier.notify('Успешно премахнат имот с код: ' + code + '!');
         res.redirect('/admin/remove');
+    },
+
+    getCodeForEdit(propertyRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
+        res.render('codeForEdit');
+    },
+
+    editProperty(propertyRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
+        res.render('editProperty');
+    },
+
+    postEditProperty(propertyRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
+        const code = req.params.code;
+        notifier.notify('Успешно променен имот с код: ' + code + '!');
+        res.redirect('/admin/edit');
     },
 
     logout(req, res) {
