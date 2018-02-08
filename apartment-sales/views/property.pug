@@ -222,7 +222,7 @@ html(lang='en-US')
 								- var descriptionArray = property.text.split('\n');
 									each description in descriptionArray
 										b
-											p.property_description=description
+											p.property_description=description									
 									br
 									br
 								// Energy saving
@@ -311,6 +311,13 @@ html(lang='en-US')
 									p.widget_contact_url
 										i.fa.fa-desktop
 										a(href='/') имотивгърция.bg
+			script.
+				var mapProp= {
+				center:new google.maps.LatLng(20, 20),
+				zoom:5,
+				};
+				var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			script(src='https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap')
 			script(type='text/javascript', src='//chicago.wpresidence.net/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4')
 			script(type='text/javascript', src='//chicago.wpresidence.net/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4')
 			script(type='text/javascript', src='//chicago.wpresidence.net/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4')

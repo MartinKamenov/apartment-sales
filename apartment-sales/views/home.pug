@@ -443,6 +443,47 @@ html(lang='en-US')
 								img(src='/static/images/bar.PNG', width='2000')
 					.row
 						.col-md-12
+							#ultimate-heading-16635a575d66ae212.uvc-heading.ult-adjust-bottom-margin.ultimate-heading-16635a575d66ae212.uvc-9517(data-hspacer='line_only', data-halign='center', style='text-align:center')
+								.uvc-main-heading.ult-responsive(data-ultimate-target='.uvc-heading.ultimate-heading-16635a575d66ae212 h2', data-responsive-json-new='{"font-size":"desktop:30px;","line-height":""}')
+									h2(style='font-weight:bold;color:#303030;margin-top:20px;')=''
+									.uvc-heading-spacer.line_only(style='margin-top:20px;margin-bottom:20px;height:3px;')
+										span.uvc-headings-line(style='border-style:solid;border-bottom-width:3px;border-color:#d67b04;width:100px;')
+									.wpb_column.vc_column_container.vc_col-sm-12.vc_column
+										.vc_column-inner.vc_custom_1485414699089
+											.wpb_wrapper
+												.vc_row.wpb_row.vc_inner.vc_row-fluid.vc_column-gap-30.vc_row_inner
+													.wpb_column.vc_column_container.vc_col-sm-4.vc_column_inner
+														.vc_column-inner
+															.wpb_wrapper
+																.article_container
+																	.places_wrapper_type_2(style='background-image: url(/static/images/KAVALA.jpg)')
+																		.places_cover(data-link='/?place=Кавала')
+																		.places_type_2_content
+																			h4
+																				a(href='/?place=Кавала')
+																					| Кавала
+													.wpb_column.vc_column_container.vc_col-sm-4.vc_column_inner
+														.vc_column-inner
+															.wpb_wrapper
+																.article_container
+																	.places_wrapper_type_2(style='background-image: url(/static/images/Tasos3.jpg)')
+																		.places_cover(data-link='/?place=Тасос')
+																		.places_type_2_content
+																			h4
+																				a(href='/?place=Тасос')
+																					| Тасос
+													.wpb_column.vc_column_container.vc_col-sm-4.vc_column_inner
+														.vc_column-inner
+															.wpb_wrapper
+																.article_container
+																	.places_wrapper_type_2(style='background-image: url(/static/images/halckidicki.jpg)')
+																		.places_cover(data-link='/?place=Халкидики')
+																		.places_type_2_content
+																			h4
+																				a(href='/?place=Халкидики')
+																					| Халкидики
+					.row
+						.col-md-12
 							.single-content
 								.vc_row.wpb_row.vc_row-fluid.vc_custom_1507031785547.vc_row
 									.wpb_column.vc_column_container.vc_col-sm-8.vc_column
@@ -500,13 +541,17 @@ html(lang='en-US')
 											h4
 												a(href='/property/' + apartment.code)=apartment.title.substring(0, 100)
 											.listing_unit_price_wrapper
-												span.price_label.price_label_before=apartment.price + ' лв'
+												span.price_label.price_label_before=parseInt(apartment.price) + ' \u20AC'
 												//span.price_label / month
 											.listing_details.the_grid_view=apartment.text.substring(0, 100)
 												a.unit_more_x(href='/property/' + apartment.code) [more]
 											.listing_details.the_list_view=apartment.text
 												a.unit_more_x(href='/property/' + apartment.code) [more]
 											.property_listing_details
+												if apartment.rooms
+													span.inforoom=apartment.rooms
+												if apartment.baths
+													span.infobath=apartment.baths
 												span.infosize=apartment.size + ' m'
 													sup 2
 												a.unit_details_x(href='/property/' + apartment.code) Виж повече

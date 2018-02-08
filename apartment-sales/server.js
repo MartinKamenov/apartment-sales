@@ -44,12 +44,19 @@ propertyRepository.getAllPropertys().then((properties) => {
 });*/
 
 var fs = require('fs');
+/*fs.readFile('../apartment-sales/firstPage.txt', 'utf8', function(err, data) {
+    if (err) throw err; // we'll not consider error handling for now
+    var obj = JSON.parse(data);
+    for (let i = 0; i < obj.data.length; i++) {
+        console.log(obj.data[i].id);
+    }
+});*/
 
-/*fs.readFile('../apartment-sales/firstProperty.txt', 'utf8', function(err, data) {
+fs.readFile('../apartment-sales/FirstProperty.txt', 'utf8', function(err, data) {
     if (err) throw err; // we'll not consider error handling for now
     var obj = JSON.parse(data);
     const jsonProp = obj;
-    console.log(obj);
+    console.log(jsonProp);
     const title = jsonProp.property;
     const text = jsonProp.description;
     const type = jsonProp.home_types[0].type;
@@ -61,6 +68,16 @@ var fs = require('fs');
     const code = jsonProp.alias_id;
     const pictures = [];
     const mainPicture = jsonProp.photo;
+    const latitude = jsonProp.coords.latitude;
+    const longitude = jsonProp.coords.longitude;
+    let rooms = jsonProp.rooms;
+    if (!rooms) {
+        rooms = null;
+    }
+    const baths = jsonProp.baths;
+    if (!baths) {
+        baths = null;
+    }
     pictures.push('https://remax-choice.gr/images/properties/' + code + '/' + mainPicture);
     const photos = jsonProp.photos;
     if (photos) {
@@ -69,9 +86,18 @@ var fs = require('fs');
         }
     }
     const date = new Date();
-    const property = new Property(title, text, type, place, location, price, contacts, size, code, null, null, null, null, null, pictures, date);
-    propertyRepository.insertProperty(property);
-});*/
+    propertyRepository.findPropertyByCode(code).then(prope => {
+        if (prope.length == 0) {
+            const property = new Property(title, text, type, place, location, price, contacts, size, code,
+                null, null, null, null, null, rooms, baths,
+                pictures, latitude, longitude, null, date);
+            //propertyRepository.insertProperty(property);
+            console.log('added ' + jsonProp.id);
+        } else {
+            console.log('same code: ' + jsonProp.id);
+        }
+    });
+});
 
 authConfig(app, adminRepository);
 homeRoute(app, propertyRepository);

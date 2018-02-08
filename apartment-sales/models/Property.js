@@ -1,6 +1,6 @@
 class Property {
     constructor(title, text, type, place, location, price, contacts, size, code, firstLine, parkingSpot,
-        view, pool, furnished, pictures, date) {
+        view, pool, furnished, rooms, baths, pictures, latitude, longitude, investment, date) {
 
         this.title = title;
         this.text = text;
@@ -16,7 +16,12 @@ class Property {
         this.view = view;
         this.pool = pool;
         this.furnished = furnished;
+        this.rooms = rooms;
+        this.baths = baths;
         this.pictures = pictures;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.investment = investment;
         this.date = date;
     }
 }

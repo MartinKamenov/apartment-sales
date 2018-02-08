@@ -13,28 +13,13 @@ block body
         .content
             h1 Добавяне на жилище
             form(method='post', action='/admin/add', enctype='multipart/form-data')
-                select.form-control(name='type')
-                    option(value='апартамент') апартамент
-                    option(value='мезонет') мезонет
-                    option(value='къща') къща
-                    option(value='парцел') парцел
-                    option(value='магазин') магазин
-                    option(value='офис') офис
-                    option(value='хотел') хотел
-                input.form-control(type='text', name='title', placeholder='заглавие')
-                textarea.form-control(name='text', rows='10', cols='30', placeholder='описание')
-                input.form-control(type='text', name='price', placeholder='цена в евро')
-                select#place.form-control(name='place', onchange='changeLocation()')
-                    option(value='Кавала') Кавала
-                    option(value='Тасос') Тасос
-                    option(value='Халкидики') Халкидики
-                    option(value='Солун (Тесалоники)') Солун (Тесалоники)
-                    option(value='Серес') Серес
-                    option(value='Тракия') Тракия
-                    option(value='Лимнос') Лимнос
-                    option(value='Драма') Драма
-                select#location.form-control(name='location')
-                input.form-control(type='number', name='size', placeholder='размер(кв м.)')
+                input.form-control(name='type', value=property.type)
+                input.form-control(type='text', name='title', placeholder='заглавие', value=property.title)
+                textarea#description.form-control(name='text', rows='10', cols='30', placeholder='описание')=property.text
+                input.form-control(type='text', name='price', placeholder='цена в евро', value=property.price)
+                input#place.form-control(name='place', onchange='changeLocation()', value=property.place)
+                input#location.form-control(name='location' ,value=property.location)
+                input.form-control(type='number', name='size', placeholder='размер(кв м.)', value=property.size)
                 .form-control
                     label(for='firstLine') първа линия
                     input(type='checkbox', name='firstLine')
@@ -46,8 +31,8 @@ block body
                     input(type='checkbox', name='pool')
                     label(for='furnished') обзаведен
                     input(type='checkbox', name='furnished')
-                textarea.form-control(name='contacts', rows='5', cols='30', placeholder='контакти')
-                input.form-control(type='number', name='code', placeholder='код')
+                textarea.form-control(name='contacts', rows='5', cols='30', placeholder='контакти')=property.contacts
+                input.form-control(type='number', name='code', placeholder='код',value=property.code)
                 input.form-control#number_pictures(name='number_pictures', type='number',placeholder='брой снимки', onkeyup='change()')
                 script.
                     function change(){

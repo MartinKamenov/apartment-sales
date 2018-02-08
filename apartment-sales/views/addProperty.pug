@@ -36,6 +36,11 @@ block body
                 select#location.form-control(name='location')
                 input.form-control(type='number', name='size', placeholder='размер(кв м.)')
                 .form-control
+                    label(for='rooms') Стаи
+                    input(type='number', name='rooms')
+                    label(for='baths') Бании
+                    input(type='number', name='baths')
+                .form-control
                     label(for='firstLine') първа линия
                     input(type='checkbox', name='firstLine')
                     label(for='parkingSpot') паркинг място
@@ -48,6 +53,9 @@ block body
                     input(type='checkbox', name='furnished')
                 textarea.form-control(name='contacts', rows='5', cols='30', placeholder='контакти')
                 input.form-control(type='number', name='code', placeholder='код')
+                .form-control
+                    input(type='checkbox', name='investment')
+                    label(for='investment') За инвестиция
                 input.form-control#number_pictures(name='number_pictures', type='number',placeholder='брой снимки', onkeyup='change()')
                 script.
                     function change(){

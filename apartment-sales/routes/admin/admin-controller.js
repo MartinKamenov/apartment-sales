@@ -67,8 +67,17 @@ const controller = {
     },
 
     editProperty(propertyRepository, req, res) {
+        const code = req.params.code;
         checkIfAdminIsAuthenticated(req, res);
-        res.render('editProperty');
+        propertyRepository.findPropertyByCode(code).then(properties => {
+            if (properties.length != 1) {
+                res.send('No property was found with code: ' + code);
+                return;
+            }
+
+            const property = properties[0];
+            res.render('editProperty', { property });
+        });
     },
 
     postEditProperty(propertyRepository, req, res) {
