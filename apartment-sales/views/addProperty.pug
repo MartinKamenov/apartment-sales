@@ -54,6 +54,11 @@ block body
                 textarea.form-control(name='contacts', rows='5', cols='30', placeholder='контакти')
                 input.form-control(type='number', name='code', placeholder='код')
                 .form-control
+                    input(type='number', name='latitude')
+                    label(for='latitude') Latitude
+                    input(type='number', name='longitude')
+                    label(for='longitude') Longitude
+                .form-control
                     input(type='checkbox', name='investment')
                     label(for='investment') За инвестиция
                 input.form-control#number_pictures(name='number_pictures', type='number',placeholder='брой снимки', onkeyup='change()')

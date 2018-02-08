@@ -27,6 +27,11 @@ const controller = {
         const code = req.body.code;
         const filename = req.files[0].filename;
         const picturesNames = [];
+        const investment = req.body.investment;
+        const rooms = req.body.rooms;
+        const baths = req.body.baths;
+        const longitude = req.body.longitude;
+        const latitude = req.body.latitude;
         const date = new Date();
         for (let i = 0; i < req.files.length; i += 1) {
             picturesNames.push('/static/images/added_pictures/' + req.files[i].filename);
@@ -36,8 +41,8 @@ const controller = {
             return;
         }
 
-        const property = new Property(title, text, type, place, price, contacts, size, code,
-            firstLine, parkingSpot, view, pool, furnished, picturesNames, date);
+        const property = new Property(title, text, type, place, location, price, contacts, size, code,
+            firstLine, parkingSpot, view, pool, furnished, rooms, baths, picturesNames, latitude, longitude, investment, date);
         propertyRepository.insertProperty(property);
         notifier.notify('Успешно добавено!');
         res.redirect('/admin/add');
