@@ -96,6 +96,18 @@ html(lang='en-US')
 			.col-8{
 				width: 12.5%;
 			}
+			.my-label {
+				margin-top: 7px;
+				font-size: 20px; 
+				color:black;
+			}
+			.my-checkbox {
+				margin-top: 7px !important;
+				border: 1px solid black !important;
+				width:20px !important;
+				height:20px !important;
+				font-size: 15px !important;
+			}
 	body.home.page-template.page-template-property_list.page-template-property_list-php.page.page-id-17707.wpb-js-composer.vc_responsive(class='js-comp-ver-5.3')
 		.mobilewrapper
 			.snap-drawers
@@ -108,6 +120,11 @@ html(lang='en-US')
 							a(href='/') Начало
 						li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17954
 							a(href='/advaned_search') Търсене
+							ul.sub-menu(style='')
+								li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
+									a.menu-item-link(href='/advanced_search?investition=true') За инвестиция
+								li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
+									a.menu-item-link(href='/advanced_search?new=true') Ново строителство
 						li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
 							a(href='/usefull') Полезно
 						li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
@@ -146,6 +163,11 @@ html(lang='en-US')
 											a.menu-item-link(href='/') Начало
 										li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/advanced_search') Търсене
+											ul.sub-menu(style='')
+												li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
+													a.menu-item-link(href='/advanced_search?investition=true') За инвестиция
+												li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
+													a.menu-item-link(href='/advanced_search?new=true') Ново строителство
 										li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/usefull') Полезно
 										li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
@@ -157,6 +179,9 @@ html(lang='en-US')
 										li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/contacts') Контакти
 							// #access
+				if showBar
+					#bottom_bar(style='background-color: red; position: fixed; z-index: 100; bottom: 0; left: 0; width: 100%; height: 40px; text-align: center; color: white; font-size: 30px;')
+						b Без комисионна от купувача 0%
 				.container.content_wrapper
 					.row
 						.col-md-12
@@ -203,23 +228,21 @@ html(lang='en-US')
 									label.col-6.col-md-4(for='baths', style='color: black; margin-top: 7px; font-size: 20px;') Бани
 									input.col-6.col-md-4(placeholder='До' name='baths_to',  style='color: black; font-size: 22px;')
 							br
-							.row.myborder.my-height
-								label Първа линия
-								input(type='checkbox', name='firstLine')
-								label Паркинг място
-								input(type='checkbox', name='parkingSpot')
-								label Гледка
-								input(type='checkbox', name='view')
-								label Басейн
-								input(type='checkbox', name='pool')
-								label Обзаведен
-								input(type='checkbox', name='furnished')
-								label Първа линия
-								input(type='checkbox', name='firstLine')
-								label Първа линия
-								input(type='checkbox', name='firstLine')
-								label Първа линия
-								input(type='checkbox', name='firstLine')
+							.row.myborder.my-height(style='text-align:center;')
+								label.my-label Първа линия
+								input.my-checkbox(type='checkbox', name='firstLine')
+								label.my-label Гледка
+								input.my-checkbox(type='checkbox', name='view')
+								label.my-label Басейн
+								input.my-checkbox(type='checkbox', name='pool')
+								label.my-label Обзаведен
+								input.my-checkbox(type='checkbox', name='furnished')
+								label.my-label Първа линия
+								input.my-checkbox(type='checkbox', name='firstLine')
+								label.my-label Първа линия
+								input.my-checkbox(type='checkbox', name='firstLine')
+								label.my-label Първа линия
+								input.my-checkbox(type='checkbox', name='firstLine')
 							br
 							.row
 								button.my-button.form-control(type='submit')

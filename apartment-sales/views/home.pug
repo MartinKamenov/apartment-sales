@@ -76,6 +76,16 @@ html(lang='en-US')
 		noscript
 			style(type='text/css').
 				.wpb_animate_when_almost_visible { opacity: 1; }
+		style(type='text/css').
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #f1f1f1;
+				min-width: 160px;
+				overflow: auto;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1;
+			}
 	body.home.page-template.page-template-property_list.page-template-property_list-php.page.page-id-17707.wpb-js-composer.vc_responsive(class='js-comp-ver-5.3')
 		.mobilewrapper
 			.snap-drawers
@@ -87,6 +97,11 @@ html(lang='en-US')
 							a(href='/') Начало
 						li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17954
 							a(href='/advaned_search') Търсене
+							ul.sub-menu(style='')
+								li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
+									a.menu-item-link(href='/advanced_search?investition=true') За инвестиция
+								li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
+									a.menu-item-link(href='/advanced_search?new=true') Ново строителство
 						li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
 							a(href='/usefull') Полезно
 						li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
@@ -115,6 +130,11 @@ html(lang='en-US')
 											a.menu-item-link(href='/') Начало
 										li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/advanced_search') Търсене
+											ul.sub-menu(style='')
+												li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
+													a.menu-item-link(href='/advanced_search?investition=true') За инвестиция
+												li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
+													a.menu-item-link(href='/advanced_search?new=true') Ново строителство
 										li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/usefull') Полезно
 										li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
@@ -126,8 +146,6 @@ html(lang='en-US')
 										li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/contacts') Контакти
 							// #access
-				#bottom_bar(style='background-color: red; position: fixed; z-index: 100; bottom: 0; left: 0; width: 100%; height: 40px; text-align: center; color: white; font-size: 30px;')
-					b Без комисионна от купувача 0%
 				.header_media.with_search_6
 					link(href='//fonts.googleapis.com/css?family=Open+Sans:800', rel='stylesheet', property='stylesheet', type='text/css', media='all')
 					#rev_slider_1_1_wrapper.rev_slider_wrapper.fullscreen-container(data-source='gallery', style='background:transparent;padding:0px;')
@@ -137,7 +155,7 @@ html(lang='en-US')
 								// SLIDE
 								li(data-index='rs-1', data-transition='fade', data-slotamount='default', data-hideafterloop='0', data-hideslideonmobile='off', data-easein='default', data-easeout='default', data-masterspeed='300', data-rotate='0', data-saveperformance='off', data-title='Slide', data-param1='', data-param2='', data-param3='', data-param4='', data-param5='', data-param6='', data-param7='', data-param8='', data-param9='', data-param10='', data-description='')
 									// MAIN IMAGE
-									img.rev-slidebg(src='/static/images/newwallpaper.jpg', alt='', title='a2', width='1920', height='1200', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-no-retina='')
+									img.rev-slidebg(src='/static/images/wallpaper5.jpg', alt='', title='a2', width='1920', height='1200', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-no-retina='')
 									.my_logo
 										a(href='/')
 											img#logo_image(style='margin-top:0px;', src='/static/images/logo.png', alt='logo')
@@ -156,7 +174,8 @@ html(lang='en-US')
 									#slide-1-layer-2.tp-caption.rev-scroll-btn(data-x='center', data-hoffset='', data-y='bottom', data-voffset='10', data-width="['35']", data-height="['55']", data-type='button', data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":"750","speed":"300","ease":"Linear.easeNone"}]', data-responsive_offset='on', data-responsive='off', data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]', data-textalign="['left','left','left','left']", data-paddingtop='[0,0,0,0]', data-paddingright='[0,0,0,0]', data-paddingbottom='[0,0,0,0]', data-paddingleft='[0,0,0,0]', style='z-index: 5; min-width: 35px; max-width: 35px; max-width: 55px; max-width: 55px; white-space: nowrap; font-size: px; line-height: px; font-weight: 100;border-color:rgba(255,255,255,1);border-style:solid;border-width:3px;border-radius:23px 23px 23px 23px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;')
 										span
 									// LAYER NR. 2
-									#slide-1-layer-4.tp-caption.tp-resizeme(data-x='center', data-hoffset='', data-y='363', data-width="['auto']", data-height="['auto']", data-type='text', data-responsive_offset='on', data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]', data-textalign="['left','left','left','left']", data-paddingtop='[0,0,0,0]', data-paddingright='[0,0,0,0]', data-paddingbottom='[0,0,0,0]', data-paddingleft='[0,0,0,0]', style='z-index: 6; white-space: nowrap; font-size: 70px; line-height: 22px; font-weight: 800; color: rgba(255,255,255,1);font-family:Open Sans;')
+									#slide-1-layer-4.tp-caption.tp-resizeme(data-x='center', data-hoffset='', data-y='363', data-width="['auto']", data-height="['auto']", data-type='text', data-responsive_offset='on', data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]', data-textalign="['center','center','center','center']", data-paddingtop='[10,0,0,0]', data-paddingright='[0,0,0,0]', data-paddingbottom='[0,0,0,0]', data-paddingleft='[0,0,0,0]', style='z-index: 6; white-space: nowrap; text-align: center !important; font-size: 70px; line-height: 22px; font-weight: 800; color: #FF5000; background-color: rgba(255,255,255,  0.4); height: 160px; margin-top: -60px !important;font-family:Open Sans;')
+										br
 										| Най-доброто място да
 										br
 										br
@@ -266,25 +285,20 @@ html(lang='en-US')
 														ul#adv-search-location.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_location')
 															li(role='presentation', data-value='', data-value2='') Всички подрайони
 												.col-md-2.areas
-													.dropdown.form-control
-														#advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-															| Цена
+													.form-control
+														.dropbtn(onclick='myFunction()').filter_menu_trigger Цена
 															span.caret.caret_filter
-														input(type='hidden', name='price', value='')
-														ul#adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='price')
-															li(role='presentation', data-value='') Всички цени
-															li(role='presentation', data-value='1') От 0 до 50 000 &#8364;
-															li(role='presentation', data-value='2') От 50 000 до 100 000 &#8364;
-															li(role='presentation', data-value='3') От 100 000 до 500 000 &#8364;
-															li(role='presentation', data-value='4') Над 500 000 &#8364;
-															//li(role='presentation')
-																span
-																	label(for='from') От
-																	input(name='from')
-																br
-																span
-																	label(for='to') До
-																	input(name='to')
+															ul#myDropdown.dropdown-content
+																li 
+																	span
+																		label От
+																		input(placeholder='От')
+																		label До
+																		input(placeholder='До')
+												script.
+													function myFunction() {
+														document.getElementById("myDropdown").classList.toggle("show");
+													}
 												.col-md-2
 													input#advanced_submit_4.wpresidence_button(name='submit', type='submit', value='ТЪРСИ')
 												
@@ -294,9 +308,6 @@ html(lang='en-US')
 													.extended_search_checker
 														input#back_yardadv(type='checkbox', name='first_line', value='1')
 														label(for='first_line') първа линия
-													.extended_search_checker
-														input#front_yardadv(type='checkbox', name='parking_spot', value='1')
-														label(for='parking_spot') паркинг място
 													.extended_search_checker
 														input#fenced_yardadv(type='checkbox', name='view', value='1')
 														label(for='view') гледка
@@ -343,6 +354,11 @@ html(lang='en-US')
 														input(type='hidden', name='price', value='')
 														ul#adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='price')
 															li(role='presentation', data-value='') Всички цени
+															li(role='presentation', data-value='')
+																label От
+																input(name='price_from')
+																label До
+																input(name='price_to')
 															li(role='presentation', data-value='1') От 0 до 50 000 &#8364;
 															li(role='presentation', data-value='2') От 50 000 до 100 000 &#8364;
 															li(role='presentation', data-value='3') От 100 000 до 500 000 &#8364;
@@ -363,9 +379,6 @@ html(lang='en-US')
 													.extended_search_checker
 														input#back_yardadv(type='checkbox', name='first_line', value='1')
 														label(for='first_line') първа линия
-													.extended_search_checker
-														input#front_yardadv(type='checkbox', name='parking_spot', value='1')
-														label(for='parking_spot') паркинг място
 													.extended_search_checker
 														input#fenced_yardadv(type='checkbox', name='view', value='1')
 														label(for='view') гледка
@@ -411,6 +424,11 @@ html(lang='en-US')
 							input(type='hidden', name='price', value='')
 							ul#mobile-adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_area')
 								li(role='presentation', data-value='') Всички цени
+								li(role='presentation', data-value='')
+									label От
+									input(name='price_from')
+									label До
+									input(name='price_to')
 								li(role='presentation', data-value='1') От 0 до 50 000 &#8364;
 								li(role='presentation', data-value='2') От 50 000 до 100 000 &#8364;
 								li(role='presentation', data-value='3') От 100 000 до 500 000 &#8364;
@@ -421,9 +439,6 @@ html(lang='en-US')
 							.extended_search_checker
 								input#back_yardadv(type='checkbox', name='first_line', value='1')
 								label(for='first_line') първа линия
-							.extended_search_checker
-								input#front_yardadv(type='checkbox', name='parking_spot', value='1')
-								label(for='parking_spot') паркинг място
 							.extended_search_checker
 								input#fenced_yardadv(type='checkbox', name='view', value='1')
 								label(for='view') гледка
@@ -492,8 +507,6 @@ html(lang='en-US')
 									h2(style='font-weight:bold;color:#303030;margin-top:20px;') Най-нови
 								.uvc-heading-spacer.line_only(style='margin-top:20px;margin-bottom:20px;height:3px;')
 									span.uvc-headings-line(style='border-style:solid;border-bottom-width:3px;border-color:#d67b04;width:100px;')
-								.uvc-sub-heading.ult-responsive(data-ultimate-target='.uvc-heading.ultimate-heading-16635a575d66ae212 .uvc-sub-heading ', data-responsive-json-new='{"font-size":"desktop:15px;","line-height":"desktop:23px;"}', style='font-weight:normal;margin-bottom:30px;')
-									| Подробните описания на свойствата позволяват добра предварителна селекция. Преди проверката можем да осигурим снимки с висока разделителна способност. По този начин можете да избегнете ненужни проверки.
 									.wpb_column.vc_column_container.vc_col-sm-2.vc_column
 										.vc_column-inner
 											.wpb_wrapper
@@ -508,7 +521,7 @@ html(lang='en-US')
 							#listing_loader.spinner
 								.new_prelader
 							#listing_ajax_container
-								each apartment in apartments
+								each apartment in newProperties
 									.col-md-4.has_prop_slider.listing_wrapper(data-org='4', data-listid='145')
 										.property_listing(data-link='')
 											.listing-unit-img-wrapper
@@ -553,23 +566,56 @@ html(lang='en-US')
 												span.infosize=apartment.size + ' m'
 													sup 2
 												a.unit_details_x(href='/property/' + apartment.code) Виж повече
+								.single-content
+									p
+										.vc_row.wpb_row.vc_row-fluid.vc_custom_1507031785547.vc_row
+											.wpb_column.vc_column_container.vc_col-sm-2.vc_column
+												.vc_column-inner
+													.wpb_wrapper
+											.wpb_column.vc_column_container.vc_col-sm-8.vc_column
+												.vc_column-inner
+													.wpb_wrapper
+														#ultimate-heading-17435a55f63126dc2.uvc-heading.ult-adjust-bottom-margin.ultimate-heading-17435a55f63126dc2.uvc-4952(data-hspacer='line_only', data-halign='center', style='text-align:center')
+															.uvc-main-heading.ult-responsive(data-ultimate-target='.uvc-heading.ultimate-heading-17435a55f63126dc2 h2', data-responsive-json-new='{"font-size":"desktop:30px;","line-height":""}')
+																h2(style='font-weight:bold;color:#303030;margin-top:20px;') Топ имоти
+															.uvc-heading-spacer.line_only(style='margin-top:20px;margin-bottom:20px;height:3px;')
+																span.uvc-headings-line(style='border-style:solid;border-bottom-width:3px;border-color:#d67b04;width:100px;')
+															.vc_row.wpb_row.vc_row-fluid.vc_row
+										each property in topProperties
+											.wpb_column.vc_column_container.vc_col-sm-6.vc_column
+												.vc_column-inner
+													.wpb_wrapper
+														.featured_property.featured_property_type3
+															.featured_img
+																.tag-wrapper
+																.carousel.slide(id='property_unit_featured_carousel_' + property.code, data-ride='carousel', data-interval='false')
+																	.carousel-inner
+																		- for (var i = 0; i < property.pictures.length; ++i) {
+																			if i==0
+																				.item.active(style='background-image:url(' + property.pictures[0] + ');')
+																			else
+																				.item(style='background-image:url(' + property.pictures[i] + ');')
+																		- }
+																	a(href='/property/' + property.code)
+																	a.left.carousel-control(href='#property_unit_featured_carousel_' + property.code, data-slide='prev')
+																		i='<'
+																	a.right.carousel-control(href='#property_unit_featured_carousel_' + property.code, data-slide='next')
+																		i='>'
+															.featured_secondline(data-link='/property/' + property.code)
+																h2
+																	a(href='/property/' + property.code)=property.title
+																.featured_prop_price
+																	span.price_label=property.price + ' \u20AC'
+																.listing_details.the_grid_view=property.text.substring(0, 100)
+																	a.unit_more_x(href='/property/' + property.code) [more]
+																.property_listing_details
+																	span.inforoom=property.rooms
+																	span.infobath=property.baths
+																	span.infosize=property.size + 'm'
+																		sup 2
+										
 							// Listings Ends  here
-							ul.pagination.pagination_nojax
-								li.roundleft
-									a(href='?page=1')
-										span(aria-hidden='true') «
-										span.sr-only Previous
-								each page in pages
-									if page==currentPage
-										li.active
-											a(href='?page=' + page)=page
-									else
-										li
-											a(href='?page=' + page)=page
-								li.roundright
-									a(href='?page='+(pagesCount))
-										span(aria-hidden='true') »
-										span.sr-only Next
+						.spacer(style='height:90px;')
 			footer#colophon.footer_back_repeat_no.sticky_footer(role='contentinfo')
 				#footer-widget-area.row
 					#first.widget-area.col-md-6

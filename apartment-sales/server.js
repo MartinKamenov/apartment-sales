@@ -43,7 +43,7 @@ propertyRepository.getAllPropertys().then((properties) => {
     console.log(properties);
 });*/
 
-//var fs = require('fs');
+var fs = require('fs');
 /*fs.readFile('../apartment-sales/firstPage.txt', 'utf8', function(err, data) {
     if (err) throw err; // we'll not consider error handling for now
     var obj = JSON.parse(data);
@@ -52,7 +52,7 @@ propertyRepository.getAllPropertys().then((properties) => {
     }
 });*/
 
-/*fs.readFile('../apartment-sales/FirstProperty.txt', 'utf8', function(err, data) {
+fs.readFile('../apartment-sales/FirstProperty.txt', 'utf8', function(err, data) {
     if (err) throw err; // we'll not consider error handling for now
     var obj = JSON.parse(data);
     const jsonProp = obj;
@@ -97,7 +97,7 @@ propertyRepository.getAllPropertys().then((properties) => {
             console.log('same code: ' + jsonProp.id);
         }
     });
-});*/
+});
 
 
 authConfig(app, adminRepository);

@@ -10,9 +10,16 @@ const controller = {
             params.type = type;
         }
         const place = req.query.place;
+
+        let showBar = true;
         if (place) {
             params.place = place;
+            if (place.includes('Халкидики')) {
+                showBar = false;
+            }
         }
+
+
         const location = req.query.location;
         if (location) {
             params.location = location;
@@ -59,7 +66,7 @@ const controller = {
             const foundProperties = result.filteredCollection;
             const pagesCount = result.numberOfPages;
             const pages = result.navigationNumbers;
-            res.render('advanced_search', { typesArray, placesArray, apartments: foundProperties, pagesCount, pages, currentPage: page });
+            res.render('advanced_search', { typesArray, placesArray, apartments: foundProperties, pagesCount, pages, currentPage: page, showBar });
         });
     },
 
