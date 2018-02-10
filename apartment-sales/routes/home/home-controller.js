@@ -50,7 +50,7 @@ const controller = {
                 const pages = result.navigationNumbers;
                 var found = false;
 
-                const cityArray = ['Кавала', 'Тасос', 'Халкидики', 'Солун(Тесалоники)', 'Серес', 'Тракия', 'Лимнос', 'Драма'];
+                const cityArray = ['Кавала', 'Тасос', 'Халкидики', 'Солун', 'Серес', 'Тракия', 'Лимнос', 'Драма'];
 
                 res.render('home', { apartments: foundProperties, cityArray, pagesCount, pages, currentPage: page });
             });

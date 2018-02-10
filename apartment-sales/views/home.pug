@@ -228,11 +228,9 @@ html(lang='en-US')
 									.nav.nav-tabs(role='tablist')
 										.adv_search_tab_item.active.rentals(data-term='rentals', data-termid='35', data-tax='property_action_category')
 											a.adv6_tab_head(href='#rentals', aria-controls='rentals', role='tab', data-toggle='tab') Продажби
-										.adv_search_tab_item.sales(data-term='sales', data-termid='38', data-tax='property_action_category')
-											a.adv6_tab_head(href='#sales', aria-controls='sales', role='tab', data-toggle='tab') Наеми
 									.tab-content
 										#rentals.tab-pane.active(role='tabpanel')
-											form(role='search', method='GET', action='/')
+											form(role='search', method='GET', action='/advanced_search')
 												.col-md-2.col-md-offset-1.categories
 													.dropdown.form-control
 														#adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
@@ -241,13 +239,14 @@ html(lang='en-US')
 														input(type='hidden', name='type', value='')
 														ul#categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='adv_categ')
 															li(role='presentation', data-value='') Всички типове
-															li(role='presentation', data-value='апартамент') Апартамент
-															li(role='presentation', data-value='мезонет') Мезонет
-															li(role='presentation', data-value='къща') Къща
-															li(role='presentation', data-value='парцел') Парцел
-															li(role='presentation', data-value='магазин') Магазин
-															li(role='presentation', data-value='офис') Офис
-															li(role='presentation', data-value='хотел') Хотел
+															li(role='presentation', data-value='Aпартамент') Апартамент
+															li(role='presentation', data-value='Мезонет') Мезонет
+															li(role='presentation', data-value='Самостоятелна къща') Къща
+															li(role='presentation', data-value='Парцел') Парцел
+															li(role='presentation', data-value='Земеделска земя') Земеделска земя
+															li(role='presentation', data-value='Магазин') Магазин
+															li(role='presentation', data-value='Офис') Офис
+															li(role='presentation', data-value='Хотел') Хотел
 												.col-md-2.cities
 													.dropdown.form-control
 														#advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
@@ -257,7 +256,7 @@ html(lang='en-US')
 														ul#adv-search-city.dropdown-menu.filter_menu(role='menu', aria-labelledby='advanced_city')
 															li(role='presentation', data-value='', data-value2='') Всички райони
 															each place in cityArray
-																li(role='presentation', data-value=place, data-value2=place)=place
+																li(role='presentation', data-value='Област '+place, data-value2='Област '+place)=place
 												.col-md-2.cities
 													.dropdown.form-control
 														#advanced_location.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
@@ -318,13 +317,14 @@ html(lang='en-US')
 														input(type='hidden', name='type', value='')
 														ul#categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='adv_categ')
 															li(role='presentation', data-value='') Всички типове
-															li(role='presentation', data-value='апартамент') Апартамент
-															li(role='presentation', data-value='мезонет') Мезонет
-															li(role='presentation', data-value='къща') Къща
-															li(role='presentation', data-value='парцел') Парцел
-															li(role='presentation', data-value='магазин') Магазин
-															li(role='presentation', data-value='офис') Офис
-															li(role='presentation', data-value='хотел') Хотел
+															li(role='presentation', data-value='Aпартамент') Апартамент
+															li(role='presentation', data-value='Мезонет') Мезонет
+															li(role='presentation', data-value='Самостоятелна къща') Къща
+															li(role='presentation', data-value='Парцел') Парцел
+															li(role='presentation', data-value='Земеделска земя') Земеделска земя
+															li(role='presentation', data-value='Магазин') Магазин
+															li(role='presentation', data-value='Офис') Офис
+															li(role='presentation', data-value='Хотел') Хотел
 												.col-md-3.cities
 													.dropdown.form-control
 														#advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
@@ -380,7 +380,7 @@ html(lang='en-US')
 					i.fa.fa-search
 					|     Търсене
 				#adv-search-mobile.adv-search-mobile
-					form(role='search', method='GET', action='/')
+					form(role='search', method='GET', action='/advanced_search')
 						.dropdown.form-control
 							#mobile-adv_categ.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 								| Тип
@@ -457,30 +457,30 @@ html(lang='en-US')
 															.wpb_wrapper
 																.article_container
 																	.places_wrapper_type_2(style='background-image: url(/static/images/KAVALA.jpg)')
-																		.places_cover(data-link='/?place=Кавала')
+																		.places_cover(data-link='/advanced_search?place=Област Кавала')
 																		.places_type_2_content
 																			h4
-																				a(href='/?place=Кавала')
+																				a(href='/advanced_search?place=Област Кавала')
 																					| Кавала
 													.wpb_column.vc_column_container.vc_col-sm-4.vc_column_inner
 														.vc_column-inner
 															.wpb_wrapper
 																.article_container
 																	.places_wrapper_type_2(style='background-image: url(/static/images/Tasos3.jpg)')
-																		.places_cover(data-link='/?place=Тасос')
+																		.places_cover(data-link='/advanced_search?place=Област Тасос')
 																		.places_type_2_content
 																			h4
-																				a(href='/?place=Тасос')
+																				a(href='/advanced_search?place=Област Тасос')
 																					| Тасос
 													.wpb_column.vc_column_container.vc_col-sm-4.vc_column_inner
 														.vc_column-inner
 															.wpb_wrapper
 																.article_container
 																	.places_wrapper_type_2(style='background-image: url(/static/images/halckidicki.jpg)')
-																		.places_cover(data-link='/?place=Халкидики')
+																		.places_cover(data-link='/advanced_search?place=Област Халкидики')
 																		.places_type_2_content
 																			h4
-																				a(href='/?place=Халкидики')
+																				a(href='/advanced_search?place=Област Халкидики')
 																					| Халкидики
 					.row
 						.col-md-12
@@ -536,8 +536,6 @@ html(lang='en-US')
 														i <
 													a.right.carousel-control(href='#property_unit_carousel_' + apartment.code, data-slide='next')
 														i >
-											.tag-wrapper
-												.featured_div=apartment.type
 											h4
 												a(href='/property/' + apartment.code)=apartment.title.substring(0, 100)
 											.listing_unit_price_wrapper

@@ -43,7 +43,7 @@ propertyRepository.getAllPropertys().then((properties) => {
     console.log(properties);
 });*/
 
-var fs = require('fs');
+//var fs = require('fs');
 /*fs.readFile('../apartment-sales/firstPage.txt', 'utf8', function(err, data) {
     if (err) throw err; // we'll not consider error handling for now
     var obj = JSON.parse(data);
@@ -52,7 +52,7 @@ var fs = require('fs');
     }
 });*/
 
-fs.readFile('../apartment-sales/FirstProperty.txt', 'utf8', function(err, data) {
+/*fs.readFile('../apartment-sales/FirstProperty.txt', 'utf8', function(err, data) {
     if (err) throw err; // we'll not consider error handling for now
     var obj = JSON.parse(data);
     const jsonProp = obj;
@@ -74,7 +74,7 @@ fs.readFile('../apartment-sales/FirstProperty.txt', 'utf8', function(err, data) 
     if (!rooms) {
         rooms = null;
     }
-    const baths = jsonProp.baths;
+    let baths = jsonProp.baths;
     if (!baths) {
         baths = null;
     }
@@ -90,14 +90,15 @@ fs.readFile('../apartment-sales/FirstProperty.txt', 'utf8', function(err, data) 
         if (prope.length == 0) {
             const property = new Property(title, text, type, place, location, price, contacts, size, code,
                 null, null, null, null, null, rooms, baths,
-                pictures, latitude, longitude, null, date);
-            //propertyRepository.insertProperty(property);
+                pictures, latitude, longitude, null, null, null, date);
+            propertyRepository.insertProperty(property);
             console.log('added ' + jsonProp.id);
         } else {
             console.log('same code: ' + jsonProp.id);
         }
     });
-});
+});*/
+
 
 authConfig(app, adminRepository);
 homeRoute(app, propertyRepository);

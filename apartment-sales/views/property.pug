@@ -76,6 +76,15 @@ html(lang='en-US')
 		noscript
 			style(type='text/css').
 				.wpb_animate_when_almost_visible { opacity: 1; }
+		style(type='text/css').
+			.my-link{
+				background-color:orange !important;
+				color:white !important;
+			}
+			.my-link:hover{
+				background-color:blue !important;
+				color:white !important;
+			}
 	body.home.page-template.page-template-property_list.page-template-property_list-php.page.page-id-17707.wpb-js-composer.vc_responsive(class='js-comp-ver-5.3')
 		.mobilewrapper
 			.snap-drawers
@@ -219,6 +228,8 @@ html(lang='en-US')
 										#hover-link:hover {
 											color:yellow;
 										}
+									.description-bar(style='background-color: #0CFFA6; color:white; height: 30px;font-size:25px; text-align:center; padding-top: 2px;') Описание
+									br
 								- var descriptionArray = property.text.split('\n');
 									each description in descriptionArray
 										b
@@ -232,26 +243,35 @@ html(lang='en-US')
 						#primary.col-xs-12.col-md-3.widget-area-sidebar
 							ul.xoxo
 								li#advanced_search_widget-1.widget-container.advanced_search_sidebar.boxed_widget
-									img(src='/static/images/pechat.png', width='300px', height='300px')
+									img(src='/static/images/pechat2.png', width='250px', height='250px')
 							ul.xoxo
 								li#advanced_search_widget-2.widget-container.advanced_search_sidebar.boxed_widget
-									h3.my-sidebar-header.widget-title-sidebar Детайли
+									h3.my-sidebar-header.widget-title-sidebar(style='background-color:#0CFFA6; color: white;')
+										b Детайли
 									ul
+										li.my-sidebar-body='Тип: ' + property.type
+										li.my-sidebar-body='Район: ' + property.place
+										li.my-sidebar-body='Под район: ' + property.location
 										li.my-sidebar-body='Площ: ' + property.size + ' м'
 											sup 2
-										li.my-sidebar-body='Цена: ' + property.price + ' евро'
+										if property.rooms
+											li.my-sidebar-body='Стаи: ' + property.rooms
+										if property.baths
+											li.my-sidebar-body='Бани: ' + property.baths
+										li.my-sidebar-body='Цена: '
+											span.selling(style='background-color:#094383; color:white; width: 100px; text-align: center; font-size: 18px; display: inline-block;')
+												b='\u20AC ' + (parseInt(property.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
 										li.my-sidebar-body='Код: ' + property.code
 							ul.xoxo
 								li#advanced_search_widget-3.widget-container.advanced_search_sidebar.boxed_widget
-									h3.my-sidebar-header.widget-title-sidebar Контакти
+									h3.my-sidebar-header.widget-title-sidebar(style='background-color:#0CFFA6; color:white;') 
+										b Контакти
 									ul
-										- var contactsArray = property.contacts.split('\n');
-										each contact in contactsArray
-											li.my-sidebar-body=contact
+										img(src='/static/images/Details.JPG', style='width:250px; height:380px;')
 							ul.xoxo
 								li#advanced_search_widget-4.widget-container.advanced_search_sidebar.boxed_widget
 									a(href='/usefull')
-										h3#hover-link.my-sidebar-header.widget-title-sidebar Как се купува имот в гърция
+										.my-link.widget-title-sidebar Как се купува имот в Гърция?
 				// end content_wrapper started in header
 			// end class container
 			footer#colophon.footer_back_repeat_no.sticky_footer(role='contentinfo')
