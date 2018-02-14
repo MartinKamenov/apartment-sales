@@ -89,7 +89,41 @@ const controller = {
 
     postEditProperty(propertyRepository, req, res) {
         checkIfAdminIsAuthenticated(req, res);
-        const code = req.params.code;
+        const type = req.body.type;
+        const title = req.body.title;
+        const text = req.body.text;
+        const price = req.body.price;
+        const place = req.body.place;
+        const size = req.body.size;
+        const contacts = req.body.contacts;
+        const location = req.body.location;
+        var firstLine = req.body.firstLine;
+        var parkingSpot = req.body.parkingSpot;
+        var view = req.body.view;
+        var pool = req.body.pool;
+        var furnished = req.body.furnished;
+        const code = req.body.code;
+        const filename = req.files[0].filename;
+        const picturesNames = [];
+        const investment = req.body.investment;
+        const rooms = req.body.rooms;
+        const baths = req.body.baths;
+        const longitude = req.body.longitude;
+        const latitude = req.body.latitude;
+        const newConstruction = req.body.newConstruction;
+        const top = req.body.top;
+        const date = new Date();
+        for (let i = 0; i < req.files.length; i += 1) {
+            picturesNames.push('/static/images/added_pictures/' + req.files[i].filename);
+        }
+        if (!type || !title || !text || !price || !place || !contacts || !code || !size) {
+            res.send('Моля попълнете всички полета.');
+            return;
+        }
+
+        const property = new Property(title, text, type, place, location, price, contacts, size, code,
+            firstLine, parkingSpot, view, pool, furnished, rooms, baths, picturesNames, latitude, longitude, top, newConstruction, investment, date);
+        updateProperty(code, property);
         notifier.notify('Успешно променен имот с код: ' + code + '!');
         res.redirect('/admin/edit');
     },

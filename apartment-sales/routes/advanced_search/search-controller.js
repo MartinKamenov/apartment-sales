@@ -11,18 +11,40 @@ const controller = {
         }
         const place = req.query.place;
 
-        let showBar = true;
+        let showBar = false;
         if (place) {
+            showBar = true;
             params.place = place;
             if (place.includes('Халкидики')) {
                 showBar = false;
             }
         }
+        let newConst = req.query.new;
+        let newConstruction = req.query.newConstruction;
+        if (newConstruction || newConst) {
+            params.newConstruction = 'on';
+        }
 
-
+        let investition = req.query.investition;
+        let investment = req.query.investment;
+        if (investment || investition) {
+            params.investment = 'on';
+        }
         const location = req.query.location;
         if (location) {
             params.location = location;
+        }
+        if (req.query.firstLine) {
+            params.firstLine = 'on';
+        }
+        if (req.query.pool) {
+            params.pool = 'on';
+        }
+        if (req.query.view) {
+            params.view = 'on';
+        }
+        if (req.query.furnished) {
+            params.furnished = 'on';
         }
         const size_from = req.query.size_from;
         const size_to = req.query.size_to;
@@ -32,10 +54,10 @@ const controller = {
         const rooms_to = req.query.rooms_to;
         const baths_from = req.query.baths_from;
         const baths_to = req.query.baths_to;
-        const placesArray = ['Област Кавала', 'Област Тасос', 'Област Халкидики',
-            'Област Солун', 'Област Серес', 'Област Тракия', 'Област Лимнос', 'Област Драма'
+        const placesArray = ['Кавала', 'Тасос', 'Халкидики',
+            'Солун', 'Серес', 'Тракия', 'Лимнос', 'Драма'
         ];
-        const typesArray = ['Парцел'];
+        const typesArray = ['Апартамент', 'Мезонет', 'Самостоятелна къща', 'Парцел', 'Земеделска земя', 'Магазин', 'Офис', 'Хотел'];
         propertyRepository.findPropertyByParams(params).then(properties => {
             if (size_from) {
                 properties = properties.filter(prop => (prop.size >= (+size_from)));

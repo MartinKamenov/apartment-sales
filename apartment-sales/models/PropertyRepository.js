@@ -15,6 +15,10 @@ class PropertyRepository {
         return this.database.find(collectionName, { code: code });
     }
 
+    updateProperty(code, property) {
+        this.database.delete(collectionName, { code }, property);
+    }
+
     findPropertyByParams(params) {
         return this.database.find(collectionName, params);
     }
