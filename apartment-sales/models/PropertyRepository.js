@@ -7,8 +7,8 @@ class PropertyRepository {
         return this.database.showAll(collectionName);
     }
 
-    insertProperty(apartment) {
-        this.database.insert(collectionName, apartment);
+    insertProperty(property) {
+        return this.database.insert(collectionName, property);
     }
 
     findPropertyByCode(code) {
@@ -16,7 +16,7 @@ class PropertyRepository {
     }
 
     updateProperty(code, property) {
-        this.database.delete(collectionName, { code }, property);
+        this.database.delete(collectionName, { code: code }, property);
     }
 
     findPropertyByParams(params) {
@@ -24,7 +24,7 @@ class PropertyRepository {
     }
 
     removeProperty(code) {
-        this.database.delete(collectionName, { code: code });
+        return this.database.delete(collectionName, { code: code });
     }
 }
 

@@ -164,7 +164,7 @@ html(lang='en-US')
 									img.rev-slidebg(src='/static/images/thessal.jpg', alt='', title='a2', width='1920', height='1200', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-no-retina='')
 									.my_logo
 										a(href='/')
-											img#logo_image(style='margin-top:0px;', src='/static/images/logo.png', alt='logo')
+											img#logo_image(style='margin-top:0px;', src='/static/images/logo_yellow.png', alt='logo')
 										style(type='text/css').
 											#logo_image {
 												width: 180px;
@@ -543,10 +543,10 @@ html(lang='en-US')
 																		i='>'
 															.featured_secondline(data-link='/property/' + property.code)
 																h2
-																	a(href='/property/' + property.code)=property.title
+																	a(href='/property/' + property.code)=property.title.substring(0, 50)
 																.featured_prop_price
 																	span.price_label=property.price + ' \u20AC'
-																.listing_details.the_grid_view=property.text.substring(0, 100)
+																.listing_details.the_grid_view=property.text.substring(0, 50)
 																	a.unit_more_x(href='/property/' + property.code) [more]
 																.property_listing_details
 																	span.inforoom=property.rooms
@@ -628,30 +628,16 @@ html(lang='en-US')
 						ul.xoxo
 							li#social_widget-1.widget-container.social_sidebar
 								.social_sidebar_internal
-									a(href='#', target='_blank')
-										i.fa.fa-rss.fa-fw
 									a(href='https://www.facebook.com', target='_blank')
 										i.fa.fa-facebook.fa-fw
 									a(href='#', target='_blank')
 										i.fa.fa-twitter.fa-fw
 									a(href='#', target='_blank')
-										i.fa.fa-dribbble.fa-fw
-									a(href='#', target='_blank')
 										i.fa.fa-google-plus.fa-fw
 									a(href='#', target='_blank')
 										i.fa.fa-linkedin.fa-fw
 									a(href='#', target='_blank')
-										i.fa.fa-tumblr.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-pinterest.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-youtube.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-vimeo-square.fa-fw
-									a(href='#', target='_blank')
 										i.fa.fa-instagram.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-foursquare.fa-fw
 							li#text-9.widget-container.widget_text
 								h3.widget-title-footer За нас:
 								.textwidget
@@ -757,11 +743,11 @@ html(lang='en-US')
 							locations = ['Агия Параскеви', 'Агиос Мамас', 'Агиос Николаос', 'Агия Кариаки', 'Акти Азапико',
 							'Акти Елиас', 'Акти Салоникю', 'Арнеа', 'Афитос', 'Вавдос', 'Ватопеди', 'Вурвуру', 'Елани', 'Елия Никитис', 'Йерисос',
 							 'Каламитси' , 'Каландра', 'Каливес', 'Каликратия', 'Калитеа', 'Касандра', 'Касандрия',
-							 'Криарици', 'Криопиги', 'Лагомандра', 'Лутра', 'Метармофоси', 'Мола', 'Калива', 'Мудания',
+							 'Криарици', 'Криопиги', 'Лагомандра', 'Лутра', 'Метармофоси', 'Мола', 'Калива', 'Миконос' ,'Мудания',
 							 'Неа Рода', 'Неа Скиони', 'Неа Триглия', 'Нео Фокеа', 'Неос Мармарас', 'Неохори', 'Никити', 'Олимпиада',
 							 'Олинтос', 'Ормос', 'Панагияс', 'Остров Амулиани' , 'Палиури' , 'Партенонас' , 'Пефкохори' , 
 							 'Пиргадикия' , 'Полигирос' , 'Полийхроно' , 'Полихроно' , 
-							 'Порто Куфо' , 'Посиди' , 'Потидеа' , 'Псакудия' , 'Сани' , 'Сарти' , 'Сивири' , 'Сикия' , 'Спалатронисия' , 
+							 'Порто Куфо' , 'Посиди' , 'Потидеа' , 'Псакудия' , 'Сани' , 'Сарти' , 'Сивири' , 'Сикия' , 'Ситония' , 'Спалатронисия' , 
 							 'Стратони' , 'Таксиархис' , 'Торони' , 'Трипити' , 'Урануполи' , 
 							 'Флогита' , 'Фурка' , 'Ханиоти' , 'Херакини' , 'Холомонтас'];
 						} else if(place==='Област Кавала') {

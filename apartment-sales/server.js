@@ -37,13 +37,7 @@ const database = new Database(connectionstring);
 const propertyRepository = new PropertyRepository(database);
 const adminRepository = new AdminRepository(database);
 
-/*const property = new Property('Варна - ахтопол', 55);
-propertyRepository.insertProperty(property);
-propertyRepository.getAllPropertys().then((properties) => {
-    console.log(properties);
-});*/
-
-var fs = require('fs');
+//var fs = require('fs');
 /*fs.readFile('../apartment-sales/FirstProperty.txt', 'utf8', function(err, data) {
     if (err) throw err; // we'll not consider error handling for now
     var obj = JSON.parse(data);

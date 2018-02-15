@@ -34,7 +34,7 @@ const controller = {
         if (location) {
             params.location = location;
         }
-        if (req.query.firstLine) {
+        if (req.query.firstLine || req.query.first_line) {
             params.firstLine = 'on';
         }
         if (req.query.pool) {

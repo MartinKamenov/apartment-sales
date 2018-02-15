@@ -33,7 +33,7 @@ const attach = (app, adminRepository, propertyRepository) => {
             controller.getCodeForEdit(propertyRepository, req, res);
         }).get('/edit/:code', (req, res) => {
             controller.editProperty(propertyRepository, req, res);
-        }).post('/edit/:code', (req, res) => {
+        }).post('/edit/:code', upload.any(), (req, res) => {
             controller.postEditProperty(propertyRepository, req, res);
         }).get('/remove', (req, res) => {
             controller.removeProperty(adminRepository, propertyRepository, req, res);

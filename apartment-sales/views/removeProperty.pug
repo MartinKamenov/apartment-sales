@@ -4,12 +4,12 @@ block body
     link(rel='stylesheet', href='../static/css/add-apartment.css')
     .container
         .menu
-            button.btn-success 
-                a(href='/admin/add') Добавяне
-            button.btn-warning 
-                a(href='/admin/edit') Промяна
-            button.btn-info 
-                a(href='/admin/logout') Излизане от админ профила
+            a(href='/admin/add')
+                button.btn-success Добавяне
+            a(href='/admin/edit')
+                button.btn-warning Промяна
+            a(href='/admin/logout')
+                button.btn-info Излизане от админ профила
         .content
             h1 Премахване на жилище
             form(method='post', action='/admin/remove')

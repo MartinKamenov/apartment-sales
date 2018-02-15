@@ -225,7 +225,7 @@ html(lang='en-US')
 							.row
 								.col-6.col-md-4.myborder.my-height
 									input.col-6.col-md-4(placeholder='От' name='rooms_from',  style='color: black; font-size: 22px;')
-									label.col-6.col-md-4(for='rooms', style='color: black; margin-top: 7px; font-size: 20px;') Стаи
+									label.col-6.col-md-4(for='rooms', style='color: black; margin-top: 7px; font-size: 20px;') Спални
 									input.col-6.col-md-4(placeholder='До' name='rooms_to',  style='color: black; font-size: 22px;')
 								select#location.col-6.col-md-4.myborder.my-height(style='text-align: center;color: black; font-size: 24px;text-align-last:center;', name='location')
 									option(value='', style='text-align: center;') Под Район
@@ -310,19 +310,19 @@ html(lang='en-US')
 												a.unit_details_x(href='/property/' + apartment.code) Виж повече
 							// Listings Ends  here
 							ul.pagination.pagination_nojax
-								li.roundleft
-									a(href='?page=1')
+								li.roundleft(onclick='changePage(' + 1 + ')')
+									a()
 										span(aria-hidden='true') «
 										span.sr-only Previous
 								each page in pages
 									if page==currentPage
-										li.active
-											a(href='?page=' + page)=page
+										li.active(onclick='changePage(' + page + ')')
+											a()=page
 									else
-										li
-											a(href='?page=' + page)=page
-								li.roundright
-									a(href='?page='+(pagesCount))
+										li(onclick='changePage(' + page + ')')
+											a()=page
+								li.roundright(onclick='changePage(' + pagesCount + ')')
+									a()
 										span(aria-hidden='true') »
 										span.sr-only Next
 			footer#colophon.footer_back_repeat_no.sticky_footer(role='contentinfo')
@@ -331,30 +331,16 @@ html(lang='en-US')
 						ul.xoxo
 							li#social_widget-1.widget-container.social_sidebar
 								.social_sidebar_internal
-									a(href='#', target='_blank')
-										i.fa.fa-rss.fa-fw
 									a(href='https://www.facebook.com', target='_blank')
 										i.fa.fa-facebook.fa-fw
 									a(href='#', target='_blank')
 										i.fa.fa-twitter.fa-fw
 									a(href='#', target='_blank')
-										i.fa.fa-dribbble.fa-fw
-									a(href='#', target='_blank')
 										i.fa.fa-google-plus.fa-fw
 									a(href='#', target='_blank')
 										i.fa.fa-linkedin.fa-fw
 									a(href='#', target='_blank')
-										i.fa.fa-tumblr.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-pinterest.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-youtube.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-vimeo-square.fa-fw
-									a(href='#', target='_blank')
 										i.fa.fa-instagram.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-foursquare.fa-fw
 							li#text-9.widget-container.widget_text
 								h3.widget-title-footer За нас:
 								.textwidget
@@ -380,7 +366,21 @@ html(lang='en-US')
 										i.fa.fa-desktop
 										a(href='/') имотивгърция.bg
 			script(type='text/javascript', src='/static/js/home-icon.js')
-			
+			script(type='text/javascript').
+				function changePage(page) {
+					let newUrl = window.location.href;
+					if(newUrl.indexOf('?') >= 0) {
+						let index = newUrl.indexOf('page');
+						if(index >= 0) {
+							newUrl = newUrl.substring(0, index) + 'page=' + page;
+						} else {
+							newUrl = newUrl + '&page=' + page;
+						}
+					} else {
+						newUrl = newUrl + '?page=' + page;
+					}
+					location.replace(newUrl);
+				}
 			script(type='text/javascript').
 				function revslider_showDoubleJqueryError(sliderID) {
 				var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";

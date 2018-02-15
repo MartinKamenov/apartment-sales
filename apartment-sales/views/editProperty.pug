@@ -4,15 +4,15 @@ block body
     link(rel='stylesheet', href='../static/css/add-apartment.css')
     .container
         .menu
-            button.btn-warning 
-                a(href='/admin/edit') Промяна
-            button.btn-danger 
-                a(href='/admin/remove') Премахване
-            button.btn-info 
-                a(href='/admin/logout') Излизане от админ профила
+            a(href='/admin/add')
+                button.btn-success Добавяне
+            a(href='/admin/remove')
+                button.btn-danger Премахване
+            a(href='/admin/logout')
+                button.btn-info Излизане от админ профила
         .content
             h1 Добавяне на жилище
-            form(method='post', action='/admin/add', enctype='multipart/form-data')
+            form(method='post', action='/admin/edit/' + property.code, enctype='multipart/form-data')
                 input.form-control(name='type', value=property.type)
                 input.form-control(type='text', name='title', placeholder='заглавие', value=property.title)
                 textarea#description.form-control(name='text', rows='10', cols='30', placeholder='описание')=property.text
@@ -22,18 +22,60 @@ block body
                 input.form-control(type='number', name='size', placeholder='размер(кв м.)', value=property.size)
                 .form-control
                     label(for='firstLine') първа линия
-                    input(type='checkbox', name='firstLine')
-                    label(for='parkingSpot') паркинг място
-                    input(type='checkbox', name='parkingSpot')
+                    if property.firstLine
+                        input(type='checkbox', name='firstLine', checked='true')
+                    else
+                        input(type='checkbox', name='firstLine')
                     label(for='view') гледка
-                    input(type='checkbox', name='view')
+                    if property.view
+                        input(type='checkbox', name='view', checked='true')
+                    else
+                        input(type='checkbox', name='view')
                     label(for='pool') басейн
-                    input(type='checkbox', name='pool')
+                    if property.pool
+                        input(type='checkbox', name='pool', checked='false')
+                    else
+                        input(type='checkbox', name='pool')
                     label(for='furnished') обзаведен
-                    input(type='checkbox', name='furnished')
+                    if property.furnished
+                        input(type='checkbox', name='furnished', checked='true')
+                    else
+                        input(type='checkbox', name='furnished')
                 textarea.form-control(name='contacts', rows='5', cols='30', placeholder='контакти')=property.contacts
                 input.form-control(type='number', name='code', placeholder='код',value=property.code)
+                .form-control
+                    label(for='latitude') Latitude
+                    input(type='number', name='latitude', value=property.latitude)
+                    label(for='longitude') Longitude
+                    input(type='number', name='longitude', value=property.longitude)
+                .form-control
+                    label(for='investment') За инвестиция
+                    if property.investment
+                        input(type='checkbox', name='investment', checked='true')
+                    else
+                       input(type='checkbox', name='investment')
+                    label(for='newConstruction') Нова конструкция
+                    if property.newConstruction
+                        input(type='checkbox', name='newConstruction', checked='true')
+                    else
+                        input(type='checkbox', name='newConstruction')
+                    label(for='top') Топ обява
+                    if property.top
+                        input(type='checkbox', name='top', checked='true')
+                    else
+                        input(type='checkbox', name='top')
+                - for (var i = 0; i < property.pictures.length; i += 1) {
+                    .col-md-4(id='picture_' + i)
+                        input(name='picture_' + i, placeholder='линк', value=property.pictures[i])
+                        button(style='color: white; background-color: red;', onclick='removePicture("picture_' + i + '")') x
+                        img.col-md-4(src=property.pictures[i])
+                - }
                 input.form-control#number_pictures(name='number_pictures', type='number',placeholder='брой снимки', onkeyup='change()')
+                script.
+                    function removePicture(id) {
+                        const pictureDiv = document.getElementById(id);
+                        pictureDiv.parentNode.removeChild(pictureDiv);
+                    }
                 script.
                     function change(){
                     const ul = document.getElementById('changable_ul');
@@ -56,7 +98,7 @@ block body
                     }
                     }
                 ul#changable_ul
-                button.form-control.btn-success(type='submit') Добавяне
+                button.form-control.btn-warning(type='submit') Промяна
                 script.
                     changeLocation();
                     function changeLocation() {
