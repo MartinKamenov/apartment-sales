@@ -21,6 +21,11 @@ block body
                 input#location.form-control(name='location' ,value=property.location)
                 input.form-control(type='number', name='size', placeholder='размер(кв м.)', value=property.size)
                 .form-control
+                    label(for='rooms') Стаи
+                    input(type='number', name='rooms', value=property.rooms)
+                    label(for='baths') Бании
+                    input(type='number', name='baths', value=property.baths)
+                .form-control
                     label(for='firstLine') първа линия
                     if property.firstLine
                         input(type='checkbox', name='firstLine', checked='true')
