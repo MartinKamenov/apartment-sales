@@ -89,6 +89,10 @@ html(lang='en-US')
 			.customnav {
 				background-color:#0CFFA6 !important;
 			}
+		style(type='text/css').
+			.container {
+				background-color: #EDF0F0 !important;
+			}
 	body.home.page-template.page-template-property_list.page-template-property_list-php.page.page-id-17707.wpb-js-composer.vc_responsive(class='js-comp-ver-5.3')
 		.mobilewrapper
 			.snap-drawers
@@ -271,7 +275,7 @@ html(lang='en-US')
 															li(role='presentation', data-value='') Всички типове
 															each ntype in typeArray
 																li(role='presentation', data-value=ntype)=ntype
-												.col-md-2.cities
+												.col-md-2.cities(onclick='alertFunc()')
 													.dropdown.form-control
 														#region_dropdown.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 															| Район
@@ -291,20 +295,89 @@ html(lang='en-US')
 															li(role='presentation', data-value='', data-value2='') Всички подрайони
 																each region in regionArray
 																	li(role='presentation', data-value=region, data-value2=region, style='display: none;')=region
-												.col-md-2.areas
-													.form-control
-														.dropbtn(onclick='myFunction()').filter_menu_trigger Цена
-															span.caret.caret_filter
-															ul#myDropdown.dropdown-content
-																li 
+												.col-md-2
+													.dropdown.form-control(onclick='myFunction()')
+														#my-menu.filter_menu_trigger 
+															p#price_show Цена
+															span#my_carpet.caret.caret_filter
+															ul#myDropdown.dropdown-menu.filter_menu(style='background-color: white; display: none; list-style-type: none;')
+																li
 																	span
-																		label От
-																		input(placeholder='От')
-																		label До
-																		input(placeholder='До')
+																		textarea#price_from(type='number', style='display: inline; width: 60px; height: 43px; resize: none;', placeholder='От', onchange='changeFrom(document.getElementById("price_from").value)', name='price_from')
+																		textarea#price_to(style='display: inline; width: 60px; height: 43px; resize: none;', type='number', placeholder='До',, onchange='changeTo(document.getElementById("price_to").value)' name='price_to')
+																li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(0)')='\u20AC 0'
+																li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(5000)')='\u20AC 5 000'
+																li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(20000)')='\u20AC 20 000'
+																li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(50000)')='\u20AC 50 000'
+																li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(0)')='\u20AC 0'
+																li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(5000)')='\u20AC 5 000'
+																li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(20000)')='\u20AC 20 000'
+																li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(50000)')='\u20AC 50 000'
+																li
+																	span
+																		button.btn-success(onclick='acceptPrice()') ОК
+																		button.btn-info(onclick='clearPrice()') Изчисти
 												script.
+													let priceDropdown = document.getElementById("myDropdown");
+													/*priceDropdown.addEventListener("focusout", function(){
+															priceDropdown.style.display = 'none';
+													});*/
 													function myFunction() {
-														document.getElementById("myDropdown").classList.toggle("show");
+														if(event.target.id==='my-menu'||event.target.id==='price_show'||event.target.id==='my_carpet') {
+															if(priceDropdown.style.display == 'none') {
+																priceDropdown.style.display = 'inline-block';
+															} else if (priceDropdown.style.display == 'inline-block') {
+																priceDropdown.style.display = 'none';
+															}
+														}
+													}
+
+													function changeFrom(price) {
+														const priceInput = document.getElementById('price_from');
+														priceInput.value = price;
+														var lisFrom = document.getElementsByClassName('price_from');
+														for(let i = 0; i < lisFrom.length; i += 1) {
+															lisFrom[i].style.display = 'none';
+														}
+														var lisTo = document.getElementsByClassName('price_to');
+														for(let i = 0; i < lisTo.length; i += 1) {
+															lisTo[i].style.display = 'inline-block';
+														}
+														const priceShow = document.getElementById('price_show');
+														priceShow.innerHTML = 'От ' + price;
+													}
+
+													function changeTo(price) {
+														const priceInput = document.getElementById('price_to');
+														priceInput.value = price;
+														const priceShow = document.getElementById('price_show');
+														if(priceShow.innerHTML.indexOf('До') < 0) {
+															priceShow.innerHTML += ' До ' + price;
+														} else {
+															priceShow.innerHTML = priceShow.innerHTML.substring(0, priceShow.innerHTML.indexOf('До')+3) + price;
+														}
+														priceDropdown.style.display = 'none';
+													}
+
+													function acceptPrice() {
+														priceDropdown.style.display = 'none';
+													}
+
+													function clearPrice() {
+														const priceInputFrom = document.getElementById('price_from');
+														priceInputFrom.value = '';
+														const priceInputTo = document.getElementById('price_to');
+														priceInputTo.value = '';
+														var lisFrom = document.getElementsByClassName('price_from');
+														for(let i = 0; i < lisFrom.length; i += 1) {
+															lisFrom[i].style.display = 'inline-block';
+														}
+														var lisTo = document.getElementsByClassName('price_to');
+														for(let i = 0; i < lisTo.length; i += 1) {
+															lisTo[i].style.display = 'none';
+														}
+														const priceShow = document.getElementById('price_show');
+														priceShow.innerHTML = 'Цена';
 													}
 												.col-md-2
 													input#advanced_submit_4.wpresidence_button(name='submit', type='submit', value='ТЪРСИ')
@@ -408,21 +481,25 @@ html(lang='en-US')
 							input(type='hidden', name='type', value='')
 							ul#mobile-categlist.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-adv_categ')
 								li(role='presentation', data-value='') Всички типове
-								li(role='presentation', data-value='апартамент') Апартамент
-								li(role='presentation', data-value='мезонет') Мезонет
-								li(role='presentation', data-value='къща') Къща
-								li(role='presentation', data-value='парцел') Парцел
-								li(role='presentation', data-value='магазин') Магазин
-								li(role='presentation', data-value='офис') Офис
-								li(role='presentation', data-value='хотел') Хотел
+									each ntype in typeArray
+										li(role='presentation', data-value=ntype)=ntype
 						.dropdown.form-control
 							#mobile-advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 								| Район
 								span.caret.caret_filter
-							input#place-input(type='hidden', name='place', value='place')
+							input#place-input(type='hidden', name='place', value='')
 							ul#mobile-adv-search-city.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_city')
 								li(role='presentation', data-value='', data-value2='') Всички райони
 								each place in cityArray
+									li(role='presentation', data-value=place, data-value2=place)=place
+						.dropdown.form-control
+							#mobile-advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
+								| Район
+								span.caret.caret_filter
+							input#place-input(type='hidden', name='location', value='')
+							ul.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_city')
+								li(role='presentation', data-value='', data-value2='') Всички райони
+								each region in regionArray
 									li(role='presentation', data-value=place, data-value2=place)=place
 						.dropdown.form-control
 							#mobile-advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
@@ -456,7 +533,6 @@ html(lang='en-US')
 								input#doormanadv(type='checkbox', name='furnished', value='1')
 								label(for='furnished') обзаведен
 						button#advanced_submit_2_mobile.wpresidence_button ТЪРСИ
-						button#showinpage_mobile.wpresidence_button See first results here 
 				.container.content_wrapper
 					.row
 						.col-md-12
@@ -549,10 +625,15 @@ html(lang='en-US')
 																.listing_details.the_grid_view=property.text.substring(0, 50)
 																	a.unit_more_x(href='/property/' + property.code) [more]
 																.property_listing_details
-																	span.inforoom=property.rooms
-																	span.infobath=property.baths
+																	if property.rooms
+																		span.inforoom=property.rooms
+																	if property.baths
+																		span.infobath=property.baths
 																	span.infosize=property.size + 'm'
 																		sup 2
+													br
+													br
+													br
 							.single-content
 								.vc_row.wpb_row.vc_row-fluid.vc_custom_1507031785547.vc_row
 									.wpb_column.vc_column_container.vc_col-sm-8.vc_column
@@ -628,16 +709,21 @@ html(lang='en-US')
 						ul.xoxo
 							li#social_widget-1.widget-container.social_sidebar
 								.social_sidebar_internal
-									a(href='https://www.facebook.com', target='_blank')
-										i.fa.fa-facebook.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-twitter.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-google-plus.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-linkedin.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-instagram.fa-fw
+									.social_sidebar_internal
+										a(href='#')
+											img(src='/static/images/social/fb.png', alt='facebook', style='display:inline-block; width: 40px; height: 40px; margin-top: -10px;')
+										a(href='#')
+											img(src='/static/images/social/google.png', alt='google+', style='display:inline-block; width: 40px; height: 40px; margin-top: -10px;')
+										a(href='#')
+											img(src='/static/images/social/skype.png', alt='skype', style='display:inline-block; width: 44px; height: 44px; margin-top: -11px;')
+										a(href='#')
+											img(src='/static/images/social/twitter.png', alt='twitter', style='display:inline-block; width: 44px; height: 44px; margin-top: -11px;')
+										a(href='#')
+											img(src='/static/images/social/linkedin.png', alt='linkedIn', style='display:inline-block; width: 44px; height: 44px; margin-top: -11px;')
+										a(href='#')
+											img(src='/static/images/social/instagram.png', alt='instagram', style='display:inline-block; width: 40px; height: 40px; margin-top: -10px;')
+										a(href='#')
+											img(src='/static/images/social/viber.png', alt='viber', style='display:inline-block; width: 40px; height: 40px; margin-top: -10px;')
 							li#text-9.widget-container.widget_text
 								h3.widget-title-footer За нас:
 								.textwidget
@@ -728,8 +814,6 @@ html(lang='en-US')
 				//]]>
 			script(type='text/javascript').
 				let current = '';
-				//document.getElementById('mypar').innerHTML = 'GOSHKO';
-				setInterval(alertFunc, 3000);
 				function alertFunc() {
 					const place_input = document.getElementById('place_input');
 					const place = place_input.value;
@@ -749,7 +833,7 @@ html(lang='en-US')
 							 'Пиргадикия' , 'Полигирос' , 'Полийхроно' , 'Полихроно' , 
 							 'Порто Куфо' , 'Посиди' , 'Потидеа' , 'Псакудия' , 'Сани' , 'Сарти' , 'Сивири' , 'Сикия' , 'Ситония' , 'Спалатронисия' , 
 							 'Стратони' , 'Таксиархис' , 'Торони' , 'Трипити' , 'Урануполи' , 
-							 'Флогита' , 'Фурка' , 'Ханиоти' , 'Херакини' , 'Холомонтас'];
+							 'Флогита' , 'Фурка' , 'Ханиоти' , 'Херакини' , 'Холомонтас'].sort();
 						} else if(place==='Област Кавала') {
 							locations = ['Авли' , 'Агиасма' , 'Агиос Андреас' , 'Акровуни' , 'Акропотамос' , 'Амигдалеонас' , 'Амисиана' , 
 							'Ано Лефки' , 'Галипсос' , 'Гравуна' , 'Доматя' , 'Ексохи' , 'Елеохори' , 'Елефтерес' ,  'Елефтеруполи' , 
@@ -759,25 +843,29 @@ html(lang='en-US')
 							'Неа Перамос' , 'Орфани' , 'Орфани Паралия' , 'Офринио' , 'Палеохори' , 'Пальо Чифлики (Пальо)' , 
 							'Паралия Елеохори' ,  'Паралия Кариани' , 'Паралия Миртофито' , 'Паралия Офринио' , 'Паралия Фоля' , 
 							'Перни' , 'Пигес' , 'Пиргохори' , 'Платанотопос' , 'Подохори' , 'Полистило' , 'Сидирохори' , 
-							'Филипи' , 'Фоля' , 'Хайдефето' , 'Халкеро' , 'Хрисокастро' , 'Хрисохори' , 'Хрисуполи' ];
+							'Филипи' , 'Фоля' , 'Хайдефето' , 'Халкеро' , 'Хрисокастро' , 'Хрисохори' , 'Хрисуполи' ].sort();
 						} else if(place==='Област Солун') {
 							locations = ['Ано Ставрос' , 'Аспровалта' , 'Врасна' , 'Милиес' , 'Неа Врасна' , 'Паралия Врасна' , 
-							'Ривиера' , 'Сериаки Акти' , 'Ставрос'];
+							'Ривиера' , 'Сериаки Акти' , 'Ставрос'].sort();
 						} else if(place==='Област Тасос') {
 							locations = ['Агиос Георгиос' , 'Алики' , 'Астрида' , 'Гликади' , 'Глифада' , 'Иера Мони' , 
 							'Каливес' , 'Каливиа' , 'Калирахи' , 'Кастро' , 'Кинира' , 'Лефки' , 'Лимена' , 'Лименаря' , 
 							'Макриамос' , 'Мариес' , 'Мегалос Принос' , 'Микрос Принос' , 'Мони Архагелу' , 'Ормос Принос' , 'Палеохори' , 
 							'Панагия' , 'Потамиа' , 'Потос' , 'Принос' , 'Рахони' , 'Скала Калихарис' , 
 							'Скала Марион' , 'Скала Потамяс' , 'Скала Рахони' , 'Скала Сотирас' , 'Сотирас' , 
-							'Тасос (Център)' , 'Теологос' , 'Тимониа' , 'Хриси Акти' , 'Хриси Амудя'];
+							'Тасос (Център)' , 'Теологос' , 'Тимониа' , 'Хриси Акти' , 'Хриси Амудя'].sort();
 						} else if(place==='Област Драма') {
-							locations = ['Драма'];
+							locations = ['Драма'].sort();
 						} else if(place==='Област Серес') {
 							locations = ['Агий Анаргири' , 'Агиос Антониос' , 'Агиос Атанасиос' , 'Агиос Йоанис' , 'Агиос Никитас' , 
 							'Агиос Пантелимонас' , 'Амфиполи' , 'Византио (Калкани)' , 'Ептамили' , 'Инуса' , 
 							'Иония (Сфагия)' , 'Каливиа' , 'Каменикиа' , 'Киупля' , 'Лефконас' , 'Македономахон' ,
 							'Неа Кердилия' , 'Нео Сули' , 'Никеа' , 'Омония' , 'Палеокоми' , 'Панорама - Калитеа' , 
-							'Профитис Илияс- Агия София' , 'Родоливос' , 'Саранда Мартирес' , 'Сирис (Сигис- Неа Кифися)' , 'Таксиархес (Център)' ];
+							'Профитис Илияс- Агия София' , 'Родоливос' , 'Саранда Мартирес' , 'Сирис (Сигис- Неа Кифися)' , 'Таксиархес (Център)' ].sort();
+						} else if(place==='Област Тракия') {
+							locations = ['Авдира', 'Паралия Авдира', 'Фанари'].sort();
+						} else if(place==='Област Лимнос') {
+							locations = ['Лимнос'].sort();
 						}
 						let found = false;
 						for(let index1 = 0; index1 < ul.childNodes.length; index1 += 1) {

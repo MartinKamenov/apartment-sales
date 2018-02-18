@@ -187,11 +187,11 @@ html(lang='en-US')
 										- for (var i = 0; i < property.pictures.length; ++i) {
 											if i==0
 												.item.active
-													a.prettygalery(title='', rel='prettyPhoto')
+													a.prettygalery(href='#', rel='prettyPhoto')
 														img.img-responsive.lightbox_trigger(src=property.pictures[0], data-slider-no='1')
 											else
 												.item
-													a.prettygalery(rel='prettyPhoto')
+													a.prettygalery(href='#', rel='prettyPhoto')
 														img.img-responsive.lightbox_trigger(src=property.pictures[i], data-slider-no=i+1)
 										- }
 									// Indicators
@@ -299,16 +299,20 @@ html(lang='en-US')
 						ul.xoxo
 							li#social_widget-1.widget-container.social_sidebar
 								.social_sidebar_internal
-									a(href='https://www.facebook.com', target='_blank')
-										i.fa.fa-facebook.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-twitter.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-google-plus.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-linkedin.fa-fw
-									a(href='#', target='_blank')
-										i.fa.fa-instagram.fa-fw5
+									a(href='#')
+										img(src='/static/images/social/fb.png', alt='facebook', style='display:inline-block; width: 40px; height: 40px; margin-top: -10px;')
+									a(href='#')
+										img(src='/static/images/social/google.png', alt='google+', style='display:inline-block; width: 40px; height: 40px; margin-top: -10px;')
+									a(href='#')
+										img(src='/static/images/social/skype.png', alt='skype', style='display:inline-block; width: 44px; height: 44px; margin-top: -11px;')
+									a(href='#')
+										img(src='/static/images/social/twitter.png', alt='twitter', style='display:inline-block; width: 44px; height: 44px; margin-top: -11px;')
+									a(href='#')
+										img(src='/static/images/social/linkedin.png', alt='linkedIn', style='display:inline-block; width: 44px; height: 44px; margin-top: -11px;')
+									a(href='#')
+										img(src='/static/images/social/instagram.png', alt='instagram', style='display:inline-block; width: 40px; height: 40px; margin-top: -10px;')
+									a(href='#')
+										img(src='/static/images/social/viber.png', alt='viber', style='display:inline-block; width: 40px; height: 40px; margin-top: -10px;')
 							li#text-9.widget-container.widget_text
 								h3.widget-title-footer За нас:
 								.textwidget
@@ -320,19 +324,16 @@ html(lang='en-US')
 								.contact_sidebar_wrap
 									p.widget_contact_addr
 										i.fa.fa-building-o
-										| 3755 Commercial St SE Salem, Corner with Sunny Boulevard, 3755 Commercial OR 97302
+										| Кавала
 									p.widget_contact_phone
 										i.fa.fa-phone
-										a(href='tel:%28305%29+555-4446') (305) 555-4446
-									p.widget_contact_fax
-										i.fa.fa-print
-										| (305) 555-4446
+										a(href='tel:%0988228857') 0988228857
 									p.widget_contact_email
 										i.fa.fa-envelope-o
-										a(href='mailto:youremails@gmail.com') youremails@gmail.com
+										a(href='mailto:Office@estatesingreece.com') Office@estatesingreece
 									p.widget_contact_skype
 										i.fa.fa-skype
-										| yourskypeid
+										| live:estatesingreece
 									p.widget_contact_url
 										i.fa.fa-desktop
 										a(href='/') имотивгърция.bg
@@ -342,6 +343,13 @@ html(lang='en-US')
 				zoom:5,
 				};
 				var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			script.
+				setTimeout(function(){ 
+					const leftButton = document.getElementsByClassName('nextleft');
+					leftButton[0].innerHTML = '<';
+					const rightButton = document.getElementsByClassName('nextright');
+					rightButton[0].innerHTML = '>';
+				}, 1000);
 			script(src='https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap')
 			script(type='text/javascript', src='//chicago.wpresidence.net/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4')
 			script(type='text/javascript', src='//chicago.wpresidence.net/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4')
@@ -464,5 +472,5 @@ html(lang='en-US')
 							each picture in property.pictures
 								.item(style='background-image:url(' + picture + ')')
 				.lighbox-image-close
-					i(aria-hidden='true') x
+					i(aria-hidden='true', style='font-style: normal; font-size: 45px;') x
 			.lighbox_overlay

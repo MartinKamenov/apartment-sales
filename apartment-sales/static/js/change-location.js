@@ -50,6 +50,10 @@ function changeLocation() {
             'Неа Кердилия', 'Нео Сули', 'Никеа', 'Омония', 'Палеокоми', 'Панорама - Калитеа',
             'Профитис Илияс- Агия София', 'Родоливос', 'Саранда Мартирес', 'Сирис (Сигис- Неа Кифися)', 'Таксиархес (Център)'
         ];
+    } else if (placeValue === 'Област Тракия') {
+        locationArray = ['Авдира', 'Паралия Авдира', 'Фанари'];
+    } else if (placeValue === 'Област Лимнос') {
+        locationArray = ['Лимнос'];
     }
     var firstOpt = document.createElement('option');
     firstOpt.innerHTML = '';
@@ -60,3 +64,5 @@ function changeLocation() {
         locationDropdown.appendChild(option);
     }
 }
+
+changeLocation();

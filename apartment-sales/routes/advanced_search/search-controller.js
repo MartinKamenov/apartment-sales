@@ -5,6 +5,7 @@ const controller = {
         var page = req.query.page;
         page = pageHandler.choosePage(page);
         let params = {};
+        let lastSearched = req.query;
         const type = req.query.type;
         if (type) {
             params.type = type;
@@ -50,13 +51,23 @@ const controller = {
         const size_to = req.query.size_to;
         const price_from = req.query.price_from;
         const price_to = req.query.price_to;
-        const rooms_from = req.query.rooms_from;
+        let rooms_from = req.query.rooms_from;
         const rooms_to = req.query.rooms_to;
-        const baths_from = req.query.baths_from;
+        if (rooms_to) {
+            if (!rooms_from) {
+                rooms_from = 1;
+            }
+        }
+        let baths_from = req.query.baths_from;
         const baths_to = req.query.baths_to;
+        if (baths_to) {
+            if (!baths_from) {
+                baths_from = 1;
+            }
+        }
         const placesArray = ['Кавала', 'Тасос', 'Халкидики',
             'Солун', 'Серес', 'Тракия', 'Лимнос', 'Драма'
-        ];
+        ].sort();
         const typesArray = ['Апартамент', 'Мезонет', 'Самостоятелна къща', 'Парцел', 'Земеделска земя', 'Магазин', 'Офис', 'Хотел'];
         propertyRepository.findPropertyByParams(params).then(properties => {
             if (size_from) {
@@ -88,7 +99,16 @@ const controller = {
             const foundProperties = result.filteredCollection;
             const pagesCount = result.numberOfPages;
             const pages = result.navigationNumbers;
-            res.render('advanced_search', { typesArray, placesArray, apartments: foundProperties, pagesCount, pages, currentPage: page, showBar });
+            res.render('advanced_search', {
+                typesArray,
+                placesArray,
+                apartments: foundProperties,
+                pagesCount,
+                pages,
+                currentPage: page,
+                showBar,
+                lastSearched
+            });
         });
     },
 
