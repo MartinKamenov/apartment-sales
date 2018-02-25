@@ -320,68 +320,6 @@ html(lang='en-US')
 																	span
 																		button.btn-success(onclick='acceptPrice()') ОК
 																		button.btn-info(onclick='clearPrice()') Изчисти
-												script.
-													let priceDropdown = document.getElementById("myDropdown");
-													/*priceDropdown.addEventListener("focusout", function(){
-															priceDropdown.style.display = 'none';
-													});*/
-													function myFunction() {
-														if(event.target.id==='my-menu'||event.target.id==='price_show'||event.target.id==='my_carpet') {
-															if(priceDropdown.style.display == 'none') {
-																priceDropdown.style.display = 'inline-block';
-															} else if (priceDropdown.style.display == 'inline-block') {
-																priceDropdown.style.display = 'none';
-															}
-														}
-													}
-
-													function changeFrom(price) {
-														const priceInput = document.getElementById('price_from');
-														priceInput.value = price;
-														var lisFrom = document.getElementsByClassName('price_from');
-														for(let i = 0; i < lisFrom.length; i += 1) {
-															lisFrom[i].style.display = 'none';
-														}
-														var lisTo = document.getElementsByClassName('price_to');
-														for(let i = 0; i < lisTo.length; i += 1) {
-															lisTo[i].style.display = 'inline-block';
-														}
-														const priceShow = document.getElementById('price_show');
-														priceShow.innerHTML = 'От ' + price;
-													}
-
-													function changeTo(price) {
-														const priceInput = document.getElementById('price_to');
-														priceInput.value = price;
-														const priceShow = document.getElementById('price_show');
-														if(priceShow.innerHTML.indexOf('До') < 0) {
-															priceShow.innerHTML += ' До ' + price;
-														} else {
-															priceShow.innerHTML = priceShow.innerHTML.substring(0, priceShow.innerHTML.indexOf('До')+3) + price;
-														}
-														priceDropdown.style.display = 'none';
-													}
-
-													function acceptPrice() {
-														priceDropdown.style.display = 'none';
-													}
-
-													function clearPrice() {
-														const priceInputFrom = document.getElementById('price_from');
-														priceInputFrom.value = '';
-														const priceInputTo = document.getElementById('price_to');
-														priceInputTo.value = '';
-														var lisFrom = document.getElementsByClassName('price_from');
-														for(let i = 0; i < lisFrom.length; i += 1) {
-															lisFrom[i].style.display = 'inline-block';
-														}
-														var lisTo = document.getElementsByClassName('price_to');
-														for(let i = 0; i < lisTo.length; i += 1) {
-															lisTo[i].style.display = 'none';
-														}
-														const priceShow = document.getElementById('price_show');
-														priceShow.innerHTML = 'Цена';
-													}
 												.col-md-2
 													input#advanced_submit_4.wpresidence_button(name='submit', type='submit', value='ТЪРСИ')
 												
@@ -504,27 +442,27 @@ html(lang='en-US')
 								li(role='presentation', data-value='', data-value2='') Всички райони
 								each region in regionArray
 									li(role='presentation', data-value=region, data-value2=region, style='display:none;')=region
-						.dropdown.form-control()
-							#my-menu.filter_menu_trigger 
-								p Цена
-								span.caret.caret_filter
-								ul#myDropdown.dropdown-menu.filter_menu(style='background-color: white; display: none; list-style-type: none;')
+						.dropdown.form-control(onclick='myFunctionMobile()')
+							#my-menu_mobile.filter_menu_trigger 
+								p#price_show_mobile Цена
+								span#my_carpet_mobile.caret.caret_filter
+								ul#myDropdown_mobile.dropdown-menu.filter_menu(style='background-color: white; display: none; list-style-type: none;')
 									li
 										span
-											textarea#price_from(type='number', style='display: inline; width: 60px; height: 43px; resize: none;', placeholder='От', onchange='changeFrom(document.getElementById("price_from").value)', name='price_from')
-											textarea#price_to(style='display: inline; width: 60px; height: 43px; resize: none;', type='number', placeholder='До',, onchange='changeTo(document.getElementById("price_to").value)' name='price_to')
-									li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(0)')='\u20AC 0'
-									li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(5000)')='\u20AC 5 000'
-									li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(20000)')='\u20AC 20 000'
-									li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(50000)')='\u20AC 50 000'
-									li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(0)')='\u20AC 0'
-									li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(5000)')='\u20AC 5 000'
-									li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(20000)')='\u20AC 20 000'
-									li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(50000)')='\u20AC 50 000'
+											textarea#price_from_mobile(type='number', style='display: inline; width: 60px; height: 43px; resize: none;', placeholder='От', onchange='changeFromMobile(document.getElementById("price_from_mobile").value)', name='price_from')
+											textarea#price_to_mobile(style='display: inline; width: 60px; height: 43px; resize: none;', type='number', placeholder='До', onchange='changeToMobile(document.getElementById("price_to_mobile").value)' name='price_to')
+									li.price_from_mobile(role='presentation', style='text-align:left;', onclick='changeFromMobile(0)')='\u20AC 0'
+									li.price_from_mobile(role='presentation', style='text-align:left;', onclick='changeFromMobile(5000)')='\u20AC 5 000'
+									li.price_from_mobile(role='presentation', style='text-align:left;', onclick='changeFromMobile(20000)')='\u20AC 20 000'
+									li.price_from_mobile(role='presentation', style='text-align:left;', onclick='changeFromMobile(50000)')='\u20AC 50 000'
+									li.price_to_mobile(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeToMobile(0)')='\u20AC 0'
+									li.price_to_mobile(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeToMobile(5000)')='\u20AC 5 000'
+									li.price_to_mobile(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeToMobile(20000)')='\u20AC 20 000'
+									li.price_to_mobile(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeToMobile(50000)')='\u20AC 50 000'
 									li
 										span
-											button.btn-success(onclick='acceptPrice()') ОК
-											button.btn-info(onclick='clearPrice()') Изчисти
+											button.btn-success(onclick='acceptPriceMobile()') ОК
+											button.btn-info(onclick='clearPriceMobile()') Изчисти
 						#adv_extended_options_text_mobile.adv_extended_options_text Повече опции за търсене
 						.extended_search_check_wrapper
 							span#adv_extended_close_mobile.adv_extended_close_button
@@ -811,6 +749,127 @@ html(lang='en-US')
 			script(type='text/javascript', src='//chicago.wpresidence.net/wp-includes/js/comment-reply.min.js?ver=4.9.1')
 			script(type='text/javascript', src='//chicago.wpresidence.net/wp-includes/js/wp-embed.min.js?ver=4.9.1')
 			script(type='text/javascript', src='//chicago.wpresidence.net/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=5.3')
+			script.
+				let priceDropdown = document.getElementById("myDropdown");
+				let mobilePriceDropdown = document.getElementById("myDropdown_mobile");
+				/*priceDropdown.addEventListener("focusout", function(){
+						priceDropdown.style.display = 'none';
+				});*/
+				function myFunction() {
+					if(event.target.id==='my-menu'||event.target.id==='price_show'||event.target.id==='my_carpet') {
+						if(priceDropdown.style.display == 'none') {
+							priceDropdown.style.display = 'inline-block';
+						} else if (priceDropdown.style.display == 'inline-block') {
+							priceDropdown.style.display = 'none';
+						}
+					}
+				}
+
+				function myFunctionMobile() {
+					if(event.target.id==='my-menu_mobile'||event.target.id==='price_show_mobile'||event.target.id==='my_carpet_mobile') {
+						if(mobilePriceDropdown.style.display == 'none') {
+							mobilePriceDropdown.style.display = 'inline-block';
+						} else if (mobilePriceDropdown.style.display == 'inline-block') {
+							mobilePriceDropdown.style.display = 'none';
+						}
+					}
+				}
+
+				function changeFrom(price) {
+					const priceInput = document.getElementById('price_from');
+					priceInput.value = price;
+					var lisFrom = document.getElementsByClassName('price_from');
+					for(let i = 0; i < lisFrom.length; i += 1) {
+						lisFrom[i].style.display = 'none';
+					}
+					var lisTo = document.getElementsByClassName('price_to');
+					for(let i = 0; i < lisTo.length; i += 1) {
+						lisTo[i].style.display = 'inline-block';
+					}
+					const priceShow = document.getElementById('price_show');
+					priceShow.innerHTML = 'От ' + price;
+				}
+
+				function changeFromMobile(price) {
+					const priceInput = document.getElementById('price_from_mobile');
+					priceInput.value = price;
+					var lisFrom = document.getElementsByClassName('price_from_mobile');
+					for(let i = 0; i < lisFrom.length; i += 1) {
+						lisFrom[i].style.display = 'none';
+					}
+					var lisTo = document.getElementsByClassName('price_to_mobile');
+					for(let i = 0; i < lisTo.length; i += 1) {
+						lisTo[i].style.display = 'inline-block';
+					}
+					const priceShow = document.getElementById('price_show_mobile');
+					priceShow.innerHTML = 'От ' + price;
+				}
+
+				function changeTo(price) {
+					const priceInput = document.getElementById('price_to');
+					priceInput.value = price;
+					const priceShow = document.getElementById('price_show');
+					if(priceShow.innerHTML.indexOf('До') < 0) {
+						priceShow.innerHTML += ' До ' + price;
+					} else {
+						priceShow.innerHTML = priceShow.innerHTML.substring(0, priceShow.innerHTML.indexOf('До')+3) + price;
+					}
+					priceDropdown.style.display = 'none';
+				}
+
+				function changeToMobile(price) {
+					const priceInput = document.getElementById('price_to_mobile');
+					priceInput.value = price;
+					const priceShow = document.getElementById('price_show_mobile');
+					if(priceShow.innerHTML.indexOf('До') < 0) {
+						priceShow.innerHTML += ' До ' + price;
+					} else {
+						priceShow.innerHTML = priceShow.innerHTML.substring(0, priceShow.innerHTML.indexOf('До')+3) + price;
+					}
+					mobilePriceDropdown.style.display = 'none';
+				}
+
+				function acceptPrice() {
+					priceDropdown.style.display = 'none';
+				}
+
+				function acceptPriceMobile() {
+					mobilePriceDropdown.style.display = 'none';
+				}
+
+				function clearPrice() {
+					const priceInputFrom = document.getElementById('price_from');
+					priceInputFrom.value = '';
+					const priceInputTo = document.getElementById('price_to');
+					priceInputTo.value = '';
+					var lisFrom = document.getElementsByClassName('price_from');
+					for(let i = 0; i < lisFrom.length; i += 1) {
+						lisFrom[i].style.display = 'inline-block';
+					}
+					var lisTo = document.getElementsByClassName('price_to');
+					for(let i = 0; i < lisTo.length; i += 1) {
+						lisTo[i].style.display = 'none';
+					}
+					const priceShow = document.getElementById('price_show');
+					priceShow.innerHTML = 'Цена';
+				}
+
+				function clearPriceMobile() {
+					const priceInputFrom = document.getElementById('price_from_mobile');
+					priceInputFrom.value = '';
+					const priceInputTo = document.getElementById('price_to_mobile');
+					priceInputTo.value = '';
+					var lisFrom = document.getElementsByClassName('price_from_mobile');
+					for(let i = 0; i < lisFrom.length; i += 1) {
+						lisFrom[i].style.display = 'inline-block';
+					}
+					var lisTo = document.getElementsByClassName('price_to_mobile');
+					for(let i = 0; i < lisTo.length; i += 1) {
+						lisTo[i].style.display = 'none';
+					}
+					const priceShow = document.getElementById('price_show_mobile');
+					priceShow.innerHTML = 'Цена';
+				}
 			script.
 				//<![CDATA[
 				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

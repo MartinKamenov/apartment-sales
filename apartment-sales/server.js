@@ -238,7 +238,7 @@ var download = function(uri, filename, callback) {
 const propertyCodes = [];
 let lastHasFinished = true;
 //Got to 349 index
-let indexOfCode = 349;
+//let indexOfCode = 349;
 
 /*propertyRepository.getAllProperties().then((props) => {
     props.sort(function(a, b) { return b.date - a.date });
