@@ -271,9 +271,10 @@ html(lang='en-US')
 						// begin sidebar
 						.clearfix.visible-xs
 						#primary.col-xs-12.col-md-3.widget-area-sidebar
-							ul.xoxo
-								li#advanced_search_widget-1.widget-container.advanced_search_sidebar.boxed_widget
-									img(src='/static/images/pechat2.png', width='250px', height='250px')
+							if pechat
+								ul.xoxo
+									li#advanced_search_widget-1.widget-container.advanced_search_sidebar.boxed_widget
+										img(src='/static/images/pechat2.png', width='250px', height='250px')
 							ul.xoxo
 								li#advanced_search_widget-2.widget-container.advanced_search_sidebar.boxed_widget
 									h3.my-sidebar-header.widget-title-sidebar(style='background-color:#04c8ea; color: white;')

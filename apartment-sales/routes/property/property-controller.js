@@ -8,8 +8,12 @@ const controller = {
             }
 
             const property = foundProperties[0];
+            let pechat = true;
+            if (property.place.indexOf('Халкидики') >= 0) {
+                pechat = false;
+            }
 
-            res.render('property', { property });
+            res.render('property', { property, pechat });
         });
 
     },
