@@ -1,7 +1,7 @@
-function changeLocation() {
-    const placeDropdown = document.getElementById('place');
+function changeLocation(placeId, locationId) {
+    const placeDropdown = document.getElementById(placeId);
     const placeValue = placeDropdown.value;
-    const locationDropdown = document.getElementById('location');
+    const locationDropdown = document.getElementById(locationId);
     while (locationDropdown.firstChild) {
         locationDropdown.removeChild(locationDropdown.firstChild);
     }
@@ -56,11 +56,13 @@ function changeLocation() {
         locationArray = ['Лимнос'];
     }
     var firstOpt = document.createElement('option');
-    firstOpt.innerHTML = '';
+    firstOpt.innerHTML = 'Под Район';
+    firstOpt.value = '';
     locationDropdown.appendChild(firstOpt);
     for (var i = 0; i < locationArray.length; i += 1) {
         var option = document.createElement('option');
         option.innerHTML = locationArray[i];
+        option.value = locationArray[i];
         locationDropdown.appendChild(option);
     }
 }

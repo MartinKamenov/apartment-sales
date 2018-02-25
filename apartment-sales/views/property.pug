@@ -83,12 +83,22 @@ html(lang='en-US')
 				color:black !important;
 			}
 			.my-link:hover{
-				background-color:#0CFFA6 !important;
+				background-color:#04c8ea !important;
 				color:white !important;
 			}
 			.navbar-fixed-top {
-				background-color:#0CFFA6 !important;
+				background-color:#04c8ea !important;
 			}
+			.container {
+				background-color: #EDF0F0;
+			}
+			footer {
+				background-color: #333A42 !important;
+			}
+			.mobile_header {
+				background-color:#04c8ea !important;
+			}
+			
 	body.home.page-template.page-template-property_list.page-template-property_list-php.page.page-id-17707.wpb-js-composer.vc_responsive(class='js-comp-ver-5.3')
 		.mobilewrapper
 			.snap-drawers
@@ -100,12 +110,12 @@ html(lang='en-US')
 						li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-17952
 							a(href='/') Начало
 						li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17954
-							a(href='/advaned_search') Търсене
+							a(href='/advanced_search') Търсене
 							ul.sub-menu(style='')
 								li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
-									a.menu-item-link(href='/advanced_search?investition=on') За инвеститори
+									a.menu-item-link(href='/advanced_search?investment=on') За инвеститори
 								li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
-									a.menu-item-link(href='/advanced_search?new=on') Ново строителство
+									a.menu-item-link(href='/advanced_search?newConstruction=on') Ново строителство
 						li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
 							a(href='/usefull') Полезно
 						li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
@@ -116,13 +126,14 @@ html(lang='en-US')
 							a(href='/for_us') За нас
 						li#menu-item-17957.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17956
 							a(href='/contacts') Контакти
-		#all_wrapper.website-wrapper(style='background-color:#0CFFA6;')
-			br
-			br
-			br
-			br
-			br
-			br
+		#all_wrapper.website-wrapper(style='background-color:#04c8ea;')
+			.visible-lg.visible-md
+				br
+				br
+				br
+				br
+				br
+				br
 			.container.main_wrapper.wide.has_header_type1.header_transparent.contentheader_left.cheader_left
 				br
 				.master_header.wide.header_transparent
@@ -146,9 +157,9 @@ html(lang='en-US')
 											a.menu-item-link(href='/advanced_search') Търсене
 											ul.sub-menu(style='')
 												li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
-													a.menu-item-link(href='/advanced_search?investition=on') За инвеститори
+													a.menu-item-link(href='/advanced_search?investment=on') За инвеститори
 												li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
-													a.menu-item-link(href='/advanced_search?new=on') Ново строителство
+													a.menu-item-link(href='/advanced_search?newConstruction=on') Ново строителство
 										li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/usefull') Полезно
 										li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
@@ -246,7 +257,7 @@ html(lang='en-US')
 										#hover-link:hover {
 											color:yellow;
 										}
-									.description-bar(style='background-color: #0CFFA6; color:white; height: 30px;font-size:25px; text-align:center; padding-top: 2px;') Описание
+									.description-bar(style='background-color: #04c8ea; color:white; height: 30px;font-size:25px; text-align:center; padding-top: 2px;') Описание
 									br
 									if property.text
 										- var descriptionArray = property.text.split('\n');
@@ -265,7 +276,7 @@ html(lang='en-US')
 									img(src='/static/images/pechat2.png', width='250px', height='250px')
 							ul.xoxo
 								li#advanced_search_widget-2.widget-container.advanced_search_sidebar.boxed_widget
-									h3.my-sidebar-header.widget-title-sidebar(style='background-color:#0CFFA6; color: white;')
+									h3.my-sidebar-header.widget-title-sidebar(style='background-color:#04c8ea; color: white;')
 										b Детайли
 									ul
 										li.my-sidebar-body='Тип: ' + property.type
@@ -283,7 +294,7 @@ html(lang='en-US')
 										li.my-sidebar-body='Код: ' + property.code
 							ul.xoxo
 								li#advanced_search_widget-3.widget-container.advanced_search_sidebar.boxed_widget
-									h3.my-sidebar-header.widget-title-sidebar(style='background-color:#0CFFA6; color:white;') 
+									h3.my-sidebar-header.widget-title-sidebar(style='background-color:#04c8ea; color:white;') 
 										b Контакти
 									ul
 										img(src='/static/images/Details.JPG', style='width:250px; height:380px;')

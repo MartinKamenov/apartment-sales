@@ -56,8 +56,8 @@ const controller = {
                 'Лимнос'
             ].sort();
             const topProperties = properties.slice(0, 6);
-            const codes = ['2881', '2879', '2884', '2888'];
-            const newProperties = [];
+            const codes = ['2633', '2631', '2585', '2888', '2617', '95'];
+            let newProperties = [];
             propertyRepository.findPropertyByCode(codes[0]).then((prop0) => {
                 newProperties.push(prop0[0]);
                 propertyRepository.findPropertyByCode(codes[1]).then((prop1) => {
@@ -66,12 +66,17 @@ const controller = {
                         newProperties.push(prop2[0]);
                         propertyRepository.findPropertyByCode(codes[3]).then((prop3) => {
                             newProperties.push(prop3[0]);
-                            res.render('home', { newProperties, typeArray, topProperties, cityArray, regionArray, pagesCount, pages, currentPage: page });
+                            propertyRepository.findPropertyByCode(codes[4]).then((prop3) => {
+                                newProperties.push(prop3[0]);
+                                propertyRepository.findPropertyByCode(codes[5]).then((prop3) => {
+                                    newProperties.push(prop3[0]);
+                                    res.render('home', { newProperties, typeArray, topProperties, cityArray, regionArray, pagesCount, pages, currentPage: page });
+                                });
+                            });
                         });
                     });
                 });
             });
-
         });
     },
     showUsefull(req, res) {
@@ -80,6 +85,13 @@ const controller = {
     showServices(req, res) {
         res.render('services');
     },
+
+    showContacts(req, res) {
+        res.render('contacts');
+    },
+    showForUs(req, res) {
+        res.render('for_us');
+    }
 };
 
 // @ts-ignore

@@ -1,0 +1,137 @@
+extends shared/_master
+
+block body
+    link(rel='stylesheet', href='../static/css/add-apartment.css')
+    .container
+        .menu
+            a(href='/admin/edit')
+                button.btn-warning Промяна
+            a(href='/admin/remove')
+                button.btn-danger Премахване
+            a(href='/admin/logout')
+                button.btn-info Излизане от админ профила
+        .content
+            h1 Добавяне на жилище
+            form(method='post', action='/admin/add', enctype='multipart/form-data')
+                select.form-control(name='type')
+                    each ntype in typesArray
+                        option(value=ntype)=ntype
+                input.form-control(type='text', name='title', placeholder='заглавие')
+                textarea.form-control(name='text', rows='10', cols='30', placeholder='описание')
+                input.form-control(type='number', name='price', placeholder='цена в евро')
+                select#place.form-control(name='place', onchange='changeLocation()')
+                    each place in placeArray
+                        option(value='Област ' + place)=place
+                select#location.form-control(name='location')
+                input.form-control(type='number', name='size', placeholder='размер(кв м.)')
+                .form-control
+                    label(for='rooms') Стаи
+                    input(type='number', name='rooms')
+                    label(for='baths') Бании
+                    input(type='number', name='baths')
+                .form-control
+                    label(for='firstLine') първа линия
+                    input(type='checkbox', name='firstLine')
+                    label(for='view') гледка
+                    input(type='checkbox', name='view')
+                    label(for='pool') басейн
+                    input(type='checkbox', name='pool')
+                    label(for='furnished') обзаведен
+                    input(type='checkbox', name='furnished')
+                textarea.form-control(name='contacts', rows='5', cols='30', placeholder='контакти')
+                input.form-control(type='number', name='code', placeholder='код')
+                .form-control
+                    label(for='latitude') Latitude
+                    input(type='number', name='latitude')
+                    label(for='longitude') Longitude
+                    input(type='number', name='longitude')
+                .form-control
+                    label(for='investment') За инвестиция
+                    input(type='checkbox', name='investment')
+                    label(for='newConstruction') Нова конструкция
+                    input(type='checkbox', name='newConstruction')
+                    label(for='top') Топ обява
+                    input(type='checkbox', name='top')
+                input.form-control#number_pictures(name='number_pictures', type='number',placeholder='брой снимки', onkeyup='change()')
+                script.
+                    function change(){
+                    const ul = document.getElementById('changable_ul');
+                    const input = document.getElementById('number_pictures');
+                    while (ul.firstChild) {
+                        ul.removeChild(ul.firstChild);
+                    }
+                    var n = +input.value;
+                    if (typeof n == 'number') {
+                        for (let i = 0; i < n; i += 1) {
+                            var li = document.createElement("li");
+                            var newInput = document.createElement("input");
+                            newInput.className = 'form-control';
+                            newInput.type = 'file';
+                            newInput.name = 'pic';
+                            newInput.accept = '.png, .jpg, .jpeg';
+                            li.appendChild(newInput);
+                            ul.appendChild(li);
+                        }
+                    }
+                    }
+                ul#changable_ul
+                button.form-control.btn-success(type='submit') Добавяне
+                script.
+                    changeLocation();
+                    function changeLocation() {
+                        const placeDropdown = document.getElementById('place');
+                        const placeValue = placeDropdown.value;
+                        const locationDropdown = document.getElementById('location');
+                        while (locationDropdown.firstChild) {
+                            locationDropdown.removeChild(locationDropdown.firstChild);
+                        }
+                        let locationArray = [];
+                        if(placeValue==='Област Кавала') {
+                            locationArray = ['Авли' , 'Агиасма' , 'Агиос Андреас' , 'Акровуни' , 'Акропотамос' , 'Амигдалеонас' , 'Амисиана' , 
+                            'Ано Лефки' , 'Галипсос' , 'Гравуна' , 'Доматя' , 'Ексохи' , 'Елеохори' , 'Елефтерес' ,  'Елефтеруполи' , 
+                            'Заркадя' , 'Зигос' , 'Каравагелис' , 'Кариани' , 'Керамоти' , 'Кипя' , 'Кокинохома' , 'Кокинохори' , 
+                            'Кринидес' , 'Крионери' , 'Лефки' , 'Лидиа' , 'Лутра Елефтерон' , 'Мелиса' , 'Мелисиокомо' , 
+                            'Месоропи' , 'Меся' , 'Миртофито' , 'Моностираки' , 'Мустени' , 'Неа Ираклица' , 'Неа Карвали' , 'Неа Каря' , 
+                            'Неа Перамос' , 'Орфани' , 'Орфани Паралия' , 'Офринио' , 'Палеохори' , 'Пальо Чифлики (Пальо)' , 
+                            'Паралия Елеохори' ,  'Паралия Кариани' , 'Паралия Миртофито' , 'Паралия Офринио' , 'Паралия Фоля' , 
+                            'Перни' , 'Пигес' , 'Пиргохори' , 'Платанотопос' , 'Подохори' , 'Полистило' , 'Сидирохори' , 
+                            'Филипи' , 'Фоля' , 'Хайдефето' , 'Халкеро' , 'Хрисокастро' , 'Хрисохори' , 'Хрисуполи' ];
+                            
+                        }
+                        else if(placeValue==='Област Тасос') {
+                            locationArray = ['Агиос Георгиос' , 'Алики' , 'Астрида' , 'Гликади' , 'Глифада' , 'Иера Мони' , 
+                            'Каливес' , 'Каливиа' , 'Калирахи' , 'Кастро' , 'Кинира' , 'Лефки' , 'Лимена' , 'Лименаря' , 
+                            'Макриамос' , 'Мариес' , 'Мегалос Принос' , 'Микрос Принос' , 'Мони Архагелу' , 'Ормос Принос' , 'Палеохори' , 
+                            'Панагия' , 'Потамиа' , 'Потос' , 'Принос' , 'Рахони' , 'Скала Калихарис' , 
+                            'Скала Марион' , 'Скала Потамяс' , 'Скала Рахони' , 'Скала Сотирас' , 'Сотирас' , 
+                            'Тасос (Център)' , 'Теологос' , 'Тимониа' , 'Хриси Акти' , 'Хриси Амудя'];
+                        }  else if(placeValue==='Област Халкидики') {
+                            locationArray = ['Агия Параскеви', 'Агиос Мамас', 'Агиос Николаос', 'Агия Кариаки', 'Акти Азапико',
+                            'Акти Елиас', 'Акти Салоникю', 'Арнеа', 'Афитос', 'Вавдос', 'Ватопеди', 'Вурвуру', 'Елани', 'Елия Никитис', 'Йерисос',
+                            'Каламитси' , 'Каландра', 'Каливес', 'Каликратия', 'Калитеа', 'Касандра', 'Касандрия',
+                            'Криарици', 'Криопиги', 'Лагомандра', 'Лутра', 'Метармофоси', 'Мола', 'Калива', 'Мудания',
+                            'Неа Рода', 'Неа Скиони', 'Неа Триглия', 'Нео Фокеа', 'Неос Мармарас', 'Неохори', 'Никити', 'Олимпиада',
+                            'Олинтос', 'Ормос', 'Панагияс', 'Остров Амулиани' , 'Палиури' , 'Партенонас' , 'Пефкохори' , 
+                            'Пиргадикия' , 'Полигирос' , 'Полийхроно' , 'Полихроно' , 
+                            'Порто Куфо' , 'Посиди' , 'Потидеа' , 'Псакудия' , 'Сани' , 'Сарти' , 'Сивири' , 'Сикия' , 'Спалатронисия' , 
+                            'Стратони' , 'Таксиархис' , 'Торони' , 'Трипити' , 'Урануполи' , 
+                            'Флогита' , 'Фурка' , 'Ханиоти' , 'Херакини' , 'Холомонтас'];
+                        }  else if(placeValue==='Област Драма') {
+                            locationArray = ['Драма'];
+                        }  else if(placeValue==='Област Серес') {
+                            locationArray = ['Агий Анаргири' , 'Агиос Антониос' , 'Агиос Атанасиос' , 'Агиос Йоанис' , 'Агиос Никитас' , 
+                            'Агиос Пантелимонас' , 'Амфиполи' , 'Византио (Калкани)' , 'Ептамили' , 'Инуса' , 
+                            'Иония (Сфагия)' , 'Каливиа' , 'Каменикиа' , 'Киупля' , 'Лефконас' , 'Македономахон' ,
+                            'Неа Кердилия' , 'Нео Сули' , 'Никеа' , 'Омония' , 'Палеокоми' , 'Панорама - Калитеа' , 
+                            'Профитис Илияс- Агия София' , 'Родоливос' , 'Саранда Мартирес' , 'Сирис (Сигис- Неа Кифися)' , 'Таксиархес (Център)' ];
+                        }  else if(placeValue==='Област Солун') {
+                            locationArray = ['Ано Ставрос' , 'Аспровалта' , 'Врасна' , 'Милиес' , 'Неа Врасна' , 'Паралия Врасна' , 
+                            'Ривиера' , 'Сериаки Акти' , 'Ставрос'];
+                        }
+                        for(var i = 0; i < locationArray.length; i += 1) {
+                            var option = document.createElement('option');
+                            option.innerHTML = locationArray[i];
+                            locationDropdown.appendChild(option);
+                        }
+                    }
+    

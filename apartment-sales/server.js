@@ -153,6 +153,178 @@ setInterval(function() {
     });
 }, 1500);*/
 
+
+/*let propertyCodes = [];
+propertyRepository.getAllProperties().then((props) => {
+    props.sort(function(a, b) { return a.date - b.date });
+    let i = props.length - 1;
+    console.log('Length = ' + props.length);
+    for (let i = props.length - 1; i >= 0; i -= 1) {
+        propertyCodes.push(props[i].code);
+        console.log(props[i].date);
+    }
+    //changeProperty(0);
+});*/
+
+/*function changeProperty(codeIndex) {
+    //let code = propertyCodes[codeIndex];
+    let code = codeIndex;
+    propertyRepository.findPropertyByCode(code).then((prop) => {
+        var property = prop[0];
+        var newPictures = [];
+        var newProperty = property;
+        let j = 0;
+        var x = setInterval(function() {
+            var picture = property.pictures[j];
+            var picName = 'ak' + property.code + '_foto' + j + '.jpg';
+            if (picture.indexOf('remax') >= 0) {
+                download(picture, picName, function() {
+                    newPictures.push('/static/images/added_pictures/' + picName);
+                    console.log('done: ' + picName);
+                    j += 1;
+                    if (j >= property.pictures.length) {
+                        newProperty.pictures = newPictures;
+                        console.log(newProperty.pictures);
+                        clearInterval(x);
+                        console.log('Interval cleared.');
+                        /*propertyRepository.removeProperty(property.code).then(() => {
+                            propertyRepository.insertProperty(newProperty);
+                            console.log('Finished with property: ' + newProperty.code);
+                            
+                            return;
+                            if (codeIndex + 1 >= propertyCodes.length) {
+                                return;
+                            }
+                            changeProperty(codeIndex + 1);
+                        });
+                    }
+                });
+            } else {
+                newPictures.push(picture);
+                console.log('already there: ' + picture);
+                j += 1;
+                if (j >= property.pictures.length) {
+                    newProperty.pictures = newPictures;
+                    console.log(newProperty.pictures);
+                    clearInterval(x);
+                    console.log('Interval cleared.');
+                    propertyRepository.removeProperty(property.code).then(() => {
+                        propertyRepository.insertProperty(newProperty);
+                        console.log('Finished with property: ' + newProperty.code);
+                        clearInterval(x);
+                        return;
+                        if (codeIndex + 1 >= propertyCodes.length) {
+                            return;
+                        }
+                        changeProperty(codeIndex + 1);
+                    });
+                }
+            }
+        }, 1000);
+    });
+};*/
+
+//Adds pictures to our site!
+var fs = require('fs'),
+    request = require('request');
+
+var download = function(uri, filename, callback) {
+    request.head(uri, function(err, res, body) {
+
+        request(uri).pipe(fs.createWriteStream('./apartment-sales/static/images/added_pictures/' + filename)).on('close', callback);
+    });
+};
+
+const propertyCodes = [];
+let lastHasFinished = true;
+//Got to 349 index
+let indexOfCode = 349;
+
+/*propertyRepository.getAllProperties().then((props) => {
+    props.sort(function(a, b) { return b.date - a.date });
+    for (let i = 0; i < props.length; i += 1) {
+        propertyCodes.push(props[i].code);
+        console.log(props[i].date);
+    }
+    var x = setInterval(function() {
+        if (lastHasFinished) {
+            lastHasFinished = false;
+            if (indexOfCode >= 400) {
+                clearInterval(x);
+                console.log('interval cleared');
+                return;
+            }
+            console.log(indexOfCode);
+            changeProperty(indexOfCode++);
+        }
+    }, 3000);
+});*/
+
+function changeProperty(codeIndex) {
+    let code = propertyCodes[codeIndex];
+    propertyRepository.findPropertyByCode(code).then((prop) => {
+        var property = prop[0];
+        var newPictures = [];
+        var newProperty = property;
+        pesho(0, property.pictures.length, [], property);
+    });
+};
+
+function pesho(j, length, newPictures, property) {
+    if (j == length) {
+        let newProp = property;
+        newProp.pictures = newPictures;
+        console.log(newProp);
+        propertyRepository.removeProperty(property.code).then(() => {
+            propertyRepository.insertProperty(newProp).then(() => {
+                console.log('changed: ' + property.code);
+                lastHasFinished = true;
+                return;
+            });
+        });
+        return;
+    }
+    var picture = property.pictures[j];
+    var picName = 'ak' + property.code + '_foto' + j + '.jpg';
+    if (picture.indexOf('remax') >= 0) {
+        download(picture, picName, function() {
+            newPictures.push('/static/images/added_pictures/' + picName);
+            console.log('done: ' + picName);
+            pesho(j + 1, length, newPictures, property);
+        });
+    } else {
+        newPictures.push(picture);
+        console.log('already there: ' + picture);
+        pesho(j + 1, length, newPictures, property);
+    }
+};
+//Finishes here
+
+/*var property = prop[i];
+var newPictures = [];
+for (let j = 0; j < property.pictures.length; j += 1) {
+    var picture = property.pictures[j];
+    console.log(picture);
+    var picName = 'ak' + property.code + '_foto' + j + '.jpg';
+    console.log(picName);
+    if (picture.indexOf('remax') >= 0) {
+        download(picture, picName, function() {
+            console.log('done: ' + picName);
+            newPictures.push('/static/images/added_pictures/' + picName + '.jpg');
+        });
+    } else {
+        newPictures.push(picture);
+    }
+}
+
+var newProperty = property;
+newProperty.pictures = newPictures;
+
+propertyRepository.removeProperty(property.code).then(() => {
+    propertyRepository.insertProperty(newProperty);
+    console.log('Finished with property: ' + newProperty.code);
+});*/
+
 authConfig(app, adminRepository);
 homeRoute(app, propertyRepository);
 adminRoute(app, adminRepository, propertyRepository);

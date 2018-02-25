@@ -3,13 +3,13 @@ const notifier = require('node-notifier');
 
 const controller = {
     showAdminPanel(propertyRepository, req, res) {
-        res.render('admin-login');
+        res.render('admin/admin-login');
     },
     addProperty(adminRepository, propertyRepository, req, res) {
         checkIfAdminIsAuthenticated(req, res);
         const typesArray = ['Апартамент', 'Мезонет', 'Самостоятелна къща', 'Парцел', 'Земеделска земя', 'Магазин', 'Офис', 'Хотел'];
         const placeArray = ['Кавала', 'Тасос', 'Халкидики', 'Солун', 'Серес', 'Тракия', 'Лимнос', 'Драма'];
-        res.render('addProperty', { typesArray, placeArray });
+        res.render('admin/addProperty', { typesArray, placeArray });
     },
     postProperty(adminRepository, propertyRepository, req, res) {
         checkIfAdminIsAuthenticated(req, res);
@@ -38,7 +38,7 @@ const controller = {
         for (let i = 0; i < req.files.length; i += 1) {
             picturesNames.push('/static/images/added_pictures/' + req.files[i].filename);
         }
-        if (!type || !title || !text || !price || !place || !contacts || !code || !size || picturesNames.length === 0) {
+        if (!type || !title || !text || !price || !place || !contacts || !code || !size) {
             res.send('Моля попълнете всички полета.');
             return;
         }
@@ -61,7 +61,7 @@ const controller = {
     },
     removeProperty(adminRepository, propertyRepository, req, res) {
         checkIfAdminIsAuthenticated(req, res);
-        res.render('removeProperty');
+        res.render('admin/removeProperty');
     },
     postRemoveProperty(adminRepository, propertyRepository, req, res) {
         checkIfAdminIsAuthenticated(req, res);
@@ -77,7 +77,7 @@ const controller = {
 
     getCodeForEdit(propertyRepository, req, res) {
         checkIfAdminIsAuthenticated(req, res);
-        res.render('codeForEdit');
+        res.render('admin/codeForEdit');
     },
 
     editProperty(propertyRepository, req, res) {
@@ -90,7 +90,7 @@ const controller = {
             }
 
             const property = properties[0];
-            res.render('editProperty', { property });
+            res.render('admin/editProperty', { property });
         });
     },
 

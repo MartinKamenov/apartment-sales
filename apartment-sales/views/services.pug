@@ -78,10 +78,13 @@ html(lang='en-US')
 		style(type='text/css').
 			.wpb_animate_when_almost_visible { opacity: 1; }
 			.navbar-fixed-top {
-				background-color:#0CFFA6 !important;
+				background-color:#04c8ea !important;
 			}
 			.customnav {
-				background-color:#0CFFA6 !important;
+				background-color:#04c8ea !important;
+			}
+			.mobile_header {
+				background-color:#04c8ea !important;
 			}
 	body.home.page-template.page-template-property_list.page-template-property_list-php.page.page-id-17707.wpb-js-composer.vc_responsive(class='js-comp-ver-5.3')
 		.mobilewrapper
@@ -94,12 +97,12 @@ html(lang='en-US')
 						li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-17952
 							a(href='/') Начало
 						li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17954
-							a(href='/advaned_search') Търсене
+							a(href='/advanced_search') Търсене
 							ul.sub-menu(style='')
 								li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
-									a.menu-item-link(href='/advanced_search?investition=on') За инвеститори
+									a.menu-item-link(href='/advanced_search?investment=on') За инвеститори
 								li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
-									a.menu-item-link(href='/advanced_search?new=on') Ново строителство
+									a.menu-item-link(href='/advanced_search?newConstruction=on') Ново строителство
 						li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
 							a(href='/usefull') Полезно
 						li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
@@ -110,13 +113,14 @@ html(lang='en-US')
 							a(href='/for_us') За нас
 						li#menu-item-17957.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17956
 							a(href='/contacts') Контакти
-		#all_wrapper.website-wrapper(style='background-color:#0CFFA6;')
-			br
-			br
-			br
-			br
-			br
-			br
+		#all_wrapper.website-wrapper(style='background-color:#04c8ea;')
+			.visible-lg.visible-md
+				br
+				br
+				br
+				br
+				br
+				br
 			.container.main_wrapper.wide.has_header_type1.header_transparent.contentheader_left.cheader_left
 				br
 				.master_header.wide.header_transparent
@@ -140,9 +144,9 @@ html(lang='en-US')
 											a.menu-item-link(href='/advanced_search') Търсене
 											ul.sub-menu(style='')
 												li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
-													a.menu-item-link(href='/advanced_search?investition=on') За инвеститори
+													a.menu-item-link(href='/advanced_search?investment=on') За инвеститори
 												li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
-													a.menu-item-link(href='/advanced_search?new=on') Ново строителство
+													a.menu-item-link(href='/advanced_search?newConstruction=on') Ново строителство
 										li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/usefull') Полезно
 										li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
@@ -204,8 +208,11 @@ html(lang='en-US')
 							width: 30px;
 						}
 						.my-title {
-							background-color: #10E698;
+							background-color: #04c8ea;
 							color: white;
+						}
+						.container {
+							background-color: #EDF0F0;
 						}
 					br
 					br

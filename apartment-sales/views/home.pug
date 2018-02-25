@@ -87,7 +87,7 @@ html(lang='en-US')
 				z-index: 1;
 			}
 			.customnav {
-				background-color:#0CFFA6 !important;
+				background-color:#04c8ea !important;
 			}
 		style(type='text/css').
 			.container {
@@ -103,12 +103,12 @@ html(lang='en-US')
 						li#menu-item-17952.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-17952
 							a(href='/') Начало
 						li#menu-item-17954.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17954
-							a(href='/advaned_search') Търсене
+							a(href='/advanced_search') Търсене
 							ul.sub-menu(style='')
 								li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
-									a.menu-item-link(href='/advanced_search?investition=on') За инвеститори
+									a.menu-item-link(href='/advanced_search?investitment=on') За инвеститори
 								li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
-									a.menu-item-link(href='/advanced_search?new=on') Ново строителство
+									a.menu-item-link(href='/advanced_search?newConstruction=on') Ново строителство
 						li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
 							a(href='/usefull') Полезно
 						li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-17953
@@ -142,9 +142,9 @@ html(lang='en-US')
 											a.menu-item-link(href='/advanced_search') Търсене
 											ul.sub-menu(style='')
 												li#menu-item-18064.menu-item.menu-item-type-post_type.menu-item-object-page
-													a.menu-item-link(href='/advanced_search?investition=on') За инвеститори
+													a.menu-item-link(href='/advanced_search?investment=on') За инвеститори
 												li#menu-item-18063.menu-item.menu-item-type-post_type.menu-item-object-page
-													a.menu-item-link(href='/advanced_search?new=on') Ново строителство
+													a.menu-item-link(href='/advanced_search?newConstruction=on') Ново строителство
 										li#menu-item-17953.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/usefull') Полезно
 										li#menu-item-17955.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
@@ -173,6 +173,9 @@ html(lang='en-US')
 											#logo_image {
 												width: 180px;
 												height: 160px;
+											}
+											.mobile_header {
+												background-color:#04c8ea !important;
 											}
 											.my_logo {
 												position: absolute;
@@ -275,7 +278,7 @@ html(lang='en-US')
 															li(role='presentation', data-value='') Всички типове
 															each ntype in typeArray
 																li(role='presentation', data-value=ntype)=ntype
-												.col-md-2.cities(onclick='alertFunc()')
+												.col-md-2.cities(onclick='alertFunc("place_input", "dropdown-location")')
 													.dropdown.form-control
 														#region_dropdown.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 															| Район
@@ -483,40 +486,45 @@ html(lang='en-US')
 								li(role='presentation', data-value='') Всички типове
 									each ntype in typeArray
 										li(role='presentation', data-value=ntype)=ntype
-						.dropdown.form-control
+						.dropdown.form-control(onclick='alertFunc("mobile-place-input", "mobile-region")')
 							#mobile-advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
 								| Район
 								span.caret.caret_filter
-							input#place-input(type='hidden', name='place', value='')
-							ul#mobile-adv-search-city.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_city')
+							input#mobile-place-input(type='hidden', name='place', value='')
+							ul#mobile-place.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_city')
 								li(role='presentation', data-value='', data-value2='') Всички райони
 								each place in cityArray
-									li(role='presentation', data-value=place, data-value2=place)=place
+									li(role='presentation', data-value='Област ' + place, data-value2='Област ' + place)=place
 						.dropdown.form-control
 							#mobile-advanced_city.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-								| Район
+								| Под Район
 								span.caret.caret_filter
 							input#place-input(type='hidden', name='location', value='')
-							ul.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_city')
+							ul#mobile-region.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_city')
 								li(role='presentation', data-value='', data-value2='') Всички райони
 								each region in regionArray
-									li(role='presentation', data-value=place, data-value2=place)=place
-						.dropdown.form-control
-							#mobile-advanced_area.filter_menu_trigger(data-toggle='dropdown', xx='', data-value='all')
-								| Цена
+									li(role='presentation', data-value=region, data-value2=region, style='display:none;')=region
+						.dropdown.form-control()
+							#my-menu.filter_menu_trigger 
+								p Цена
 								span.caret.caret_filter
-							input(type='hidden', name='price', value='')
-							ul#mobile-adv-search-area.dropdown-menu.filter_menu(role='menu', aria-labelledby='mobile-advanced_area')
-								li(role='presentation', data-value='') Всички цени
-								li(role='presentation', data-value='')
-									label От
-									input(name='price_from')
-									label До
-									input(name='price_to')
-								li(role='presentation', data-value='1') От 0 до 50 000 &#8364;
-								li(role='presentation', data-value='2') От 50 000 до 100 000 &#8364;
-								li(role='presentation', data-value='3') От 100 000 до 500 000 &#8364;
-								li(role='presentation', data-value='4') Над 500 000 &#8364;
+								ul#myDropdown.dropdown-menu.filter_menu(style='background-color: white; display: none; list-style-type: none;')
+									li
+										span
+											textarea#price_from(type='number', style='display: inline; width: 60px; height: 43px; resize: none;', placeholder='От', onchange='changeFrom(document.getElementById("price_from").value)', name='price_from')
+											textarea#price_to(style='display: inline; width: 60px; height: 43px; resize: none;', type='number', placeholder='До',, onchange='changeTo(document.getElementById("price_to").value)' name='price_to')
+									li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(0)')='\u20AC 0'
+									li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(5000)')='\u20AC 5 000'
+									li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(20000)')='\u20AC 20 000'
+									li.price_from(role='presentation', style='text-align:left;', onclick='changeFrom(50000)')='\u20AC 50 000'
+									li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(0)')='\u20AC 0'
+									li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(5000)')='\u20AC 5 000'
+									li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(20000)')='\u20AC 20 000'
+									li.price_to(role='presentation', style='text-align:right; padding-right: 50px; display: none;', onclick='changeTo(50000)')='\u20AC 50 000'
+									li
+										span
+											button.btn-success(onclick='acceptPrice()') ОК
+											button.btn-info(onclick='clearPrice()') Изчисти
 						#adv_extended_options_text_mobile.adv_extended_options_text Повече опции за търсене
 						.extended_search_check_wrapper
 							span#adv_extended_close_mobile.adv_extended_close_button
@@ -538,7 +546,7 @@ html(lang='en-US')
 						.col-md-12
 							.single-content
 								br
-								img(src='/static/images/bar.PNG', width='2000')
+								img(src='/static/images/bar.JPG', width='2000')
 					.row
 						.col-md-12
 							#ultimate-heading-16635a575d66ae212.uvc-heading.ult-adjust-bottom-margin.ultimate-heading-16635a575d66ae212.uvc-9517(data-hspacer='line_only', data-halign='center', style='text-align:center')
@@ -814,12 +822,12 @@ html(lang='en-US')
 				//]]>
 			script(type='text/javascript').
 				let current = '';
-				function alertFunc() {
-					const place_input = document.getElementById('place_input');
+				function alertFunc(placeInputId, locationDropdownId) {
+					const place_input = document.getElementById(placeInputId);
 					const place = place_input.value;
 					if(place!==current) {
 						current = place;
-						const ul = document.getElementById('dropdown-location');
+						const ul = document.getElementById(locationDropdownId);
 						//ul.innerHTML = '<li> Офрино</li>';
 						
 						let locations = [];
