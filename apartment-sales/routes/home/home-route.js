@@ -20,6 +20,9 @@ const attach = (app, propertyRepository) => {
         })
         .get('/for_us', (req, res) => {
             controller.showForUs(req, res);
+        })
+        .get('/news', (req, res) => {
+            controller.showNews(req, res);
         });
     app.use('/', router);
 };

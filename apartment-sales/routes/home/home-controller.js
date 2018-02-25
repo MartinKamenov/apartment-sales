@@ -56,7 +56,7 @@ const controller = {
                 'Лимнос'
             ].sort();
             const topProperties = properties.slice(0, 6);
-            const codes = ['2633', '2631', '2585', '2888', '2617', '95'];
+            const codes = ['2773', '2928', '1995', '1982', '2789', '2322'];
             let newProperties = [];
             propertyRepository.findPropertyByCode(codes[0]).then((prop0) => {
                 newProperties.push(prop0[0]);
@@ -81,6 +81,10 @@ const controller = {
     },
     showUsefull(req, res) {
         res.render('usefull');
+    },
+
+    showNews(req, res) {
+        res.render('news');
     },
     showServices(req, res) {
         res.render('services');
