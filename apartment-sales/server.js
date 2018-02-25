@@ -237,10 +237,10 @@ var download = function(uri, filename, callback) {
 
 const propertyCodes = [];
 let lastHasFinished = true;
-//Got to 349 index
-//let indexOfCode = 349;
+// Got to 353 index
+/*let indexOfCode = 468;
 
-/*propertyRepository.getAllProperties().then((props) => {
+propertyRepository.getAllProperties().then((props) => {
     props.sort(function(a, b) { return b.date - a.date });
     for (let i = 0; i < props.length; i += 1) {
         propertyCodes.push(props[i].code);
@@ -249,7 +249,7 @@ let lastHasFinished = true;
     var x = setInterval(function() {
         if (lastHasFinished) {
             lastHasFinished = false;
-            if (indexOfCode >= 400) {
+            if (indexOfCode >= 500) {
                 clearInterval(x);
                 console.log('interval cleared');
                 return;
