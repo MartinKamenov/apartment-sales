@@ -331,4 +331,4 @@ adminRoute(app, adminRepository, propertyRepository);
 propertyRoute(app, propertyRepository);
 searchRoute(app, propertyRepository);
 
-app.listen(process.env.PORT || 5000);
+app.listen(6000, () => console.log('Example app listening on port 6000!'));
