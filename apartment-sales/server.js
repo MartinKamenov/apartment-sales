@@ -331,4 +331,4 @@ adminRoute(app, adminRepository, propertyRepository);
 propertyRoute(app, propertyRepository);
 searchRoute(app, propertyRepository);
 
-app.listen(8080, () => console.log('Example app listening on port 8080!'));
+app.listen(process.env.PORT || 5000);
