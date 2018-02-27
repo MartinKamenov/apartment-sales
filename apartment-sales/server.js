@@ -300,6 +300,23 @@ function pesho(j, length, newPictures, property) {
 };
 //Finishes here
 
+//Check if pic exist and if not try downloading it
+/*let finished = true;
+let indexxx = 0;
+propertyRepository.getAllProperties().then((props) => {
+    props.sort(function(a, b) { return b.date - a.date });
+    for (let i = 0; i < props.length; i += 1) {
+        propertyCodes.push(props[i].code);
+        console.log(props[i].date);
+    }
+    var x = setInterval(function() {
+        if(finished) {
+
+        }
+    }, 3000);
+});*/
+//Finish here
+
 /*var property = prop[i];
 var newPictures = [];
 for (let j = 0; j < property.pictures.length; j += 1) {
