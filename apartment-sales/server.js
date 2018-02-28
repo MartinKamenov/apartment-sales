@@ -266,7 +266,7 @@ function changeProperty(codeIndex) {
         var property = prop[0];
         var newPictures = [];
         var newProperty = property;
-        pesho(0, property.pictures.length, [], property);
+        //pesho(0, property.pictures.length, [], property);
     });
 };
 
@@ -275,13 +275,8 @@ function pesho(j, length, newPictures, property) {
         let newProp = property;
         newProp.pictures = newPictures;
         console.log(newProp);
-        propertyRepository.removeProperty(property.code).then(() => {
-            propertyRepository.insertProperty(newProp).then(() => {
-                console.log('changed: ' + property.code);
-                lastHasFinished = true;
-                return;
-            });
-        });
+        console.log('Downloaded ' + property.code);
+        finished = true;
         return;
     }
     var picture = property.pictures[j];
@@ -290,6 +285,12 @@ function pesho(j, length, newPictures, property) {
         download(picture, picName, function() {
             newPictures.push('/static/images/added_pictures/' + picName);
             console.log('done: ' + picName);
+            pesho(j + 1, length, newPictures, property);
+        });
+    } else if (!fs.existsSync('/static/images/added_pictures/' + picName)) {
+        download('http://www.xn--b1acnacuoto8b3byd.bg/' + picture, picName, function() {
+            newPictures.push('http://www.xn--b1acnacuoto8b3byd.bg' + '/static/images/added_pictures/' + picName);
+            console.log('done: ' + 'http://www.xn--b1acnacuoto8b3byd.bg' + picName);
             pesho(j + 1, length, newPictures, property);
         });
     } else {
@@ -301,8 +302,9 @@ function pesho(j, length, newPictures, property) {
 //Finishes here
 
 //Check if pic exist and if not try downloading it
+//2096
 /*let finished = true;
-let indexxx = 0;
+let indexxx = 241;
 propertyRepository.getAllProperties().then((props) => {
     props.sort(function(a, b) { return b.date - a.date });
     for (let i = 0; i < props.length; i += 1) {
@@ -310,8 +312,16 @@ propertyRepository.getAllProperties().then((props) => {
         console.log(props[i].date);
     }
     var x = setInterval(function() {
-        if(finished) {
-
+        if (finished) {
+            finished = false;
+            propertyRepository.findPropertyByCode(propertyCodes[indexxx++]).then((prop) => {
+                var property = prop[0];
+                console.log(indexxx);
+                pesho(0, property.pictures.length, [], property);
+                if (indexxx >= 968) {
+                    clearInterval(x);
+                }
+            });
         }
     }, 3000);
 });*/
