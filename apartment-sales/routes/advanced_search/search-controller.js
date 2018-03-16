@@ -20,6 +20,9 @@ const controller = {
             showBar = true;
             if (!place.includes('Серес')) {
                 params.place = place;
+                if (place.includes('Град')) {
+                    params.place = "Кавала (Град)";
+                }
             } else {
                 placeIsSeres = true;
             }
@@ -71,7 +74,7 @@ const controller = {
                 baths_from = 1;
             }
         }
-        const placesArray = ['Кавала', 'Тасос', 'Халкидики',
+        const placesArray = ['Кавала', 'Кавала (Град)', 'Тасос', 'Халкидики',
             'Солун', 'Серес', 'Тракия', 'Лимнос', 'Драма'
         ].sort();
         const typesArray = ['Апартамент', 'Мезонет', 'Самостоятелна къща', 'Парцел', 'Земеделска земя', 'Магазин', 'Офис', 'Хотел'];

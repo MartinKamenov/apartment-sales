@@ -597,7 +597,7 @@ html(lang='en-US')
 																.featured_prop_price
 																	span.price_label=property.price + ' \u20AC'
 																.listing_details.the_grid_view=property.text.substring(0, 50)
-																	a.unit_more_x(href='/property/' + property.code) [more]
+																	a.unit_more_x(href='/property/' + property.code) [повече]
 																.property_listing_details
 																	if property.rooms
 																		span.inforoom=property.rooms
@@ -664,9 +664,9 @@ html(lang='en-US')
 												span.price_label.price_label_before=parseInt(apartment.price) + ' \u20AC'
 												//span.price_label / month
 											.listing_details.the_grid_view=apartment.text.substring(0, 100)
-												a.unit_more_x(href='/property/' + apartment.code) [more]
+												a.unit_more_x(href='/property/' + apartment.code) [повече]
 											.listing_details.the_list_view=apartment.text
-												a.unit_more_x(href='/property/' + apartment.code) [more]
+												a.unit_more_x(href='/property/' + apartment.code) [повече]
 											.property_listing_details
 												if apartment.rooms
 													span.inforoom=apartment.rooms
@@ -932,6 +932,15 @@ html(lang='en-US')
 							'Паралия Елеохори' ,  'Паралия Кариани' , 'Паралия Миртофито' , 'Паралия Офринио' , 'Паралия Фоля' , 
 							'Перни' , 'Пигес' , 'Пиргохори' , 'Платанотопос' , 'Подохори' , 'Полистило' , 'Сидирохори' , 
 							'Филипи' , 'Фоля' , 'Хайдефето' , 'Халкеро' , 'Хрисокастро' , 'Хрисохори' , 'Хрисуполи' ].sort();
+						} else if(place==='Област Кавала (Град)') {
+							locations = ['Агиа Параскеви', 'Агиас Варварас', 'Агиос Атанасиос',
+							'Агиос Георгиос', 'Агиос Йоанис', 'Агиос Лукас', 'Агиос Николаос',
+							'Агиос Павлос', 'Агиос Силас', 'Аспри Амос', 'Виронас',
+							'Дексамени', 'Делос', 'Каламица', 'Кипуполи', 'Панагия',
+							'Панагуда', 'Пентакосиа', 'Перигиали',
+							'Потамудя', 'Профитис Илиас', 'Рапсани', 'Санаторио',
+							'Сугело', 'Сфагия', 'Тимиос Ставрос – Сугело', 'Хилиа',
+							'Хорафа', 'Център Кавала'].sort();
 						} else if(place==='Област Солун') {
 							locations = ['Ано Ставрос' , 'Аспровалта' , 'Врасна' , 'Милиес' , 'Неа Врасна' , 'Паралия Врасна' , 
 							'Ривиера' , 'Сериаки Акти' , 'Ставрос'].sort();
