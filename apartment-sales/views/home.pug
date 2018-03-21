@@ -528,7 +528,7 @@ html(lang='en-US')
 														.vc_column-inner
 															.wpb_wrapper
 																.article_container
-																	.places_wrapper_type_2(style='background-image: url(/static/images/KAVALA.jpg)')
+																	.places_wrapper_type_2(style='background-image: url(/static/images/kavala.jpeg)')
 																		.places_cover(data-link='/advanced_search?place=Област Кавала')
 																		.places_type_2_content
 																			h4
@@ -538,7 +538,7 @@ html(lang='en-US')
 														.vc_column-inner
 															.wpb_wrapper
 																.article_container
-																	.places_wrapper_type_2(style='background-image: url(/static/images/Tasos3.jpg)')
+																	.places_wrapper_type_2(style='background-image: url(/static/images/Tasos3.jpeg)')
 																		.places_cover(data-link='/advanced_search?place=Област Тасос')
 																		.places_type_2_content
 																			h4
@@ -580,17 +580,8 @@ html(lang='en-US')
 																.tag-wrapper
 																.carousel.slide(id='property_unit_featured_carousel_' + property.code, data-ride='carousel', data-interval='false')
 																	.carousel-inner
-																		- for (var i = 0; i < property.pictures.length; ++i) {
-																			if i==0
-																				.item.active(style='background-image:url(' + property.pictures[0] + ');')
-																			else
-																				.item(style='background-image:url(' + property.pictures[i] + ');')
-																		- }
+																		.item.active(style='background-image:url(' + property.pictures[0] + ');')
 																	a(href='/property/' + property.code)
-																	a.left.carousel-control(href='#property_unit_featured_carousel_' + property.code, data-slide='prev')
-																		i='<'
-																	a.right.carousel-control(href='#property_unit_featured_carousel_' + property.code, data-slide='next')
-																		i='>'
 															.featured_secondline(data-link='/property/' + property.code)
 																h2
 																	a(href='/property/' + property.code)=property.title.substring(0, 50)
@@ -642,22 +633,10 @@ html(lang='en-US')
 														i.fa.fa-camera(aria-hidden='true')=' ' + apartment.pictures.length
 												.carousel.property_unit_carousel.slide(id='property_unit_carousel_' + apartment.code, data-ride='carousel', data-interval='false')
 													.carousel-inner
-														- for (var i = 0; i < apartment.pictures.length; ++i) {
-															if i==0
-																.item.active
-																	a(href='/property/' + apartment.code)
-																		img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=apartment.pictures[i], alt='')
-															else
-																.item.lazy-load-item
-																	a(href='/property/' + apartment.code)
-																		img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=apartment.pictures[i], alt='')
-														- }
-														
-													a(href='/property/' + apartment.code)
-													a.left.carousel-control(href='#property_unit_carousel_' + apartment.code, data-slide='prev')
-														i <
-													a.right.carousel-control(href='#property_unit_carousel_' + apartment.code, data-slide='next')
-														i >
+														if apartment.pictures
+															.item.active
+																a(href='/property/' + apartment.code)
+																	img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=apartment.pictures[0], alt='')
 											h4
 												a(href='/property/' + apartment.code)=apartment.title.substring(0, 100)
 											.listing_unit_price_wrapper
