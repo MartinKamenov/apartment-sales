@@ -5,7 +5,7 @@ const mime = require('mime');
 const crypto = require('crypto');
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'apartment-sales/static/images/added_pictures');
+        cb(null, 'static/images/added_pictures');
     },
     filename: function(req, file, cb) {
         crypto.pseudoRandomBytes(16, function(err, raw) {
