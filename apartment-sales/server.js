@@ -7,10 +7,12 @@ const homeRoute = require('./routes/home/home-route');
 const propertyRoute = require('./routes/property/property-route');
 const searchRoute = require('./routes/advanced_search/search-route');
 const adminRoute = require('./routes/admin/admin-route');
+const newsRoute = require('./routes/news/news-route');
 const Database = require('./database/mongodb');
 const Property = require('./models/Property');
 const PropertyRepository = require('./models/PropertyRepository');
 const AdminRepository = require('./models/AdminRepository');
+const NewsRepository = require('./models/NewsRepository');
 const bodyParser = require('body-parser');
 const authConfig = require('./config/auth.config');
 const connectionstring = 'mongodb://beastmk10:doobre96@ds247357.mlab.com:47357/apartment-sales';
@@ -35,11 +37,13 @@ app.use(session({
 const database = new Database(connectionstring);
 const propertyRepository = new PropertyRepository(database, 'properties');
 const adminRepository = new AdminRepository(database);
+const newsRepository = new NewsRepository(database);
 
 authConfig(app, adminRepository);
 homeRoute(app, propertyRepository);
 adminRoute(app, adminRepository, propertyRepository);
 propertyRoute(app, propertyRepository);
 searchRoute(app, propertyRepository);
+newsRoute(app, newsRepository);
 
 app.listen(process.env.PORT || 5000);
