@@ -1,4 +1,5 @@
 const Property = require('../../models/Property');
+const News = require('../../models/News');
 const notifier = require('node-notifier');
 
 const controller = {
@@ -144,6 +145,56 @@ const controller = {
                     res.redirect('/admin/edit');
                 });
             });
+        });
+    },
+    showAddNews(newsRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
+        res.render('admin/addNews');
+    },
+    postAddNews(newsRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
+        const id = req.body.id;
+        const title = req.body.title;
+        const text = req.body.text;
+        if (!id || !title || !text || !req.files) {
+            res.send('Попълнете всички полета: Заглавие, Описание, Код, Снимка' +
+                '<br><a href="/admin/addNews"><button>Обратно</button></a>');
+            return;
+        }
+
+        const pic = '/static/images/added_pictures/' + req.files[0].filename;
+        const news = new News(id, title, text, pic);
+        newsRepository.findNewsById(id).then((foundNews) => {
+            if (foundNews.length > 0) {
+                res.send('Има новина с код: ' + id +
+                    '<br><a href="/admin/addNews"><button>Обратно</button></a>');
+                return;
+            }
+            console.log(news);
+            newsRepository.createNews(news).then(() => {
+                notifier.notify('Успешно добавена новина!');
+                res.redirect('/admin/addNews');
+            });
+        });
+
+    },
+    showRemoveNews(newsRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
+        res.render('admin/removeNews');
+    },
+    postRemoveNews(newsRepository, req, res) {
+        checkIfAdminIsAuthenticated(req, res);
+        const id = req.body.id;
+        if (!id) {
+            res.send('Попълнете ид полето!' +
+                '<br><a href="/admin/removeNews"><button>Обратно</button></a>');
+            return;
+        }
+
+        newsRepository.deleteNews(id).then(() => {
+            notifier.notify('Успешно изтрита новина!');
+            res.redirect('/admin/removeNews');
+            return;
         });
     },
 

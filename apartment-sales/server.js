@@ -41,7 +41,7 @@ const newsRepository = new NewsRepository(database);
 
 authConfig(app, adminRepository);
 homeRoute(app, propertyRepository);
-adminRoute(app, adminRepository, propertyRepository);
+adminRoute(app, adminRepository, propertyRepository, newsRepository);
 propertyRoute(app, propertyRepository);
 searchRoute(app, propertyRepository);
 newsRoute(app, newsRepository);

@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
 const passport = require('passport');
 const upload = multer({ storage: storage });
 
-const attach = (app, adminRepository, propertyRepository) => {
+const attach = (app, adminRepository, propertyRepository, newsRepository) => {
     // @ts-ignore
     const router = new Router();
     router
@@ -41,6 +41,14 @@ const attach = (app, adminRepository, propertyRepository) => {
             controller.postRemoveProperty(adminRepository, propertyRepository, req, res);
         }).get('/logout', (req, res) => {
             controller.logout(req, res);
+        }).get('/addNews', (req, res) => {
+            controller.showAddNews(newsRepository, req, res);
+        }).post('/addNews', upload.any(), (req, res) => {
+            controller.postAddNews(newsRepository, req, res);
+        }).get('/removeNews', (req, res) => {
+            controller.showRemoveNews(newsRepository, req, res);
+        }).post('/removeNews', upload.any(), (req, res) => {
+            controller.postRemoveNews(newsRepository, req, res);
         });
     app.use('/admin', router);
 };

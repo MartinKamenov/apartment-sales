@@ -10,6 +10,11 @@ block body
                 button.btn-warning Промяна
             a(href='/admin/logout')
                 button.btn-info Излизане от админ профила
+            br
+            a(href='/admin/addNews')
+                button.btn-success Добавяне новина
+            a(href='/admin/removeNews')
+                button.btn-danger Премахване новина
         .content
             h1 Премахване на жилище
             form(method='post', action='/admin/remove')

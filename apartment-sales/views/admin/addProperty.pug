@@ -10,8 +10,13 @@ block body
                 button.btn-danger Премахване
             a(href='/admin/logout')
                 button.btn-info Излизане от админ профила
+            br
+            a(href='/admin/addNews')
+                button.btn-success Добавяне новина
+            a(href='/admin/removeNews')
+                button.btn-danger Премахване новина
         .content
-            h1 Добавяне на жилище
+            h1 Добавяне на имот
             form(method='post', action='/admin/add', enctype='multipart/form-data')
                 select.form-control(name='type')
                     each ntype in typesArray

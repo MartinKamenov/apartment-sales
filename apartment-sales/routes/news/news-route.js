@@ -8,6 +8,9 @@ const attach = (app, newsRepository) => {
     router
         .get('/', (req, res) => {
             controller.showNews(newsRepository, req, res);
+        })
+        .get('/:id', (req, res) => {
+            controller.showSingleNews(newsRepository, req, res);
         });
     app.use('/news', router);
 };

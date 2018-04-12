@@ -4,6 +4,7 @@ class News {
         this.title = title;
         this.text = text;
         this.picture = picture;
+        this.date = new Date();
     }
 }
 

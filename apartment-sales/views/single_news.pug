@@ -144,24 +144,13 @@ html(lang='en-US')
 										li#menu-item-17958.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.no-megamenu
 											a.menu-item-link(href='/contacts') Контакти
 				.container.content_wrapper
-					.uvc-heading(data-hspacer='line_only', data-halign='center', )
-						.uvc-main-heading.ult-responsive(data-ultimate-target='.uvc-heading.ultimate-heading-16635a575d66ae212 h2', data-responsive-json-new='{"font-size":"desktop:30px;","line-height":""}', style='text-align:center')
-							h2(style='font-weight:bold;color:#303030;margin-top:20px;') Новини
-							.uvc-heading-spacer.line_only(style='margin-top:20px;margin-bottom:20px;height:3px;')
-								span.uvc-headings-line(style='border-style:solid;border-bottom-width:3px;border-color:#d67b04;width:100px;')
-					each onenews in news
-						.col-md-4.shortcode-col.listing_wrapper.blog2v
-							.property_listing(data-link='/news/' + onenews.id)
-								.blog_unit_image
-									img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=onenews.picture, alt='', data-original=onenews.picture)
-								h4
-									a(href='/news/'+news.id)=onenews.title
-								.blog_unit_meta=onenews.date
-								.listing_details.the_grid_view=onenews.text.substring(0, 100)
-									a.unit_more_x(href='/news/'+onenews.id) [Покажи повече]
-								a.read_more(href='/news/'+onenews.id)
-									| Продължете да четете
-									i.fa.fa-angle-right
+					h1.entry-title.single-title=news.title
+					.meta-info
+						.meta-element=news.date
+					p(style='text-align: center;')
+						img.size-full.wp-image-906.aligncenter(src=news.picture, width='580', height='300')
+					.single-content.single-blog
+						p=news.text
 					style.
 						.pesho {
 							display: inline-block;

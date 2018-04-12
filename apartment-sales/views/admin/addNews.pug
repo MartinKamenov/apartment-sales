@@ -1,0 +1,25 @@
+extends ../shared/_master
+
+block body
+    link(rel='stylesheet', href='../static/css/add-apartment.css')
+    .container
+        .menu
+            a(href='/admin/add')
+                button.btn-success Добавяне
+            a(href='/admin/edit')
+                button.btn-warning Промяна
+            a(href='/admin/remove')
+                button.btn-danger Премахване
+            a(href='/admin/logout')
+                button.btn-info Излизане от админ профила
+            br
+            a(href='/admin/removeNews')
+                button.btn-danger Премахване новина
+        .content
+            h1 Добавяне на новина
+            form(method='post', action='/admin/addNews', enctype='multipart/form-data')
+                input.form-control(type='text', name='title', placeholder='заглавие')
+                textarea.form-control(name='text', rows='10', cols='30', placeholder='описание')
+                input.form-control(type='text', name='id', placeholder='код')
+                input.form-control(name='pic', type='file', accept='.png, .jpg, .jpeg')
+                button.form-control.btn-success(type='submit') Добавяне

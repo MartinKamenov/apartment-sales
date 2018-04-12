@@ -5,15 +5,19 @@ class NewsRepository {
     }
 
     createNews(news) {
-        this.database.insert(collectionName, news);
+        return this.database.insert(collectionName, news);
     }
 
     showNews() {
         return this.database.showAll(collectionName);
     }
 
-    deleteNews(code) {
-        return this.database.delete(collectionName, { code });
+    findNewsById(id) {
+        return this.database.find(collectionName, { id });
+    }
+
+    deleteNews(id) {
+        return this.database.delete(collectionName, { id });
     }
 }
 
