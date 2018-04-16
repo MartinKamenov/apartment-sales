@@ -155,9 +155,9 @@ html(lang='en-US')
 								.blog_unit_image
 									img.lazyload.img-responsive.wp-post-image(width='525', height='328', src=onenews.picture, alt='', data-original=onenews.picture)
 								h4
-									a(href='/news/'+news.id)=onenews.title
-								.blog_unit_meta=onenews.date
-								.listing_details.the_grid_view=onenews.text.substring(0, 100)
+									a(href='/news/'+onenews.id)=onenews.title
+								.blog_unit_meta=onenews.date.getDate() + ' ' + months[onenews.date.getMonth()] + ' ' + onenews.date.getFullYear()
+								.listing_details.the_grid_view=onenews.text.substring(0, 50)
 									a.unit_more_x(href='/news/'+onenews.id) [Покажи повече]
 								a.read_more(href='/news/'+onenews.id)
 									| Продължете да четете
@@ -234,7 +234,6 @@ html(lang='en-US')
 										i.fa.fa-desktop
 										a(href='/') имотивгърция.bg
 			script(type='text/javascript', src='/static/js/home-icon.js')
-			script(type='text/javascript', src='/static/js/date-format.js')
 			
 			script(type='text/javascript').
 				function revslider_showDoubleJqueryError(sliderID) {

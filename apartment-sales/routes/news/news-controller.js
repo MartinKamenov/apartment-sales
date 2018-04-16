@@ -1,9 +1,12 @@
 const pageHandler = require('../../models/paging');
+const months = ['Януари', 'Февруари', 'Март', 'Април', 'Май',
+    'Юни', 'Юли', 'Август', 'Септември', 'Октомври', 'Ноември', 'Декември'
+];
 
 const controller = {
     showNews(newsRepository, req, res) {
         newsRepository.showNews().then((news) => {
-            res.render('news', { news });
+            res.render('news', { news, months });
         });
     },
     showSingleNews(newsRepository, req, res) {
@@ -15,7 +18,7 @@ const controller = {
             }
 
             const news = foundNews[0];
-            res.render('single_news', { news });
+            res.render('single_news', { news, months });
         });
     }
 };

@@ -146,11 +146,13 @@ html(lang='en-US')
 				.container.content_wrapper
 					h1.entry-title.single-title=news.title
 					.meta-info
-						.meta-element=news.date
+						.meta-element=news.date.getDate() + ' ' + months[news.date.getMonth()] + ' ' + news.date.getFullYear()
 					p(style='text-align: center;')
 						img.size-full.wp-image-906.aligncenter(src=news.picture, width='580', height='300')
 					.single-content.single-blog
-						p=news.text
+						- var descriptionArray = news.text.split('\n');
+						each description in descriptionArray
+							p=description
 					style.
 						.pesho {
 							display: inline-block;
@@ -223,7 +225,6 @@ html(lang='en-US')
 										i.fa.fa-desktop
 										a(href='/') имотивгърция.bg
 			script(type='text/javascript', src='/static/js/home-icon.js')
-			script(type='text/javascript', src='/static/js/date-format.js')
 			
 			script(type='text/javascript').
 				function revslider_showDoubleJqueryError(sliderID) {
