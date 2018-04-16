@@ -158,10 +158,7 @@ html(lang='en-US')
 									a(href='/news/'+onenews.id)=onenews.title
 								.blog_unit_meta=onenews.date.getDate() + ' ' + months[onenews.date.getMonth()] + ' ' + onenews.date.getFullYear()
 								.listing_details.the_grid_view=onenews.text.substring(0, 50)
-									a.unit_more_x(href='/news/'+onenews.id) [Покажи повече]
-								a.read_more(href='/news/'+onenews.id)
-									| Продължете да четете
-									i.fa.fa-angle-right
+									a.unit_more_x(href='/news/'+onenews.id) [Прочетете повече]
 					style.
 						.pesho {
 							display: inline-block;
