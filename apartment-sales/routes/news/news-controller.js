@@ -20,6 +20,10 @@ const controller = {
             const news = foundNews[0];
             res.render('single_news', { news, months });
         });
+
+        /*const news = await Promise.all(['1111'].map(newsRepository.findNewsById.bind(newsRepository)));
+        res.send(news);
+        add async to function*/
     }
 };
 
