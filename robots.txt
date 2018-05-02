@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /apartment-sales/config/
+Disallow: /apartment-sales/database/
+Disallow: /apartment-sales/models/
+
+
