@@ -26,7 +26,7 @@ const controller = {
             } else {
                 placeIsSeres = true;
             }
-            if (place.includes('Халкидики')) {
+            if (place.includes('Халкидики') || place.includes('Тасос')) {
                 showBar = false;
             }
         }
