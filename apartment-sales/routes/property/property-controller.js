@@ -9,7 +9,7 @@ const controller = {
 
             const property = foundProperties[0];
             let pechat = true;
-            if (property.place.indexOf('Халкидики') >= 0) {
+            if (property.place.indexOf('Халкидики') >= 0 || property.place.indexOf('Тасос') >= 0) {
                 pechat = false;
             }
 
