@@ -171,7 +171,7 @@ const controller = {
                 pagesCount,
                 pages,
                 currentPage: page,
-                showBar,
+                showBar: false,
                 lastSearched
             });
         });

@@ -13,7 +13,7 @@ const controller = {
                 pechat = false;
             }
 
-            res.render('property', { property, pechat });
+            res.render('property', { property, pechat: false });
         });
 
     },
