@@ -66,7 +66,7 @@ const controller = {
                 'Пилеа', 'Рентина'
             ].sort();
             const topProperties = properties.slice(0, 6);
-            const codes = ['2318', '2212', '11015', '12024', '14004', '0011001'];
+            const codes = ['2883', '2212', '11015', '12024', '14004', '0011001'];
             let newProperties = [];
             propertyRepository.findPropertyByCode(codes[0]).then((prop0) => {
                 newProperties.push(prop0[0]);
